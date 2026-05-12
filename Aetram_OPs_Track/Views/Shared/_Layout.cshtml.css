@@ -1,0 +1,13 @@
+/* Scoped styles for Views/Shared/_Layout.cshtml */
+
+header nav {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+main {
+    padding: 1rem;
+}

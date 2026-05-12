@@ -1,0 +1,11 @@
+html {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+.text-danger {
+    color: #b02a37;
+}

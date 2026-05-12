@@ -1,0 +1,78 @@
+@model Aetram_OPs_Track.Models.Request.RegisterRequest
+@{
+    ViewData["Title"] = "Register";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+}
+
+<div class="login-page">
+    <div class="login-card">
+        <h1 class="login-title">Create account</h1>
+        <p class="login-subtitle">Enter your details to register</p>
+
+        <div id="registerSummary" class="login-summary" role="alert" hidden></div>
+
+        <form id="frmRegister"
+              method="post"
+              asp-antiforgery="true"
+              data-submit-url="@Url.Action("Submit", "Register")"
+              novalidate>
+
+            <div class="form-field">
+                <label asp-for="EmployeeCode"></label>
+                <input asp-for="EmployeeCode" class="form-control" autocomplete="username" />
+                <span asp-validation-for="EmployeeCode" class="text-danger"></span>
+            </div>
+
+            <div class="form-field">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" class="form-control" autocomplete="given-name" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="form-field">
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" class="form-control" autocomplete="family-name" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="form-field">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" autocomplete="email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-field">
+                <label asp-for="MobileNo"></label>
+                <input asp-for="MobileNo" class="form-control" autocomplete="tel" />
+                <span asp-validation-for="MobileNo" class="text-danger"></span>
+            </div>
+
+            <div class="form-field">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" autocomplete="new-password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-field">
+                <label asp-for="ConfirmPassword"></label>
+                <input asp-for="ConfirmPassword" class="form-control" autocomplete="new-password" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn-login" id="btnRegister">Register</button>
+
+            <p class="login-footer-link">
+                Already have an account?
+                <a asp-controller="Login" asp-action="Index">Sign in</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/register.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,49 @@
+@model Aetram_OPs_Track.Models.Request.LoginRequest
+@{
+    ViewData["Title"] = "Sign in";
+    var returnUrl = ViewBag.ReturnUrl as string;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+}
+
+<div class="login-page">
+    <div class="login-card">
+        <h1 class="login-title">Aetram Ops Tracker</h1>
+        <p class="login-subtitle">Sign in to continue</p>
+
+        <div id="loginSummary" class="login-summary" role="alert" hidden></div>
+
+        <form id="frmLogin"
+              method="post"
+              asp-antiforgery="true"
+             data-validate-url="/api/v1/Auth/login"
+              novalidate>
+            <input type="hidden" name="returnUrl" value="@returnUrl" />
+
+            <div class="form-field">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" autocomplete="username" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-field">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" autocomplete="current-password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn-login" id="btnLogin">Sign in</button>
+            <p class="login-footer-link">
+                New user?
+                <a asp-controller="Register" asp-action="Index">Create an account</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/login.js" asp-append-version="true"></script>
+}
