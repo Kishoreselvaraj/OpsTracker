@@ -1,111 +1,47 @@
-(function ($) {
-    'use strict';
+$(document).ready(function () {
+    // Toggle password visibility
+    $('#togglePassword').on('click', function () {
+        const passwordInput = $('#passwordInput');
+        const isPressed = $(this).attr('aria-pressed') === 'true';
+        const type = isPressed ? 'password' : 'text';
+        passwordInput.attr('type', type);
+        $(this).attr('aria-pressed', !isPressed);
+        $(this).find('i').toggleClass('fa-eye fa-eye-slash');
+    });
 
-    $(function () {
-
-        var $form = $('#frmLogin');
-        if (!$form.length) return;
-    
-        var $summary = $('#loginSummary');
-        var $submit = $('#btnLogin');
-        var url = $form.data('data-validate-url');
-    
-        function showSummary(message) {
-            if (!message) {
-                $summary.attr('hidden', true).text('');
-                return;
-            }
-    
-            $summary.removeAttr('hidden').text(message);
+    // Form submission
+    $('#loginForm').on('submit', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        const form = this;
+        if (!form.checkValidity()) {
+            $(form).addClass('was-validated');
+            return;
         }
-    
-        function clearServerFieldErrors() {
-            $form.find('span[data-valmsg-for]').text('');
-        }
-    
-        $form.validate({
-    
-            errorClass: 'text-danger',
-            errorElement: 'span',
-    
-            highlight: function (el) {
-                $(el).addClass('input-validation-error');
+        $('#loginBtn').prop('disabled', true);
+        $('#btnText').text('Signing in...');
+        $('#btnLoader').removeClass('d-none');
+        const email = $('#emailInput').val();
+        const password = $('#passwordInput').val();
+        $.ajax({
+            url: 'http://localhost:5085/api/Login', // Change to your actual login API endpoint
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ email: email, password: password }),
+            success: function (response) {
+                // Handle success (redirect, show message, etc.)
+                window.location.href = '/Dashboard/index';
             },
-    
-            unhighlight: function (el) {
-                $(el).removeClass('input-validation-error');
+            error: function (xhr) {
+                // Handle error (show message, etc.)
+                alert('Login failed: ' + (xhr.responseJSON?.message || 'Unknown error'));
+                
             },
-    
-            submitHandler: function () {
-    
-                showSummary('');
-                clearServerFieldErrors();
-    
-                $submit.prop('disabled', true);
-    
-                $.ajax({
-    
-                    type: 'POST',
-                    url: url,
-    
-                    contentType: 'application/json',
-    
-                    data: JSON.stringify({
-                        email: $('#Email').val(),
-                        password: $('#Password').val(),
-                        returnUrl: $('input[name="returnUrl"]').val()
-                    }),
-    
-                    dataType: 'json'
-    
-                })
-    
-                .done(function (data) {
-    
-                    if (data.success && data.redirectUrl) {
-                        window.location.assign(data.redirectUrl);
-                        return;
-                    }
-    
-                    showSummary(data.message || 'Sign-in failed.');
-    
-                    if (data.errors) {
-    
-                        Object.keys(data.errors).forEach(function (key) {
-    
-                            var msgs = data.errors[key];
-    
-                            if (!msgs || !msgs.length) return;
-    
-                            var $span = $form.find(
-                                'span[data-valmsg-for="' + key + '"]'
-                            );
-    
-                            if ($span.length) {
-                                $span.text(msgs[0]);
-                            }
-    
-                        });
-                    }
-                })
-    
-                .fail(function (xhr) {
-    
-                    console.log(xhr.responseText);
-    
-                    showSummary('A network error occurred.');
-    
-                })
-    
-                .always(function () {
-    
-                    $submit.prop('disabled', false);
-    
-                });
-    
-                return false;
+            complete: function () {
+                $('#loginBtn').prop('disabled', false);
+                $('#btnText').text('Sign In');
+                $('#btnLoader').addClass('d-none');
             }
         });
-    
     });
-})(jQuery);
+});

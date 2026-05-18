@@ -1,72 +1,21 @@
+﻿using Microsoft.Data.SqlClient;
 using System.Data;
-using Microsoft.Data.SqlClient;
 
-namespace Aetram_OPs_Track.DAL;
-
-/// <summary>
-/// SQL Server data access via ADO.NET (async, DI-scoped, transaction-aware).
-/// </summary>
-public interface IDBClass
+namespace Aetram_OpsTrack.DAL
 {
-    string ConnectionString { get; }
+    public interface IDBClass
+    {
+        Task<DataTable> ExecuteProcedureForDataTable(string procedureName, SqlParameter[] parameters = null);
+        Task<List<T>> ExecuteProcedureForGenericList<T>(string procedureName, SqlParameter[] parameters = null);
+        Task<int> ExecuteProcedureForInt(string procedureName, SqlParameter[] parameters = null);
+        Task<string> ExecuteProcedureForString(string procedureName, SqlParameter[] parameters = null);
+        Task<DataSet> ExecuteProcedureForDataSet(string procedureName, SqlParameter[] parameters = null);
+        Task<T> ExecuteProcedureForObject<T>(string procedureName, SqlParameter[] parameters = null);
+        Task<string> ExecuteJsonReturningProcedureAsync(string procedureName, SqlParameter[] parameters = null);
+        Task<(List<T> Items, int TotalCount)> ExecutePaginatedProcedure<T>(string procedureName, int pageNumber = 1, int pageSize = 10, object additionalParams = null);
+        public Task<int> ExecuteNonQuery(string procedureName, SqlParameter[] parameters = null);
 
-    /// <summary>ADO.NET command timeout in seconds (0 = driver default).</summary>
-    int CommandTimeoutSeconds { get; }
 
-    SqlConnection CreateConnection();
 
-    /// <summary>Runs work inside a transaction (commit on success, rollback on any exception).</summary>
-    Task<T> ExecuteInTransactionAsync<T>(
-        Func<SqlConnection, SqlTransaction, CancellationToken, Task<T>> work,
-        IsolationLevel isolationLevel = IsolationLevel.ReadCommitted,
-        CancellationToken cancellationToken = default);
-
-    Task ExecuteInTransactionAsync(
-        Func<SqlConnection, SqlTransaction, CancellationToken, Task> work,
-        IsolationLevel isolationLevel = IsolationLevel.ReadCommitted,
-        CancellationToken cancellationToken = default);
-
-    Task<int> ExecuteNonQueryAsync(
-        string commandText,
-        CommandType commandType,
-        CancellationToken cancellationToken,
-        params SqlParameter[] parameters);
-
-    Task<int> ExecuteNonQueryAsync(string commandText, CommandType commandType, params SqlParameter[] parameters);
-
-    Task<object?> ExecuteScalarAsync(
-        string commandText,
-        CommandType commandType,
-        CancellationToken cancellationToken,
-        params SqlParameter[] parameters);
-
-    Task<object?> ExecuteScalarAsync(string commandText, CommandType commandType, params SqlParameter[] parameters);
-
-    Task<DataTable> ExecuteDataTableAsync(
-        string commandText,
-        CommandType commandType,
-        CancellationToken cancellationToken,
-        params SqlParameter[] parameters);
-
-    Task<DataTable> ExecuteDataTableAsync(string commandText, CommandType commandType, params SqlParameter[] parameters);
-
-    /// <summary>Opens a new connection; reader closes connection when disposed.</summary>
-    Task<SqlDataReader> ExecuteReaderAsync(
-        string commandText,
-        CommandType commandType,
-        CancellationToken cancellationToken,
-        params SqlParameter[] parameters);
-
-    Task<SqlDataReader> ExecuteReaderAsync(string commandText, CommandType commandType, params SqlParameter[] parameters);
-
-    /// <summary>Use inside <see cref="ExecuteInTransactionAsync"/> so the reader participates in the transaction.</summary>
-    Task<SqlDataReader> ExecuteReaderAsync(
-        SqlConnection connection,
-        SqlTransaction? transaction,
-        string commandText,
-        CommandType commandType,
-        CancellationToken cancellationToken,
-        params SqlParameter[] parameters);
-
-    SqlParameter CreateParameter(string name, object? value, SqlDbType? dbType = null, ParameterDirection direction = ParameterDirection.Input);
+    }
 }

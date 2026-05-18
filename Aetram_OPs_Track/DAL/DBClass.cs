@@ -1,225 +1,271 @@
-using System.Data;
+﻿using Aetram_OpsTrack.DAL;
 using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using DbOptions = Aetram_OPs_Track.DatabaseOptions;
-using BehaviorOptions = Aetram_OPs_Track.DataAccessOptions;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+using System.Data;
+using System.Reflection;
+using System.Security.Cryptography;
+using System.Text;
 
-namespace Aetram_OPs_Track.DAL;
-
-/// <summary>
-/// ADO.NET implementation with async APIs, optional transactions, and centralized SQL exception handling.
-/// </summary>
-public sealed class DBClass : IDBClass
+namespace Aetram_OpsTrack.DAL
 {
-    private readonly DbOptions _connectionOptions;
-    private readonly BehaviorOptions _behavior;
-    private readonly ILogger<DBClass> _logger;
-
-    public DBClass(
-        IOptionsSnapshot<DbOptions> connectionOptions,
-        IOptionsSnapshot<BehaviorOptions> behaviorOptions,
-        ILogger<DBClass> logger)
+    public class DBClass : IDBClass
     {
-        _connectionOptions = connectionOptions.Value;
-        _behavior = behaviorOptions.Value;
-        _logger = logger;
-    }
 
-    public string ConnectionString =>
-        string.IsNullOrWhiteSpace(_connectionOptions.DefaultConnection)
-            ? throw new InvalidOperationException("ConnectionStrings:DefaultConnection is not configured.")
-            : _connectionOptions.DefaultConnection;
+        private readonly string _connectionString;
 
-    public int CommandTimeoutSeconds => _behavior.CommandTimeoutSeconds;
-
-    public SqlConnection CreateConnection() => new(ConnectionString);
-
-    public async Task<T> ExecuteInTransactionAsync<T>(
-        Func<SqlConnection, SqlTransaction, CancellationToken, Task<T>> work,
-        IsolationLevel isolationLevel = IsolationLevel.ReadCommitted,
-        CancellationToken cancellationToken = default)
-    {
-        ArgumentNullException.ThrowIfNull(work);
-        await using var connection = CreateConnection();
-        await connection.OpenAsync(cancellationToken).ConfigureAwait(false);
-        await using var dbTransaction = await connection
-            .BeginTransactionAsync(isolationLevel, cancellationToken)
-            .ConfigureAwait(false);
-        var transaction = (SqlTransaction)dbTransaction;
-
-        try
+        public DBClass(IConfiguration configuration)
         {
-            var result = await work(connection, transaction, cancellationToken).ConfigureAwait(false);
-            await dbTransaction.CommitAsync(cancellationToken).ConfigureAwait(false);
-            return result;
+            _connectionString = configuration.GetConnectionString("DefaultConnection");
+            if (string.IsNullOrWhiteSpace(_connectionString))
+                throw new InvalidOperationException("DefaultConnection is missing in appsettings.json");
         }
-        catch (Exception ex)
+        public async Task<int> ExecuteNonQuery(string procedureName, SqlParameter[] parameters = null)
+        {
+            using (var con = new SqlConnection(_connectionString))
+            using (var cmd = new SqlCommand(procedureName, con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandTimeout = 120;
+
+                if (parameters?.Length > 0)
+                    cmd.Parameters.AddRange(parameters);
+
+                await con.OpenAsync();
+                return await cmd.ExecuteNonQueryAsync();
+            }
+        }
+
+        //Execute Stored Procedure and return DataTable
+        public async Task<DataTable> ExecuteProcedureForDataTable(string procedureName, SqlParameter[] parameters = null)
+        {
+            var dt = new DataTable();
+
+            using (var con = new SqlConnection(_connectionString))
+            using (var cmd = new SqlCommand(procedureName, con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandTimeout = 120;
+                if (parameters?.Length > 0)
+                    cmd.Parameters.AddRange(parameters);
+
+                await con.OpenAsync();
+                using var reader = await cmd.ExecuteReaderAsync();
+                dt.Load(reader);
+            }
+            return dt;
+        }
+
+        //Execute Procedure and Return List<T>
+        public async Task<List<T>> ExecuteProcedureForGenericList<T>(string procedureName, SqlParameter[] parameters = null)
+        {
+            using var con = new SqlConnection(_connectionString);
+            using var cmd = new SqlCommand(procedureName, con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandTimeout = 120;
+            if (parameters?.Length > 0)
+                cmd.Parameters.AddRange(parameters);
+
+            await con.OpenAsync();
+            using var reader = await cmd.ExecuteReaderAsync();
+            var dt = new DataTable();
+            dt.Load(reader);
+            string json = JsonConvert.SerializeObject(dt);
+            return JsonConvert.DeserializeObject<List<T>>(json) ?? [];
+        }
+
+        //Execute Procedure and Return Scalar as Int
+        public async Task<int> ExecuteProcedureForInt(string procedureName, SqlParameter[] parameters = null)
         {
             try
             {
-                await dbTransaction.RollbackAsync(cancellationToken).ConfigureAwait(false);
+                using var con = new SqlConnection(_connectionString);
+                using var cmd = new SqlCommand(procedureName, con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandTimeout = 120;
+                if (parameters?.Length > 0)
+                    cmd.Parameters.AddRange(parameters);
+
+                await con.OpenAsync();
+                var result = await cmd.ExecuteScalarAsync();
+                if (result != null && result != DBNull.Value)
+                    return Convert.ToInt32(result);
             }
-            catch (Exception rollbackEx)
+            catch (Exception ex)
             {
-                _logger.LogWarning(rollbackEx, "Transaction rollback failed after an error.");
+                Console.WriteLine($"Error in ExecuteProcedureForInt ({procedureName}): {ex.Message}");
             }
-
-            ThrowIfSql(ex, "ExecuteInTransaction");
-            throw;
+            return 0;
         }
-    }
 
-    public Task ExecuteInTransactionAsync(
-        Func<SqlConnection, SqlTransaction, CancellationToken, Task> work,
-        IsolationLevel isolationLevel = IsolationLevel.ReadCommitted,
-        CancellationToken cancellationToken = default) =>
-        ExecuteInTransactionAsync(async (c, t, ct) =>
+        //Execute Procedure and Return Scalar as String
+        public async Task<string> ExecuteProcedureForString(string procedureName, SqlParameter[] parameters = null)
         {
-            await work(c, t, ct).ConfigureAwait(false);
-            return true;
-        }, isolationLevel, cancellationToken);
+            using var con = new SqlConnection(_connectionString);
+            using var cmd = new SqlCommand(procedureName, con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandTimeout = 120;
+            if (parameters?.Length > 0)
+                cmd.Parameters.AddRange(parameters);
 
-    public Task<int> ExecuteNonQueryAsync(string commandText, CommandType commandType, params SqlParameter[] parameters) =>
-        ExecuteNonQueryAsync(commandText, commandType, CancellationToken.None, parameters);
+            await con.OpenAsync();
+            var result = await cmd.ExecuteScalarAsync();
+            return result != DBNull.Value ? result?.ToString() ?? string.Empty : string.Empty;
+        }
 
-    public Task<int> ExecuteNonQueryAsync(
-        string commandText,
-        CommandType commandType,
-        CancellationToken cancellationToken,
-        params SqlParameter[] parameters) =>
-        GuardAsync("ExecuteNonQuery", async () =>
+        //Execute Procedure and Return DataSet
+        public async Task<DataSet> ExecuteProcedureForDataSet(string procedureName, SqlParameter[] parameters = null)
         {
-            await using var connection = CreateConnection();
-            await using var command = CreateCommand(connection, null, commandText, commandType, parameters);
-            await connection.OpenAsync(cancellationToken).ConfigureAwait(false);
-            return await command.ExecuteNonQueryAsync(cancellationToken).ConfigureAwait(false);
-        });
+            var ds = new DataSet();
 
-    public Task<object?> ExecuteScalarAsync(string commandText, CommandType commandType, params SqlParameter[] parameters) =>
-        ExecuteScalarAsync(commandText, commandType, CancellationToken.None, parameters);
+            using (var con = new SqlConnection(_connectionString))
+            using (var cmd = new SqlCommand(procedureName, con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandTimeout = 120;
+                if (parameters?.Length > 0)
+                    cmd.Parameters.AddRange(parameters);
 
-    public Task<object?> ExecuteScalarAsync(
-        string commandText,
-        CommandType commandType,
-        CancellationToken cancellationToken,
-        params SqlParameter[] parameters) =>
-        GuardAsync("ExecuteScalar", async () =>
+                using var adapter = new SqlDataAdapter(cmd);
+                await Task.Run(() => adapter.Fill(ds));
+            }
+            return ds;
+        }
+
+        public async Task<T> ExecuteProcedureForObject<T>(string procedureName, SqlParameter[] parameters = null)
         {
-            await using var connection = CreateConnection();
-            await using var command = CreateCommand(connection, null, commandText, commandType, parameters);
-            await connection.OpenAsync(cancellationToken).ConfigureAwait(false);
-            return (object?)await command.ExecuteScalarAsync(cancellationToken).ConfigureAwait(false);
-        });
-
-    public Task<DataTable> ExecuteDataTableAsync(string commandText, CommandType commandType, params SqlParameter[] parameters) =>
-        ExecuteDataTableAsync(commandText, commandType, CancellationToken.None, parameters);
-
-    public Task<DataTable> ExecuteDataTableAsync(
-        string commandText,
-        CommandType commandType,
-        CancellationToken cancellationToken,
-        params SqlParameter[] parameters) =>
-        GuardAsync("ExecuteDataTable", async () =>
-        {
-            var table = new DataTable();
-            await using var connection = CreateConnection();
-            await using var command = CreateCommand(connection, null, commandText, commandType, parameters);
-            await connection.OpenAsync(cancellationToken).ConfigureAwait(false);
-            await using var reader = await command.ExecuteReaderAsync(cancellationToken).ConfigureAwait(false);
-            table.Load(reader);
-            return table;
-        });
-
-    public Task<SqlDataReader> ExecuteReaderAsync(string commandText, CommandType commandType, params SqlParameter[] parameters) =>
-        ExecuteReaderAsync(commandText, commandType, CancellationToken.None, parameters);
-
-    public Task<SqlDataReader> ExecuteReaderAsync(
-        string commandText,
-        CommandType commandType,
-        CancellationToken cancellationToken,
-        params SqlParameter[] parameters) =>
-        GuardAsync("ExecuteReader", async () =>
-        {
-            var connection = CreateConnection();
             try
             {
-                var command = CreateCommand(connection, null, commandText, commandType, parameters);
-                await connection.OpenAsync(cancellationToken).ConfigureAwait(false);
-                return await command
-                    .ExecuteReaderAsync(CommandBehavior.CloseConnection, cancellationToken)
-                    .ConfigureAwait(false);
+                using var con = new SqlConnection(_connectionString);
+                using var cmd = new SqlCommand(procedureName, con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandTimeout = 120;
+                if (parameters?.Length > 0)
+                    cmd.Parameters.AddRange(parameters);
+
+                await con.OpenAsync();
+                using var reader = await cmd.ExecuteReaderAsync();
+                var dt = new DataTable();
+                dt.Load(reader);
+
+                if (dt.Rows.Count == 0)
+                    return default;
+
+                string json = JsonConvert.SerializeObject(dt);
+                var list = JsonConvert.DeserializeObject<List<T>>(json);
+                return (list != null && list.Count > 0) ? list[0] : default;
             }
-            catch
+            catch (Exception ex)
             {
-                await connection.DisposeAsync().ConfigureAwait(false);
-                throw;
+                Console.WriteLine($"Error in ExecuteProcedureForObject ({procedureName}): {ex.Message}");
+                return default;
             }
-        });
-
-    public Task<SqlDataReader> ExecuteReaderAsync(
-        SqlConnection connection,
-        SqlTransaction? transaction,
-        string commandText,
-        CommandType commandType,
-        CancellationToken cancellationToken,
-        params SqlParameter[] parameters) =>
-        GuardAsync("ExecuteReader(Transactional)", async () =>
-        {
-            ArgumentNullException.ThrowIfNull(connection);
-            var command = CreateCommand(connection, transaction, commandText, commandType, parameters);
-            return await command.ExecuteReaderAsync(cancellationToken).ConfigureAwait(false);
-        });
-
-    public SqlParameter CreateParameter(string name, object? value, SqlDbType? dbType = null, ParameterDirection direction = ParameterDirection.Input)
-    {
-        var parameter = dbType.HasValue
-            ? new SqlParameter(name, dbType.Value) { Direction = direction }
-            : new SqlParameter(name, value ?? DBNull.Value) { Direction = direction };
-
-        if (!dbType.HasValue && value is null && direction == ParameterDirection.Input)
-            parameter.Value = DBNull.Value;
-
-        return parameter;
-    }
-
-    private SqlCommand CreateCommand(
-        SqlConnection connection,
-        SqlTransaction? transaction,
-        string commandText,
-        CommandType commandType,
-        SqlParameter[] parameters)
-    {
-        var command = connection.CreateCommand();
-        command.Transaction = transaction;
-        command.CommandText = commandText;
-        command.CommandType = commandType;
-        if (CommandTimeoutSeconds > 0)
-            command.CommandTimeout = CommandTimeoutSeconds;
-        if (parameters is { Length: > 0 })
-            command.Parameters.AddRange(parameters);
-        return command;
-    }
-
-    private async Task<T> GuardAsync<T>(string operation, Func<Task<T>> action)
-    {
-        try
-        {
-            return await action().ConfigureAwait(false);
         }
-        catch (Exception ex)
+
+        //Execute Procedure that returns JSON string
+        public async Task<string> ExecuteJsonReturningProcedureAsync(string procedureName, SqlParameter[] parameters = null)
         {
-            ThrowIfSql(ex, operation);
-            throw;
+            using var con = new SqlConnection(_connectionString);
+            using var cmd = new SqlCommand(procedureName, con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandTimeout = 120;
+            if (parameters?.Length > 0)
+                cmd.Parameters.AddRange(parameters);
+
+            await con.OpenAsync();
+            using var reader = await cmd.ExecuteReaderAsync();
+            var sb = new StringBuilder();
+            while (await reader.ReadAsync())
+            {
+                sb.Append(reader.GetString(0));
+            }
+            return sb.ToString();
+        }
+
+        //Execute Paginated Procedure
+        public async Task<(List<T> Items, int TotalCount)> ExecutePaginatedProcedure<T>(string procedureName, int pageNumber = 1, int pageSize = 10, object additionalParams = null)
+        {
+            var parameters = new List<SqlParameter>
+            {
+                new SqlParameter("@PageNumber", pageNumber),
+                new SqlParameter("@PageSize", pageSize)
+            };
+
+            if (additionalParams != null)
+            {
+                foreach (var prop in additionalParams.GetType().GetProperties())
+                {
+                    parameters.Add(new SqlParameter("@" + prop.Name, prop.GetValue(additionalParams, null) ?? DBNull.Value));
+                }
+            }
+
+            var result = new List<T>();
+            int totalCount = 0;
+
+            using (var con = new SqlConnection(_connectionString))
+            using (var cmd = new SqlCommand(procedureName, con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandTimeout = 120;
+                cmd.Parameters.AddRange(parameters.ToArray());
+
+                await con.OpenAsync();
+                using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    var props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+                    var colNames = Enumerable.Range(0, reader.FieldCount).Select(reader.GetName).ToList();
+
+                    while (await reader.ReadAsync())
+                    {
+                        var item = Activator.CreateInstance<T>();
+                        foreach (var prop in props)
+                        {
+                            if (colNames.Any(cn => cn.Equals(prop.Name, StringComparison.InvariantCultureIgnoreCase)))
+                            {
+                                var val = reader[prop.Name];
+                                if (val != DBNull.Value)
+                                {
+                                    prop.SetValue(item, val);
+                                }
+                            }
+                        }
+                        result.Add(item);
+                    }
+
+                    if (await reader.NextResultAsync() && await reader.ReadAsync())
+                    {
+                        totalCount = reader.GetInt32(0);
+                    }
+                }
+            }
+            return (result, totalCount);
+        }
+        private static SqlParameter[] ConvertToSqlParameters(object obj)
+        {
+            var parameters = new List<SqlParameter>();
+            foreach (var prop in obj.GetType().GetProperties())
+            {
+                var val = prop.GetValue(obj, null) ?? DBNull.Value;
+                parameters.Add(new SqlParameter("@" + prop.Name, val));
+            }
+            return [.. parameters];
         }
     }
 
-    private void ThrowIfSql(Exception ex, string operation)
+    public static class SqlDataReaderExtensions
     {
-        if (ex is SqlException sql)
+        public static bool HasColumn(this SqlDataReader reader, string columnName)
         {
-            _logger.LogError(sql, "SQL failure during {Operation}", operation);
-            throw DatabaseAccessException.FromSql(operation, sql);
+            for (int i = 0; i < reader.FieldCount; i++)
+            {
+                if (reader.GetName(i).Equals(columnName, StringComparison.InvariantCultureIgnoreCase))
+                    return true;
+            }
+            return false;
         }
+
     }
+
+
 }
+

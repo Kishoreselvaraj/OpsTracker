@@ -1,16 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
-using Aetram_OPs_Track.Filters;
-using Aetram_OPs_Track.Infrastructure;
 
-namespace Aetram_OPs_Track.Controllers;
-
-[RequireAuthenticatedSession]
-public class DashboardController : BaseController
+namespace OpsTracker_v1.Controllers
 {
-    public IActionResult Index()
+    public class DashboardController : Controller
     {
-        ViewBag.DisplayName = HttpContext.Session.GetString(SessionKeys.DisplayName);
-        ViewBag.Role = HttpContext.Session.GetString(SessionKeys.Role);
-        return View();
+        public IActionResult Index()
+        {
+            return View();
+        }
     }
 }

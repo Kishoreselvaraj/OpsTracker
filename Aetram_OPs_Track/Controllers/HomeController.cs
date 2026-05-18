@@ -1,13 +1,24 @@
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Aetram_OPs_Track.Models;
+using OpsTracker_v1.Models;
 
-namespace Aetram_OPs_Track.Controllers;
+namespace OpsTracker_v1.Controllers;
 
-public class HomeController : BaseController
+public class HomeController : Controller
 {
+    public IActionResult Index()
+    {
+        return View();
+    }
+
+    public IActionResult Privacy()
+    {
+        return View();
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
-        return View(ErrorViewModel.FromActivity());
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }

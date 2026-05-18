@@ -1,39 +1,75 @@
+﻿using Aetram_OpsTrack.DBO.Repository;
+using Aetram_OpsTrack.Models.Request;
+using Aetram_OpsTrack.Models.Response;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Aetram_OPs_Track.Models.Request;
-using Aetram_OPs_Track.Models.Response;
-using Aetram_OPs_Track.Services.Authentication;
-using Aetram_OPs_Track.Services.Registration;
 
-namespace Aetram_OPs_Track.Controllers;
-
-public class RegisterController : BaseController
+namespace Aetram_OpsTrack.Controllers
 {
-    private readonly IAuthenticationService _authentication;
-    private readonly IRegistrationService _registration;
-
-    public RegisterController(IAuthenticationService authentication, IRegistrationService registration)
+    [Route("api/[controller]")]
+    [ApiController]
+    public class RegisterController : ControllerBase
     {
-        _authentication = authentication;
-        _registration = registration;
-    }
+        private readonly IRegisterRepository _userRepository;
+        private readonly ILogs _logs;
 
-    [HttpGet]
-    public IActionResult Index()
-    {
-        if (_authentication.IsAuthenticated(HttpContext))
-            return RedirectToAction("Index", "Dashboard");
+        public RegisterController(
+            IRegisterRepository userRepository,
+            ILogs logs)
+        {
+            _userRepository = userRepository;
+            _logs = logs;
+        }
+        [HttpPost("register")]
+        public async Task<IActionResult> Register(
+            [FromBody] RegisterUserRequest request)
+        {
+            try
+            {
+                if (request == null)
+                {
+                    await _logs.LogUserActivityAsync(
+                        HttpContext,
+                        0,
+                        "Invalid Registration Request");
 
-        return View(new RegisterRequest());
-    }
+                    return BadRequest(new
+                    {
+                        StatusCode = 400,
+                        Message = "Invalid request data"
+                    });
+                }
 
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Submit([FromForm] RegisterRequest model, CancellationToken cancellationToken)
-    {
-        if (!ModelState.IsValid)
-            return Json(AjaxAuthResponse.InvalidModel(ModelState));
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
 
-        var result = await _registration.RegisterAsync(model, cancellationToken).ConfigureAwait(false);
-        return Json(result);
+                RegisterUserResponse result =
+                    await _userRepository.RegisterUserAsync(request);
+
+                if (result.StatusCode == 200)
+                {
+                    await _logs.LogUserActivityAsync(
+                        HttpContext,
+                        result.LastInsertedID,
+                        "User Registered Successfully");
+                }
+
+                return StatusCode(result.StatusCode, result);
+            }
+            catch (Exception ex)
+            {
+                await _logs.LogExceptionAsync(
+                    ex,
+                    HttpContext);
+
+                return StatusCode(500, new
+                {
+                    StatusCode = 500,
+                    Message = "Internal Server Error"
+                });
+            }
+        }
     }
 }
