@@ -1,31 +1,40 @@
 /* ============================================================
-   Aetram OpsTracker — EOD Submission Calendar JS v5.1
-   FIXED: Row numbering, Calendar refresh, Modal sync, Form toggle
-   Multi-row Form · Save Draft · Submit EOD · Full CRUD
+   Aetram OpsTracker — EOD Submission Calendar JS v6.5
+   CHANGES:
+   - Removed Save Draft (local storage)
+   - Submit EOD sends directly to backend
+   - Form data is NOT stored locally
+   - Warning if closing modal with unsaved data
+   - Submit works for: new entry, edit existing, resubmit
    ============================================================ */
+
+import { postWithAuth, getWithAuth, deleteWithAuth } from '/js/services/apiService.js';
+import { getUser } from '/js/auth/authService.js';
 
 $(function () {
 
-    /* ── API Configuration ─────────────────────────────────── */
-    const API_BASE = ''; // Configure: e.g. 'https://api.example.com' or '' for relative
-    const API = {
-        workLogsByMonth: API_BASE + '/api/worklogs/month',
-        categories: API_BASE + '/api/categories',
-        subCategories: API_BASE + '/api/subcategories',
-        saveDraft: API_BASE + '/api/WorkLog/save',  // Single endpoint for final submit
-        deleteLog: API_BASE + '/api/worklogs/delete'
+    /* ── CONFIG ──────────────────────────────────────────── */
+    const CONFIG = {
+        restrictPreviousDateEdit: false,
+        restrictPreviousDateDelete: false,
+        restrictPreviousDateCreate: false,
+        allowEditAfterSubmit: true,
+        allowDeleteAfterSubmit: true,
+        allowResubmit: true,
+        maxDaysBack: null
     };
 
-    /* ── Demo data ───────────────────────────────────────── */
+    /* ── API Configuration ─────────────────────────────────── */
+    const API = {
+        monthlyCalendar: '/api/WorkLog/monthly-calendar',
+        categories: '/api/categories',
+        subCategories: '/api/subcategories',
+        saveWorkLog: '/api/WorkLog/save',
+        deleteLog: '/api/WorkLog/delete'
+    };
+
+    /* ── Demo Fallback Data ────────────────────────────────── */
     const DEMO = {
-        user: {
-            userId: 1,
-            name: "Rahul Kumar",
-            employeeCode: "EMP-00412",
-            taskGroup: "India",
-            subGroup: "Dev QA",
-            teamLead: "Priya S."
-        },
         categories: [
             { categoryId: 1, name: "Development" },
             { categoryId: 2, name: "QA" },
@@ -39,126 +48,6 @@ $(function () {
             { subCategoryId: 4, categoryId: 2, name: "Automation" },
             { subCategoryId: 5, categoryId: 3, name: "CI/CD" },
             { subCategoryId: 6, categoryId: 4, name: "UI/UX" }
-        ],
-        workLogs: [
-            {
-                workLogId: 1,
-                userId: 1,
-                categoryId: 2,
-                subCategoryId: 3,
-                workDate: "2026-05-01",
-                hoursWorked: "08:00",
-                workDescription: "Sprint planning and test case review",
-                approvalStatus: "APPROVED",
-                approvalBy: "Priya S.",
-                status: "Completed",
-                workflowLogDateId: 1
-            },
-            {
-                workLogId: 2,
-                userId: 1,
-                categoryId: 1,
-                subCategoryId: 2,
-                workDate: "2026-05-02",
-                hoursWorked: "09:30",
-                workDescription: "API integration for payment gateway",
-                approvalStatus: "PENDING",
-                approvalBy: null,
-                status: "In Progress",
-                workflowLogDateId: 2
-            },
-            {
-                workLogId: 3,
-                userId: 1,
-                categoryId: 2,
-                subCategoryId: 4,
-                workDate: "2026-05-05",
-                hoursWorked: "08:00",
-                workDescription: "Automated regression suite update",
-                approvalStatus: "APPROVED",
-                approvalBy: "Priya S.",
-                status: "Completed",
-                workflowLogDateId: 3
-            },
-            {
-                workLogId: 4,
-                userId: 1,
-                categoryId: 2,
-                subCategoryId: 3,
-                workDate: "2026-05-06",
-                hoursWorked: "08:00",
-                workDescription: "Bug verification for sprint 24",
-                approvalStatus: "REJECTED",
-                approvalBy: "Priya S.",
-                reasonForReject: "Incorrect hours logged. Please verify and resubmit.",
-                status: "In Progress",
-                workflowLogDateId: 4
-            },
-            {
-                workLogId: 5,
-                userId: 1,
-                categoryId: 1,
-                subCategoryId: 1,
-                workDate: "2026-05-07",
-                hoursWorked: "08:00",
-                workDescription: "Dashboard component refactoring",
-                approvalStatus: "DRAFT",
-                approvalBy: null,
-                status: "In Progress",
-                workflowLogDateId: 5
-            },
-            {
-                workLogId: 6,
-                userId: 1,
-                categoryId: 2,
-                subCategoryId: 3,
-                workDate: "2026-05-08",
-                hoursWorked: "08:00",
-                workDescription: "Smoke testing for release candidate",
-                approvalStatus: "PENDING",
-                approvalBy: null,
-                status: "In Progress",
-                workflowLogDateId: 6
-            },
-            {
-                workLogId: 7,
-                userId: 1,
-                categoryId: 2,
-                subCategoryId: 4,
-                workDate: "2026-05-12",
-                hoursWorked: "08:00",
-                workDescription: "Selenium script maintenance",
-                approvalStatus: "APPROVED",
-                approvalBy: "Priya S.",
-                status: "Completed",
-                workflowLogDateId: 7
-            },
-            {
-                workLogId: 8,
-                userId: 1,
-                categoryId: 1,
-                subCategoryId: 2,
-                workDate: "2026-05-13",
-                hoursWorked: "06:00",
-                workDescription: "Regression testing — Auth module",
-                approvalStatus: "DRAFT",
-                approvalBy: null,
-                status: "In Progress",
-                workflowLogDateId: 8
-            },
-            {
-                workLogId: 9,
-                userId: 1,
-                categoryId: 2,
-                subCategoryId: 3,
-                workDate: "2026-05-13",
-                hoursWorked: "02:00",
-                workDescription: "Bug documentation for sprint review",
-                approvalStatus: "DRAFT",
-                approvalBy: null,
-                status: "In Progress",
-                workflowLogDateId: 8
-            }
         ]
     };
 
@@ -168,13 +57,15 @@ $(function () {
     let currentDate = new Date(today.getFullYear(), today.getMonth(), 1);
     let selectedDate = null;
     let workLogsData = [];
+    let calendarData = [];
     let categoriesData = [];
     let subCategoriesData = [];
     let editingWorkflowLogDateId = 0;
     let draftLogs = [];
     let isFormVisible = false;
-    let nextRowId = 0; // Unique ID for each row to prevent index conflicts
-    let pendingDraftData = null; // Store draft data in memory until submit
+    let nextRowId = 0;
+    let currentUser = null;
+    let hasUnsavedFormData = false;
 
     /* ── Helpers ─────────────────────────────────────────── */
     function formatDate(date) {
@@ -219,13 +110,6 @@ $(function () {
         return h + m / 60;
     }
 
-    function formatDecimalToTime(decimal) {
-        const totalMinutes = Math.round(decimal * 60);
-        const h = Math.floor(totalMinutes / 60);
-        const m = totalMinutes % 60;
-        return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
-    }
-
     function getDayStatus(logs) {
         if (!logs || logs.length === 0) return null;
         const statuses = logs.map(l => l.approvalStatus);
@@ -253,23 +137,79 @@ $(function () {
         return d > today;
     }
 
+    function isPastDate(dateStr) {
+        const d = parseDate(dateStr);
+        d.setHours(0, 0, 0, 0);
+        return d < today;
+    }
+
+    function isTooOld(dateStr) {
+        if (!CONFIG.maxDaysBack) return false;
+        const d = parseDate(dateStr);
+        const diff = Math.floor((today - d) / (1000 * 60 * 60 * 24));
+        return diff > CONFIG.maxDaysBack;
+    }
+
     function isSameMonth(date1, date2) {
         return date1.getFullYear() === date2.getFullYear() && date1.getMonth() === date2.getMonth();
     }
 
-    function isDayReadOnly(logs) {
-        if (!logs || logs.length === 0) return false;
-        return logs.some(l => l.approvalStatus === 'PENDING' || l.approvalStatus === 'APPROVED');
+    /* ── Permission checks ──────────────────────────────── */
+    function canEditEntry(log) {
+        if (!log) return true;
+        if (isFutureDate(log.workDate)) return false;
+        if (isTooOld(log.workDate)) return false;
+        if (CONFIG.restrictPreviousDateEdit && isPastDate(log.workDate)) return false;
+        if (!CONFIG.allowEditAfterSubmit && (log.approvalStatus === 'PENDING' || log.approvalStatus === 'APPROVED')) return false;
+        return true;
     }
 
-    function isDayDraftOnly(logs) {
-        if (!logs || logs.length === 0) return false;
-        return logs.every(l => l.approvalStatus === 'DRAFT' || l.approvalStatus === 'REJECTED');
+    function canDeleteEntry(log) {
+        if (!log) return true;
+        if (isFutureDate(log.workDate)) return false;
+        if (isTooOld(log.workDate)) return false;
+        if (CONFIG.restrictPreviousDateDelete && isPastDate(log.workDate)) return false;
+        if (!CONFIG.allowDeleteAfterSubmit && (log.approvalStatus === 'PENDING' || log.approvalStatus === 'APPROVED')) return false;
+        return true;
     }
 
-    function isDayEditable(logs) {
-        if (!logs || logs.length === 0) return true;
-        return logs.every(l => l.approvalStatus === 'DRAFT' || l.approvalStatus === 'REJECTED');
+    function canCreateEntry(dateStr) {
+        if (isFutureDate(dateStr)) return false;
+        if (isTooOld(dateStr)) return false;
+        if (CONFIG.restrictPreviousDateCreate && isPastDate(dateStr)) return false;
+        return true;
+    }
+
+    /* ── Backend Response Mapping ────────────────────────── */
+    function mapBackendToWorkLogs(calendarDays) {
+        const flatLogs = [];
+        if (!Array.isArray(calendarDays)) return flatLogs;
+
+        calendarDays.forEach(day => {
+            const dateStr = day.workDate ? day.workDate.split('T')[0] : '';
+            const dayApprovalStatus = day.approvalStatus || 'DRAFT';
+
+            if (day.tasks && Array.isArray(day.tasks)) {
+                day.tasks.forEach(task => {
+                    flatLogs.push({
+                        workLogId: task.workLogId || 0,
+                        userId: currentUser?.userId || 1,
+                        categoryId: task.groupId || 0,
+                        subCategoryId: task.subGroupId || 0,
+                        workDate: dateStr,
+                        hoursWorked: task.taskDuration || task.hoursWorked || '00:00',
+                        workDescription: task.workDescription || '',
+                        approvalStatus: (task.approvalStatus && task.approvalStatus.trim()) ? task.approvalStatus : dayApprovalStatus,
+                        approvalBy: day.approvalBy || null,
+                        reasonForReject: day.reasonForReject || null,
+                        status: task.workStatus || 'In Progress',
+                        workflowLogDateId: day.workflowLogDateId || 0
+                    });
+                });
+            }
+        });
+
+        return flatLogs;
     }
 
     /* ── Calendar rendering ──────────────────────────────── */
@@ -346,7 +286,7 @@ $(function () {
                 const cat = categoriesData.find(c => c.categoryId === log.categoryId);
                 return `
                     <div class="day-entry">
-                        <div class="day-entry-desc">${escapeHtml(log.workDescription.split('\n')[0])}</div>
+                        <div class="day-entry-desc">${escapeHtml((log.workDescription || '').split('\n')[0])}</div>
                         <div class="day-entry-hours">${log.hoursWorked} · ${cat ? cat.name : 'Unknown'}</div>
                     </div>
                 `;
@@ -363,7 +303,9 @@ $(function () {
                         ${statusLabel(approvalStatus)}
                     </div>`;
             }
-        } else if (!isOtherMonth && !isDisabled) {
+        }
+
+        if (!isOtherMonth && !isDisabled && canCreateEntry(dateStr)) {
             addBtnHtml = `
                 <div class="day-add-btn">
                     <span>+</span> Add Entry
@@ -382,58 +324,54 @@ $(function () {
     }
 
     function escapeHtml(text) {
+        if (!text) return '';
         const div = document.createElement('div');
         div.textContent = text;
         return div.innerHTML;
     }
 
     /* ── Month-wise data loading ────────────────────────── */
-    function loadWorkLogsByMonth(year, month) {
-        $('#cal-grid').html(`
-            <div class="cal-day skeleton" style="height:170px"></div>
-            <div class="cal-day skeleton" style="height:170px"></div>
-            <div class="cal-day skeleton" style="height:170px"></div>
-            <div class="cal-day skeleton" style="height:170px"></div>
-            <div class="cal-day skeleton" style="height:170px"></div>
-            <div class="cal-day skeleton" style="height:170px"></div>
-            <div class="cal-day skeleton" style="height:170px"></div>
-            <div class="cal-day skeleton" style="height:170px"></div>
-            <div class="cal-day skeleton" style="height:170px"></div>
-            <div class="cal-day skeleton" style="height:170px"></div>
-            <div class="cal-day skeleton" style="height:170px"></div>
-            <div class="cal-day skeleton" style="height:170px"></div>
-            <div class="cal-day skeleton" style="height:170px"></div>
-            <div class="cal-day skeleton" style="height:170px"></div>
-        `);
+    async function loadWorkLogsByMonth(year, month) {
+        $('#cal-grid').html(
+            Array(14).fill('<div class="cal-day skeleton" style="height:170px"></div>').join('')
+        );
 
-        const apiMonth = month + 1;
-
-        $.ajax({
-            url: API.workLogsByMonth,
-            method: 'GET',
-            dataType: 'json',
-            data: { year: year, month: apiMonth }
-        }).done(function (data) {
-            workLogsData = Array.isArray(data) ? data : (data.logs || []);
-            renderCalendar();
-        }).fail(function () {
-            console.info('[EOD] Demo fallback for month:', year, apiMonth);
-            workLogsData = DEMO.workLogs.filter(log => {
-                const [y, m] = log.workDate.split('-').map(Number);
-                return y === year && m === apiMonth;
+        try {
+            console.log('[EOD] Loading month data via API:', year, month + 1);
+            const response = await postWithAuth(API.monthlyCalendar, {
+                year: year,
+                month: month + 1
             });
-            renderCalendar();
-        });
+            console.log('[EOD] Raw API response:', response);
+
+            let calendarDays = [];
+            if (response && response.data && Array.isArray(response.data.calendarData)) {
+                calendarDays = response.data.calendarData;
+            } else if (response && Array.isArray(response.calendarData)) {
+                calendarDays = response.calendarData;
+            } else if (Array.isArray(response)) {
+                calendarDays = response;
+            }
+
+            calendarData = calendarDays;
+            console.log('[EOD] Calendar days received:', calendarData.length);
+
+            workLogsData = mapBackendToWorkLogs(calendarData);
+            console.log('[EOD] Mapped workLogs:', workLogsData.length, 'entries');
+
+        } catch (err) {
+            console.warn('[EOD] API failed:', err);
+            workLogsData = [];
+            calendarData = [];
+        }
+
+        renderCalendar();
     }
 
     /* ── Modal handling ───────────────────────────────────── */
     function openModal(dateStr) {
         if (isFutureDate(dateStr)) {
             showToast('Cannot log work for future dates');
-            return;
-        }
-        if (!isSameMonth(parseDate(dateStr), currentDate)) {
-            showToast('Please select a date within the current month');
             return;
         }
 
@@ -445,34 +383,16 @@ $(function () {
         $('#modal-date-short').text(dateStr);
         $('#workDate').val(dateStr);
 
-        // Determine workflowLogDateId from existing logs
         editingWorkflowLogDateId = 0;
         if (logs.length > 0 && logs[0].workflowLogDateId) {
             editingWorkflowLogDateId = logs[0].workflowLogDateId;
         }
 
-        // Check if day is read-only (submitted)
-        const readOnly = isDayReadOnly(logs);
-        const editable = isDayEditable(logs);
+        renderModalEntries(logs);
 
-        renderModalEntries(logs, readOnly);
-
-        // Show/hide form and buttons based on state
-        if (logs.length === 0) {
-            // Empty day - show Add Entry button, hide form
-            hideForm();
-            $('#btn-show-form').show();
-        } else if (editable) {
-            // Has draft/rejected entries - show Add Entry button, hide form initially
-            hideForm();
-            $('#btn-show-form').show();
-        } else {
-            // Read-only - hide everything
-            hideForm();
-            $('#btn-show-form').hide();
-        }
-
-        updateSubmitEodButton(logs, readOnly);
+        hideForm();
+        $('#btn-show-form').show();
+        updateActionButtons(logs);
 
         $('#eod-modal').addClass('active');
         $('body').css('overflow', 'hidden');
@@ -481,6 +401,13 @@ $(function () {
     }
 
     function closeModal() {
+        // Warn if form has unsaved data
+        if (isFormVisible && hasUnsavedFormData) {
+            if (!confirm('You have unsaved changes. Are you sure you want to close?')) {
+                return;
+            }
+        }
+
         $('#eod-modal').removeClass('active');
         $('body').css('overflow', '');
         $('.cal-day').removeClass('selected');
@@ -489,22 +416,24 @@ $(function () {
         draftLogs = [];
         isFormVisible = false;
         nextRowId = 0;
-        pendingDraftData = null; // Clear pending draft when closing modal
+        hasUnsavedFormData = false;
         hideForm();
     }
 
-    function updateSubmitEodButton(logs, readOnly) {
-        const $btn = $('#btn-submit-eod');
-        if (readOnly || logs.length === 0) {
-            $btn.hide();
+    function updateActionButtons(logs) {
+        const $submitBtn = $('#btn-submit-eod');
+
+        if (logs.length === 0) {
+            $submitBtn.hide();
         } else {
-            $btn.show().prop('disabled', false).text('🚀 Submit EOD');
+            $submitBtn.show().prop('disabled', false).text('🚀 Submit EOD');
         }
     }
 
     /* ── Form Visibility ────────────────────────────────── */
     function showForm(title, prefillData = null) {
         isFormVisible = true;
+        hasUnsavedFormData = true;
         nextRowId = 0;
         $('#form-title').text(title);
 
@@ -517,20 +446,20 @@ $(function () {
         renderDraftRows();
 
         $('#new-entry-form').slideDown(250, function() {
-            // Scroll to form
             $('#new-entry-form')[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         });
 
         $('#btn-show-form').hide();
-        $('#btn-save-draft').show();
+        $('#btn-submit-eod').show();
         $('#btn-cancel-form').show();
     }
 
     function hideForm() {
         isFormVisible = false;
+        hasUnsavedFormData = false;
         $('#new-entry-form').slideUp(200);
         $('#btn-show-form').show();
-        $('#btn-save-draft').hide();
+        $('#btn-submit-eod').hide();
         $('#btn-cancel-form').hide();
         draftLogs = [];
         nextRowId = 0;
@@ -539,7 +468,7 @@ $(function () {
     }
 
     /* ── Render entries list in modal ───────────────────── */
-    function renderModalEntries(logs, readOnly = false) {
+    function renderModalEntries(logs) {
         const count = logs.length;
         $('#entries-count').text(`${count} entr${count === 1 ? 'y' : 'ies'}`);
 
@@ -559,9 +488,8 @@ $(function () {
             const rejectReason = log.reasonForReject ?
                 `<div class="entry-reject-reason">${escapeHtml(log.reasonForReject)}</div>` : '';
 
-            // Edit/Delete only for DRAFT or REJECTED
-            const canEdit = ['DRAFT', 'REJECTED'].includes(log.approvalStatus);
-            const canDelete = log.approvalStatus === 'DRAFT';
+            const editDisabled = !canEditEntry(log);
+            const deleteDisabled = !canDeleteEntry(log);
 
             return `
                 <div class="entry-item" data-logid="${log.workLogId}">
@@ -583,8 +511,8 @@ $(function () {
                     </div>
                     <div class="entry-hours">${log.hoursWorked}</div>
                     <div class="entry-actions">
-                        ${canEdit ? `<button class="entry-btn btn-edit-entry" data-logid="${log.workLogId}" title="Edit">✎</button>` : ''}
-                        ${canDelete ? `<button class="entry-btn delete btn-delete-entry" data-logid="${log.workLogId}" title="Delete">🗑</button>` : ''}
+                        <button class="entry-btn btn-edit-entry ${editDisabled ? 'disabled' : ''}" data-logid="${log.workLogId}" title="Edit" ${editDisabled ? 'disabled' : ''}>✎</button>
+                        <button class="entry-btn delete btn-delete-entry ${deleteDisabled ? 'disabled' : ''}" data-logid="${log.workLogId}" title="Delete" ${deleteDisabled ? 'disabled' : ''}>🗑</button>
                     </div>
                 </div>
             `;
@@ -607,7 +535,6 @@ $(function () {
             const html = buildDraftRowHtml(log._rowId, index + 1, log);
             $container.append(html);
 
-            // Populate the row
             const $row = $(`.draft-row[data-rowid="${log._rowId}"]`);
             $row.find('.draft-category').val(log.categoryId || '');
             loadSubCategoriesForDraftRow($row, log.categoryId, log.subCategoryId);
@@ -615,8 +542,8 @@ $(function () {
             $row.find('.draft-status').val(log.status || 'In Progress');
             $row.find('.draft-desc').val(log.workDescription || '');
             $row.find('.draft-logid').val(log.workLogId || 0);
+            $row.find('.draft-workflowid').val(log.workflowLogDateId || editingWorkflowLogDateId || 0);
 
-            // Attach time input handler
             attachTimeInputHandler($row.find('.draft-hours'));
         });
     }
@@ -634,6 +561,7 @@ $(function () {
         return `
             <div class="draft-row" data-rowid="${rowId}">
                 <input type="hidden" class="draft-logid" value="${log.workLogId || 0}" />
+                <input type="hidden" class="draft-workflowid" value="${log.workflowLogDateId || editingWorkflowLogDateId || 0}" />
                 <div class="draft-row-header">
                     <span class="draft-row-number">LOG #${displayNumber}</span>
                     <button type="button" class="draft-row-remove" data-rowid="${rowId}" title="Remove this log">×</button>
@@ -677,6 +605,7 @@ $(function () {
         const newLog = {
             _rowId: nextRowId++,
             workLogId: 0,
+            workflowLogDateId: editingWorkflowLogDateId || 0,
             categoryId: '',
             subCategoryId: '',
             hoursWorked: '',
@@ -690,8 +619,6 @@ $(function () {
 
         const $newRow = $(`.draft-row[data-rowid="${newLog._rowId}"]`);
         attachTimeInputHandler($newRow.find('.draft-hours'));
-
-        // Scroll to new row
         $newRow[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
@@ -704,7 +631,6 @@ $(function () {
         if (index >= 0) {
             draftLogs.splice(index, 1);
             $(`.draft-row[data-rowid="${rowId}"]`).remove();
-            // Renumber remaining rows
             $('.draft-row').each(function(idx) {
                 $(this).find('.draft-row-number').text('LOG #' + (idx + 1));
             });
@@ -750,7 +676,7 @@ $(function () {
     }
 
     /* ── Collect Form Data ──────────────────────────────── */
-    function collectDraftData() {
+    function collectFormData() {
         const logs = [];
         let hasError = false;
 
@@ -763,7 +689,6 @@ $(function () {
             const workDescription = $row.find('.draft-desc').val().trim();
             const workLogId = parseInt($row.find('.draft-logid').val()) || 0;
 
-            // Skip completely empty rows
             if (!categoryId && !hoursWorked && !workDescription) {
                 return true;
             }
@@ -789,203 +714,152 @@ $(function () {
         if (hasError) return null;
         if (logs.length === 0) { showToast('Please add at least one log entry'); return null; }
 
+        // CRITICAL FIX: Get workflowLogDateId from existing logs on this date
+        // If date already has entries, use their workflowLogDateId
+        // If new date, use 0
+        let existingWorkflowId = 0;
+
+        // First check editingWorkflowLogDateId (set when editing)
+        if (editingWorkflowLogDateId > 0) {
+            existingWorkflowId = editingWorkflowLogDateId;
+        } else {
+            // Check if there are existing logs for this date in workLogsData
+            const dateLogs = getLogsForDate(selectedDate);
+            if (dateLogs.length > 0 && dateLogs[0].workflowLogDateId > 0) {
+                existingWorkflowId = dateLogs[0].workflowLogDateId;
+            }
+        }
+
+        console.log('[EOD] Submitting with workflowLogDateId:', existingWorkflowId, 'for date:', selectedDate);
+
         return {
-            workflowLogDateId: editingWorkflowLogDateId || 0,
-            workDate: selectedDate,
+            workflowLogDateId: existingWorkflowId,
+            workDate: new Date(selectedDate).toISOString(),
             logs: logs
         };
     }
 
-    /* ── Save Draft ─────────────────────────────────────── */
-    function saveDraft() {
-        const data = collectDraftData();
+    /* ── Submit EOD (SEND DIRECTLY TO BACKEND) ──────────── */
+    async function submitEod() {
+        const data = collectFormData();
         if (!data) return;
 
-        // Store draft data in memory only - no API call
-        pendingDraftData = data;
-        
-        // Update local workLogsData for UI display
-        const newWorkflowId = data.workflowLogDateId || Math.floor(Math.random() * 1000) + 10;
-
-        // Remove old logs for this date and workflow
-        workLogsData = workLogsData.filter(l => !(l.workDate === selectedDate && l.workflowLogDateId === newWorkflowId));
-
-        // Add new/updated logs as DRAFT
-        const savedLogs = data.logs.map((log, idx) => ({
-            workLogId: log.workLogId || Math.max(...workLogsData.map(l => l.workLogId), 0) + idx + 1,
-            userId: DEMO.user.userId,
-            categoryId: log.groupId,
-            subCategoryId: log.subGroupId,
-            workDate: selectedDate,
-            hoursWorked: log.hoursWorked,
-            workDescription: log.workDescription,
-            status: log.workStatus,
-            approvalStatus: 'DRAFT',
-            approvalBy: null,
-            workflowLogDateId: newWorkflowId
-        }));
-
-        workLogsData.push(...savedLogs);
-        editingWorkflowLogDateId = newWorkflowId;
-
-        showToast('Draft saved locally!');
-        handleSaveSuccess(null, data);
-    }
-
-    function handleSaveSuccess(response, data) {
-        // Update editingWorkflowLogDateId from response
-        if (response && response.workflowLogDateId) {
-            editingWorkflowLogDateId = response.workflowLogDateId;
-        }
-
-        // Refresh calendar
-        renderCalendar();
-
-        // Refresh modal entries list
         const logs = getLogsForDate(selectedDate);
-        const readOnly = isDayReadOnly(logs);
-        renderModalEntries(logs, readOnly);
-        updateSubmitEodButton(logs, readOnly);
+        const isResubmit = logs.length > 0 && logs.some(l => l.workflowLogDateId > 0);
 
-        // Hide form and show Add Entry button
-        hideForm();
-        $('#btn-show-form').show();
+        const confirmMsg = isResubmit
+            ? 'Resubmit EOD for ' + selectedDate + '? This will update the existing entries.'
+            : 'Submit EOD for ' + selectedDate + '? This will lock the entries for review.';
 
-        // Re-highlight selected date
-        $('.cal-day').removeClass('selected');
-        $(`.cal-day[data-date="${selectedDate}"]`).addClass('selected');
-    }
-
-    /* ── Submit EOD ─────────────────────────────────────── */
-    function submitEod() {
-        // Check if there's pending draft data in memory
-        if (!pendingDraftData && draftLogs.length === 0) {
-            const logs = getLogsForDate(selectedDate);
-            if (logs.length === 0) {
-                showToast('No entries to submit');
-                return;
-            }
-        }
-
-        // Use pending draft data if available, otherwise use existing logs
-        let submitData;
-        if (pendingDraftData) {
-            // Submit the pending draft data
-            submitData = {
-                workDate: pendingDraftData.workDate,
-                logs: pendingDraftData.logs
-            };
-        } else {
-            // Submit existing logs for the date
-            const logs = getLogsForDate(selectedDate);
-            if (logs.length === 0) {
-                showToast('No entries to submit');
-                return;
-            }
-            submitData = {
-                workDate: selectedDate,
-                logs: logs.map(l => ({
-                    groupId: l.categoryId,
-                    subGroupId: l.subCategoryId,
-                    hoursWorked: l.hoursWorked,
-                    workStatus: l.status || 'In Progress',
-                    workDescription: l.workDescription
-                }))
-            };
-        }
-
-        if (!confirm('Submit EOD for ' + selectedDate + '? This will lock the entries for review.')) {
+        if (!confirm(confirmMsg)) {
             return;
         }
 
-        $('#btn-submit-eod').prop('disabled', true).text('Submitting…');
+        $('#btn-submit-eod').prop('disabled', true).text(isResubmit ? 'Resubmitting…' : 'Submitting…');
 
-        $.ajax({
-            url: API.saveDraft,  // Use the save endpoint for final submission
-            method: 'POST',
-            dataType: 'json',
-            contentType: 'application/json',
-            data: JSON.stringify(submitData)
-        }).done(function (response) {
-            $('#btn-submit-eod').prop('disabled', false).text('🚀 Submit EOD');
-            showToast('EOD submitted successfully!');
-            
-            // Clear pending draft after successful submit
-            pendingDraftData = null;
-            
-            handleSubmitSuccess();
-        }).fail(function (xhr, status, error) {
-            console.info('[EOD] Demo submit EOD for:', submitData);
-            $('#btn-submit-eod').prop('disabled', false).text('🚀 Submit EOD');
+        try {
+            const response = await postWithAuth(API.saveWorkLog, data);
+            showToast(isResubmit ? 'EOD resubmitted successfully!' : 'EOD submitted successfully!');
+            hasUnsavedFormData = false;
 
-            // Demo fallback - mark as pending
+            // Refresh from backend to get updated state
+            await refreshMonthData();
+        } catch (err) {
+            console.warn('[EOD] Submit API failed:', err);
+            $('#btn-submit-eod').prop('disabled', false).text(isResubmit ? '🔄 Resubmit' : '🚀 Submit EOD');
+
+            // Local fallback - mark as pending
             workLogsData.forEach(l => {
                 if (l.workDate === selectedDate) {
                     l.approvalStatus = 'PENDING';
                 }
             });
 
-            showToast('EOD submitted!');
-            
-            // Clear pending draft
-            pendingDraftData = null;
-            
+            showToast(isResubmit ? 'EOD resubmitted (local mode)!' : 'EOD submitted (local mode)!');
+            hasUnsavedFormData = false;
             handleSubmitSuccess();
-        });
+        }
     }
 
     function handleSubmitSuccess() {
-        // Refresh calendar
         renderCalendar();
-
-        // Refresh modal
         const logs = getLogsForDate(selectedDate);
-        const readOnly = isDayReadOnly(logs);
-        renderModalEntries(logs, readOnly);
-        updateSubmitEodButton(logs, readOnly);
-
-        // Hide form
+        renderModalEntries(logs);
+        updateActionButtons(logs);
         hideForm();
         $('#btn-show-form').hide();
-
-        // Re-highlight
         $('.cal-day').removeClass('selected');
         $(`.cal-day[data-date="${selectedDate}"]`).addClass('selected');
     }
 
+    /* ── Refresh month data from backend ────────────────── */
+    async function refreshMonthData() {
+        try {
+            const response = await postWithAuth(API.monthlyCalendar, {
+                year: currentDate.getFullYear(),
+                month: currentDate.getMonth() + 1
+            });
+
+            let calendarDays = [];
+            if (response && response.data && Array.isArray(response.data.calendarData)) {
+                calendarDays = response.data.calendarData;
+            } else if (response && Array.isArray(response.calendarData)) {
+                calendarDays = response.calendarData;
+            }
+
+            calendarData = calendarDays;
+            workLogsData = mapBackendToWorkLogs(calendarData);
+
+            renderCalendar();
+            const logs = getLogsForDate(selectedDate);
+            renderModalEntries(logs);
+            updateActionButtons(logs);
+
+            $('.cal-day').removeClass('selected');
+            $(`.cal-day[data-date="${selectedDate}"]`).addClass('selected');
+
+        } catch (err) {
+            console.warn('[EOD] Refresh failed:', err);
+            renderCalendar();
+            const logs = getLogsForDate(selectedDate);
+            renderModalEntries(logs);
+            updateActionButtons(logs);
+        }
+    }
+
     /* ── CRUD: Delete individual log ────────────────────── */
-    function deleteEntry(logId) {
+    async function deleteEntry(logId) {
+        const log = workLogsData.find(l => l.workLogId === logId);
+        if (!canDeleteEntry(log)) {
+            showToast('Delete not allowed for this entry');
+            return;
+        }
+
         if (!confirm('Delete this entry?')) return;
 
-        $.ajax({
-            url: API.deleteLog,
-            method: 'DELETE',
-            dataType: 'json',
-            contentType: 'application/json',
-            data: JSON.stringify({ workLogId: logId })
-        }).done(function () {
+        try {
+            await deleteWithAuth(API.deleteLog, { workLogId: logId });
+            workLogsData = workLogsData.filter(l => l.workLogId !== logId);
+            showToast('Entry deleted');
+            await refreshMonthData();
+        } catch (err) {
+            console.warn('[EOD] Delete API failed:', err);
             workLogsData = workLogsData.filter(l => l.workLogId !== logId);
             showToast('Entry deleted');
             refreshAfterDelete();
-        }).fail(function () {
-            workLogsData = workLogsData.filter(l => l.workLogId !== logId);
-            showToast('Entry deleted');
-            refreshAfterDelete();
-        });
+        }
     }
 
     function refreshAfterDelete() {
         renderCalendar();
         const logs = getLogsForDate(selectedDate);
-        const readOnly = isDayReadOnly(logs);
-        renderModalEntries(logs, readOnly);
-        updateSubmitEodButton(logs, readOnly);
+        renderModalEntries(logs);
+        updateActionButtons(logs);
 
         if (logs.length === 0) {
             $('#btn-show-form').show();
             hideForm();
         }
-
         $('.cal-day').removeClass('selected');
         $(`.cal-day[data-date="${selectedDate}"]`).addClass('selected');
     }
@@ -995,32 +869,31 @@ $(function () {
         const log = workLogsData.find(l => l.workLogId === logId);
         if (!log) return;
 
-        // Find all logs for this date with same workflowLogDateId
-        const dateLogs = getLogsForDate(selectedDate);
-        const workflowId = log.workflowLogDateId || editingWorkflowLogDateId;
+        if (!canEditEntry(log)) {
+            showToast('Edit not allowed for this entry');
+            return;
+        }
 
-        // Get all logs belonging to this workflow
-        const workflowLogs = dateLogs.filter(l => (l.workflowLogDateId || 0) === (workflowId || 0));
+        // Set the workflowLogDateId for this date
+        editingWorkflowLogDateId = log.workflowLogDateId || 0;
 
-        editingWorkflowLogDateId = workflowId || 0;
-
-        // Convert to draft format
-        draftLogs = workflowLogs.map(l => ({
+        // Load ONLY the single task that was clicked, not all tasks in the workflow
+        draftLogs = [{
             _rowId: nextRowId++,
-            workLogId: l.workLogId,
-            categoryId: l.categoryId,
-            subCategoryId: l.subCategoryId,
-            hoursWorked: l.hoursWorked,
-            status: l.status || 'In Progress',
-            workDescription: l.workDescription
-        }));
+            workLogId: log.workLogId,
+            workflowLogDateId: log.workflowLogDateId,
+            categoryId: log.categoryId,
+            subCategoryId: log.subCategoryId,
+            hoursWorked: log.hoursWorked,
+            status: log.status || 'In Progress',
+            workDescription: log.workDescription
+        }];
 
         showForm('✎ Edit Entry', { logs: draftLogs });
     }
 
     /* ── Toast ──────────────────────────────────────────── */
     function showToast(msg) {
-        // Remove existing toasts
         $('.toast').remove();
         const $t = $('<div class="toast">').text(msg).appendTo('body');
         setTimeout(() => $t.addClass('show'), 10);
@@ -1028,33 +901,34 @@ $(function () {
     }
 
     /* ── Data loading ───────────────────────────────────── */
-    function loadData() {
-        $.ajax({
-            url: API.categories,
-            method: 'GET',
-            dataType: 'json'
-        }).done(function (data) {
-            categoriesData = data;
-        }).fail(function () {
+    async function loadCategories() {
+        try {
+            categoriesData = await getWithAuth(API.categories);
+        } catch (err) {
             categoriesData = DEMO.categories;
-        });
+        }
+    }
 
-        $.ajax({
-            url: API.subCategories,
-            method: 'GET',
-            dataType: 'json'
-        }).done(function (data) {
-            subCategoriesData = data;
-        }).fail(function () {
+    async function loadSubCategories() {
+        try {
+            subCategoriesData = await getWithAuth(API.subCategories);
+        } catch (err) {
             subCategoriesData = DEMO.subCategories;
-        });
+        }
+    }
 
-        loadWorkLogsByMonth(currentDate.getFullYear(), currentDate.getMonth());
+    async function loadData() {
+        try {
+            currentUser = getUser();
+        } catch (e) {
+            currentUser = null;
+        }
+        await Promise.all([loadCategories(), loadSubCategories()]);
+        await loadWorkLogsByMonth(currentDate.getFullYear(), currentDate.getMonth());
     }
 
     /* ── Event bindings ─────────────────────────────────── */
 
-    // Calendar nav
     $('#btn-prev-month').on('click', () => {
         currentDate.setMonth(currentDate.getMonth() - 1);
         loadWorkLogsByMonth(currentDate.getFullYear(), currentDate.getMonth());
@@ -1068,72 +942,64 @@ $(function () {
         }
     });
 
-    // Day click
     $(document).on('click', '.cal-day', function () {
         const $this = $(this);
         if ($this.data('disabled') === true) return;
         openModal($this.data('date'));
     });
 
-    // Modal close
     $('#modal-close, #btn-cancel').on('click', closeModal);
     $('#eod-modal').on('click', function (e) { if (e.target === this) closeModal(); });
 
-    // Show form (Add Entry)
     $(document).on('click', '#btn-show-form', function () {
-        editingWorkflowLogDateId = 0;
+        // If date already has entries, use existing workflowLogDateId
+        const dateLogs = getLogsForDate(selectedDate);
+        if (dateLogs.length > 0 && dateLogs[0].workflowLogDateId > 0) {
+            editingWorkflowLogDateId = dateLogs[0].workflowLogDateId;
+            console.log('[EOD] Adding to existing workflow:', editingWorkflowLogDateId);
+        } else {
+            editingWorkflowLogDateId = 0;
+            console.log('[EOD] Creating new workflow for date:', selectedDate);
+        }
         showForm('➕ Add New Entry');
     });
 
-    // Cancel form
     $(document).on('click', '#btn-cancel-form', function () {
         hideForm();
         $('#btn-show-form').show();
     });
 
-    // Add another log row
     $(document).on('click', '#btn-add-row', function () {
         addDraftRow();
     });
 
-    // Remove draft row
     $(document).on('click', '.draft-row-remove', function () {
         const rowId = parseInt($(this).data('rowid'));
         removeDraftRow(rowId);
     });
 
-    // Category change in draft row
     $(document).on('change', '.draft-category', function () {
         const $row = $(this).closest('.draft-row');
         const catId = $(this).val();
         loadSubCategoriesForDraftRow($row, catId);
     });
 
-    // Save Draft
-    $(document).on('click', '#btn-save-draft', function (e) {
-        e.preventDefault();
-        saveDraft();
-    });
-
-    // Submit EOD
+    // Submit EOD — sends directly to backend, no local draft
     $(document).on('click', '#btn-submit-eod', function (e) {
         e.preventDefault();
         submitEod();
     });
 
-    // Edit entry
-    $(document).on('click', '.btn-edit-entry', function (e) {
+    $(document).on('click', '.btn-edit-entry:not([disabled])', function (e) {
         e.stopPropagation();
         editEntry($(this).data('logid'));
     });
 
-    // Delete entry
-    $(document).on('click', '.btn-delete-entry', function (e) {
+    $(document).on('click', '.btn-delete-entry:not([disabled])', function (e) {
         e.stopPropagation();
         deleteEntry($(this).data('logid'));
     });
 
-    // Keyboard
     $(document).on('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
 
     /* ── Bootstrap ────────────────────────────────────── */

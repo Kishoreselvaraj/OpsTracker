@@ -1,10 +1,19 @@
 // wwwroot/js/auth/authService.js
-import { post } from '../services/apiService.js';
+const BASE_URL = 'http://localhost:5085';
 
-const LOGIN_URL = 'http://localhost:5085/api/Login';
+const LOGIN_URL = BASE_URL + '/api/Login';
 
 export async function login(email, password) {
-    return await post(LOGIN_URL, { email, password });
+    const response = await fetch(LOGIN_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) {
+        throw { status: response.status, ...result };
+    }
+    return result;
 }
 
 export function storeToken(token) {
