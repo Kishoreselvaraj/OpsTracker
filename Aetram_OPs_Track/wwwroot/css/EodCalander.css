@@ -1057,3 +1057,159 @@
     .modal-panel { padding: 20px; }
     .draft-row { padding: 12px; }
 }
+
+
+/* ── Custom Themed Popup Alert ─────────────────────────────── */
+.alert-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s ease;
+    padding: 20px;
+}
+
+.alert-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.alert-panel {
+    background: var(--surface);
+    border: 0.5px solid var(--border-gold);
+    border-radius: var(--radius-xl);
+    width: 100%;
+    max-width: 420px;
+    padding: 28px 32px;
+    transform: translateY(16px) scale(0.95);
+    transition: all 0.25s ease;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 40px rgba(201,168,76,0.05);
+}
+
+.alert-overlay.active .alert-panel {
+    transform: translateY(0) scale(1);
+}
+
+.alert-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 24px;
+    border: 1.5px solid var(--border-gold);
+    background: rgba(201,168,76,0.08);
+    color: var(--gold);
+}
+
+.alert-icon.warning {
+    border-color: rgba(212,132,15,0.4);
+    background: rgba(212,132,15,0.1);
+    color: var(--amber);
+}
+
+.alert-icon.danger {
+    border-color: rgba(196,64,64,0.4);
+    background: rgba(196,64,64,0.1);
+    color: var(--red);
+}
+
+.alert-icon.success {
+    border-color: rgba(62,158,106,0.4);
+    background: rgba(62,158,106,0.1);
+    color: var(--green);
+}
+
+.alert-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-1);
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.alert-message {
+    font-size: 13px;
+    color: var(--text-2);
+    text-align: center;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.alert-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.alert-actions.single {
+    justify-content: center;
+}
+
+.alert-btn {
+    padding: 10px 24px;
+    border-radius: var(--radius-md);
+    font-family: var(--font-main);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+    border: none;
+    outline: none;
+    min-width: 100px;
+}
+
+.alert-btn-primary {
+    background: var(--gold);
+    color: var(--black);
+}
+
+.alert-btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+}
+
+.alert-btn-primary:active {
+    transform: scale(0.98);
+}
+
+.alert-btn-secondary {
+    background: transparent;
+    color: var(--text-2);
+    border: 0.5px solid var(--border);
+}
+
+.alert-btn-secondary:hover {
+    border-color: var(--border-gold);
+    color: var(--gold);
+    background: rgba(201,168,76,0.05);
+}
+
+.alert-btn-danger {
+    background: var(--red-bg);
+    color: var(--red);
+    border: 0.5px solid rgba(196,64,64,0.3);
+}
+
+.alert-btn-danger:hover {
+    background: rgba(196,64,64,0.2);
+    transform: translateY(-1px);
+}
+
+.alert-btn-danger:active {
+    transform: scale(0.98);
+}
+
+/* Prevent body scroll when alert is open */
+body.alert-open {
+    overflow: hidden;
+}

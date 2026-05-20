@@ -400,10 +400,18 @@ $(function () {
         $(`.cal-day[data-date="${dateStr}"]`).addClass('selected');
     }
 
-    function closeModal() {
+    async function closeModal() {
         // Warn if form has unsaved data
         if (isFormVisible && hasUnsavedFormData) {
-            if (!confirm('You have unsaved changes. Are you sure you want to close?')) {
+            const confirmed = await showAlert({
+                type: 'warning',
+                title: 'Unsaved Changes',
+                message: 'You have unsaved changes. Are you sure you want to close?',
+                showCancel: true,
+                confirmText: 'Close Anyway',
+                cancelText: 'Stay'
+            });
+            if (!confirmed) {
                 return;
             }
         }
@@ -751,7 +759,15 @@ $(function () {
             ? 'Resubmit EOD for ' + selectedDate + '? This will update the existing entries.'
             : 'Submit EOD for ' + selectedDate + '? This will lock the entries for review.';
 
-        if (!confirm(confirmMsg)) {
+        const confirmed = await showAlert({
+            type: 'confirm',
+            title: isResubmit ? 'Resubmit EOD' : 'Submit EOD',
+            message: confirmMsg,
+            showCancel: true,
+            confirmText: isResubmit ? 'Resubmit' : 'Submit',
+            cancelText: 'Cancel'
+        });
+        if (!confirmed) {
             return;
         }
 
@@ -835,7 +851,15 @@ $(function () {
             return;
         }
 
-        if (!confirm('Delete this entry?')) return;
+        const confirmed = await showAlert({
+            type: 'danger',
+            title: 'Delete Entry',
+            message: 'Are you sure you want to delete this entry? This action cannot be undone.',
+            showCancel: true,
+            confirmText: 'Delete',
+            cancelText: 'Cancel'
+        });
+        if (!confirmed) return;
 
         try {
             await deleteWithAuth(API.deleteLog, { workLogId: logId });
@@ -899,6 +923,88 @@ $(function () {
         setTimeout(() => $t.addClass('show'), 10);
         setTimeout(() => { $t.removeClass('show'); setTimeout(() => $t.remove(), 300); }, 2800);
     }
+    /* ── Custom Themed Alert / Confirm ──────────────────── */
+    let alertResolve = null;
+
+    function showAlert(options) {
+        return new Promise((resolve) => {
+            alertResolve = resolve;
+
+            const type = options.type || 'info';
+            const iconMap = {
+                info: '⚡',
+                warning: '⚠️',
+                danger: '🗑️',
+                success: '✅',
+                confirm: '❓'
+            };
+            const icon = options.icon || iconMap[type] || '⚡';
+
+            const btnClass = type === 'danger' ? 'alert-btn-danger' : 'alert-btn-primary';
+
+            let actionsHtml = '';
+            if (options.showCancel) {
+                actionsHtml = `
+                    <button class="alert-btn alert-btn-secondary" id="alert-cancel">${options.cancelText || 'Cancel'}</button>
+                    <button class="alert-btn ${btnClass}" id="alert-confirm">${options.confirmText || 'OK'}</button>
+                `;
+            } else {
+                actionsHtml = `
+                    <button class="alert-btn ${btnClass}" id="alert-confirm">${options.confirmText || 'OK'}</button>
+                `;
+            }
+
+            const html = `
+                <div class="alert-overlay" id="custom-alert">
+                    <div class="alert-panel">
+                        <div class="alert-icon ${type}">${icon}</div>
+                        <div class="alert-title">${escapeHtml(options.title || 'Notice')}</div>
+                        <div class="alert-message">${escapeHtml(options.message || '')}</div>
+                        <div class="alert-actions ${options.showCancel ? '' : 'single'}">
+                            ${actionsHtml}
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            $('#custom-alert').remove();
+            $('body').append(html);
+            $('body').addClass('alert-open');
+
+            setTimeout(() => $('#custom-alert').addClass('active'), 10);
+
+            $(document).off('click.alert');
+            $(document).on('click.alert', '#alert-confirm', function() {
+                closeAlert(true);
+            });
+            $(document).on('click.alert', '#alert-cancel', function() {
+                closeAlert(false);
+            });
+
+            $(document).off('keydown.alert');
+            $(document).on('keydown.alert', function(e) {
+                if (e.key === 'Escape') {
+                    closeAlert(false);
+                } else if (e.key === 'Enter') {
+                    closeAlert(true);
+                }
+            });
+        });
+    }
+
+    function closeAlert(result) {
+        $('#custom-alert').removeClass('active');
+        $('body').removeClass('alert-open');
+        setTimeout(() => {
+            $('#custom-alert').remove();
+            $(document).off('click.alert keydown.alert');
+            if (alertResolve) {
+                alertResolve(result);
+                alertResolve = null;
+            }
+        }, 250);
+    }
+
 
     /* ── Data loading ───────────────────────────────────── */
     async function loadCategories() {
@@ -948,8 +1054,8 @@ $(function () {
         openModal($this.data('date'));
     });
 
-    $('#modal-close, #btn-cancel').on('click', closeModal);
-    $('#eod-modal').on('click', function (e) { if (e.target === this) closeModal(); });
+    $('#modal-close, #btn-cancel').on('click', async function() { await closeModal(); });
+    $('#eod-modal').on('click', async function (e) { if (e.target === this) await closeModal(); });
 
     $(document).on('click', '#btn-show-form', function () {
         // If date already has entries, use existing workflowLogDateId
@@ -1000,7 +1106,7 @@ $(function () {
         deleteEntry($(this).data('logid'));
     });
 
-    $(document).on('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+    $(document).on('keydown', async function (e) { if (e.key === 'Escape') await closeModal(); });
 
     /* ── Bootstrap ────────────────────────────────────── */
     loadData();
