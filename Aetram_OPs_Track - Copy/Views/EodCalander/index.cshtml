@@ -1,0 +1,144 @@
+@{
+    ViewData["Title"] = "EOD Submission";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="/css/EodCalander.css" asp-append-version="true" />
+}
+
+<div class="eod-page">
+
+    <!-- Page Header -->
+    <header class="eod-header">
+        <div class="eod-header-left">
+            <div class="eod-greeting">EOD Tracking</div>
+            <h1 class="eod-title">Submit EOD</h1>
+            <div class="eod-subtitle">Click any day to log your work hours</div>
+        </div>
+    </header>
+
+    <!-- Calendar Container — FULL WIDTH like container-fluid -->
+    <div class="calendar-container">
+        <!-- Calendar Header -->
+        <div class="cal-header">
+            <div class="cal-month-year" id="cal-month-year">May 2026</div>
+
+            <div class="cal-nav-group">
+                <!-- Legend -->
+                <div class="cal-legend">
+                    <div class="legend-item">
+                        <div class="legend-dot completed"></div>
+                        Approved
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot inprogress"></div>
+                        Pending
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot yetostart"></div>
+                        Rejected
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot draft"></div>
+                        Draft
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="cal-nav-btns">
+                    <button class="cal-nav-btn" id="btn-prev-month" title="Previous month">‹</button>
+                    <button class="cal-nav-btn" id="btn-next-month" title="Next month">›</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weekday Headers -->
+        <div class="cal-weekdays">
+            <div class="cal-weekday">Monday</div>
+            <div class="cal-weekday">Tuesday</div>
+            <div class="cal-weekday">Wednesday</div>
+            <div class="cal-weekday">Thursday</div>
+            <div class="cal-weekday">Friday</div>
+            <div class="cal-weekday">Saturday</div>
+            <div class="cal-weekday">Sunday</div>
+        </div>
+
+        <!-- Calendar Grid -->
+        <div class="cal-grid" id="cal-grid">
+            <div class="cal-day skeleton" style="height:170px"></div>
+            <div class="cal-day skeleton" style="height:170px"></div>
+            <div class="cal-day skeleton" style="height:170px"></div>
+            <div class="cal-day skeleton" style="height:170px"></div>
+            <div class="cal-day skeleton" style="height:170px"></div>
+            <div class="cal-day skeleton" style="height:170px"></div>
+            <div class="cal-day skeleton" style="height:170px"></div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Modal: Day Detail + Multi-row Entry Form -->
+<div class="modal-overlay" id="eod-modal">
+    <div class="modal-panel">
+        <button class="modal-close" id="modal-close">×</button>
+
+        <div class="modal-title" id="modal-date">Wednesday, 13 May 2026</div>
+        <div class="modal-subtitle" id="modal-date-short">2026-05-13</div>
+
+        <!-- Existing Entries Section -->
+        <div class="entries-section">
+            <div class="entries-header">
+                <span class="entries-title">📋 Entries for this day</span>
+                <span class="entries-count" id="entries-count">0 entries</span>
+            </div>
+            <div class="entries-list" id="entries-list">
+                <div style="text-align:center;padding:32px 0;color:var(--text-3);font-size:13px">
+                    Loading entries…
+                </div>
+            </div>
+        </div>
+
+        <!-- Show Form Button (visible when form is hidden) -->
+        <div style="text-align:center; margin: 16px 0;">
+            <button class="btn-gold" id="btn-show-form">
+                <span>➕</span> Add Entry
+            </button>
+        </div>
+
+        <!-- Multi-row Draft Form (hidden by default) -->
+        <div id="new-entry-form">
+            <div class="form-section-title" id="form-title">➕ Add New Entry</div>
+
+            <input type="hidden" id="workDate" />
+
+            <!-- Draft Rows Container -->
+            <div class="draft-rows-container" id="draft-rows-container">
+                <!-- Draft rows will be injected here by JS -->
+            </div>
+
+            <!-- Add Another Row Button -->
+            <button type="button" class="btn-add-row" id="btn-add-row">
+                <span>+</span> Add Another Log
+            </button>
+        </div>
+
+        <!-- Modal Actions -->
+        <div class="modal-actions">
+            <div class="modal-actions-left">
+                <button class="btn-outline" id="btn-cancel">Close</button>
+                <button class="btn-outline" id="btn-cancel-form" style="display:none;">Cancel</button>
+            </div>
+            <div class="modal-actions-right">
+                <button class="btn-submit-eod" id="btn-submit-eod" style="display:none;">
+                    🚀 Submit EOD
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="module" src="/js/EodCalander.js" asp-append-version="true"></script>
+}

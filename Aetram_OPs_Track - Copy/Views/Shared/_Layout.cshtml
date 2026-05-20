@@ -1,0 +1,186 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - OpsTracker_v1</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/OpsTracker_v1.styles.css" asp-append-version="true" />
+    <style>
+        :root {
+            --gold: #d4af37;
+            --gold-dark: #b8860b;
+            --bg-dark: #0f0f0f;
+            --bg-card: #1a1a1a;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: #e0e0e0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        /* Navbar Gold/Black Theme */
+        .navbar-custom {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%) !important;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar-custom .navbar-brand {
+            color: var(--gold) !important;
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: 0.5px;
+        }
+
+        .navbar-custom .navbar-brand:hover {
+            color: var(--gold-light) !important;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .navbar-custom .nav-link {
+            color: rgba(255, 255, 255, 0.7) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-custom .nav-link:hover,
+        .navbar-custom .nav-link.active {
+            color: var(--gold) !important;
+        }
+
+        .navbar-custom .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .navbar-custom .nav-link:hover::after,
+        .navbar-custom .nav-link.active::after {
+            width: 80%;
+        }
+
+        .navbar-toggler {
+            border-color: rgba(212, 175, 55, 0.3) !important;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28212, 175, 55, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+        }
+
+        /* Main Content Area */
+        main {
+            min-height: calc(100vh - 160px);
+            padding-top: 2rem;
+        }
+
+        /* Footer Gold/Black Theme */
+        .footer-custom {
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+            color: rgba(255, 255, 255, 0.4);
+            padding: 1rem 0;
+            margin-top: auto;
+        }
+
+        .footer-custom a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .footer-custom a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* Card styling for content pages */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-gold-outline {
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .btn-gold-outline:hover {
+            background: var(--gold);
+            color: #000;
+        }
+    </style>
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-custom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="fa-solid fa-chart-line me-2"></i>OpsTracker_v1
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" 
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        @* <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li> *@
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="EodCalander" asp-action="Index">EodCalander</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Login" asp-action="Index">
+                                <i class="fa-solid fa-right-to-bracket me-1"></i>Login
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer-custom mt-auto">
+        <div class="container text-center">
+            &copy; 2026 - OpsTracker_v1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+

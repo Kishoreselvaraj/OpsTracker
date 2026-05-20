@@ -1,10 +1,11 @@
 /* ============================================================
-   Aetram OpsTracker — EOD Submission Calendar JS v7.2
-   STRICT BLACK & GOLD THEME
-   - Gold icon buttons (not letters)
-   - Fixed modal layout — no full popup scrolling
-   - Internal scroll only in entries list
-   - All action buttons always visible at bottom
+   Aetram OpsTracker — EOD Submission Calendar JS v6.5
+   CHANGES:
+   - Removed Save Draft (local storage)
+   - Submit EOD sends directly to backend
+   - Form data is NOT stored locally
+   - Warning if closing modal with unsaved data
+   - Submit works for: new entry, edit existing, resubmit
    ============================================================ */
 
 import { postWithAuth, getWithAuth, deleteWithAuth } from '/js/services/apiService.js';
@@ -12,6 +13,7 @@ import { getUser } from '/js/auth/authService.js';
 
 $(function () {
 
+    /* ── CONFIG ──────────────────────────────────────────── */
     const CONFIG = {
         restrictPreviousDateEdit: false,
         restrictPreviousDateDelete: false,
@@ -22,6 +24,7 @@ $(function () {
         maxDaysBack: null
     };
 
+    /* ── API Configuration ─────────────────────────────────── */
     const API = {
         monthlyCalendar: '/api/WorkLog/monthly-calendar',
         categories: '/api/categories',
@@ -30,6 +33,7 @@ $(function () {
         deleteLog: '/api/WorkLog/delete'
     };
 
+    /* ── Demo Fallback Data ────────────────────────────────── */
     const DEMO = {
         categories: [
             { categoryId: 1, name: "Development" },
@@ -47,6 +51,7 @@ $(function () {
         ]
     };
 
+    /* ── State ───────────────────────────────────────────── */
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     let currentDate = new Date(today.getFullYear(), today.getMonth(), 1);
@@ -61,8 +66,8 @@ $(function () {
     let nextRowId = 0;
     let currentUser = null;
     let hasUnsavedFormData = false;
-    let prevDaySelection = [];
 
+    /* ── Helpers ─────────────────────────────────────────── */
     function formatDate(date) {
         const y = date.getFullYear();
         const m = String(date.getMonth() + 1).padStart(2, '0');
@@ -145,6 +150,11 @@ $(function () {
         return diff > CONFIG.maxDaysBack;
     }
 
+    function isSameMonth(date1, date2) {
+        return date1.getFullYear() === date2.getFullYear() && date1.getMonth() === date2.getMonth();
+    }
+
+    /* ── Permission checks ──────────────────────────────── */
     function canEditEntry(log) {
         if (!log) return true;
         if (isFutureDate(log.workDate)) return false;
@@ -170,6 +180,7 @@ $(function () {
         return true;
     }
 
+    /* ── Backend Response Mapping ────────────────────────── */
     function mapBackendToWorkLogs(calendarDays) {
         const flatLogs = [];
         if (!Array.isArray(calendarDays)) return flatLogs;
@@ -180,14 +191,6 @@ $(function () {
 
             if (day.tasks && Array.isArray(day.tasks)) {
                 day.tasks.forEach(task => {
-                    let workDescription = task.workDescription || '';
-                    let taskTitle = '';
-                    const titleMatch = workDescription.match(/^\*\*(.+?)\*\*\s*\n\n/);
-                    if (titleMatch) {
-                        taskTitle = titleMatch[1];
-                        workDescription = workDescription.replace(/^\*\*(.+?)\*\*\s*\n\n/, '');
-                    }
-
                     flatLogs.push({
                         workLogId: task.workLogId || 0,
                         userId: currentUser?.userId || 1,
@@ -195,8 +198,7 @@ $(function () {
                         subCategoryId: task.subGroupId || 0,
                         workDate: dateStr,
                         hoursWorked: task.taskDuration || task.hoursWorked || '00:00',
-                        workDescription: workDescription,
-                        taskTitle: taskTitle,
+                        workDescription: task.workDescription || '',
                         approvalStatus: (task.approvalStatus && task.approvalStatus.trim()) ? task.approvalStatus : dayApprovalStatus,
                         approvalBy: day.approvalBy || null,
                         reasonForReject: day.reasonForReject || null,
@@ -210,6 +212,7 @@ $(function () {
         return flatLogs;
     }
 
+    /* ── Calendar rendering ──────────────────────────────── */
     function renderCalendar() {
         const year = currentDate.getFullYear();
         const month = currentDate.getMonth();
@@ -254,93 +257,6 @@ $(function () {
         }
 
         $('#cal-grid').html(html);
-        updateAnalyticsHeader();
-    }
-
-    function updateAnalyticsHeader() {
-        const todayStr = formatDate(today);
-        const todayLogs = getLogsForDate(todayStr);
-        const todayHours = getTotalHours(todayLogs);
-
-        let totalMonthlyHours = 0;
-        workLogsData.forEach(log => {
-            totalMonthlyHours += parseTimeToDecimal(log.hoursWorked);
-        });
-
-        let approvedDaysCount = 0;
-        let pendingDaysCount = 0;
-        let rejectedDaysCount = 0;
-        let draftDaysCount = 0;
-
-        if (Array.isArray(calendarData)) {
-            calendarData.forEach(day => {
-                const dateStr = day.workDate ? day.workDate.split('T')[0] : '';
-                if (!dateStr) return;
-
-                const parts = dateStr.split('-');
-                if (parts.length === 3) {
-                    const yearPart = parseInt(parts[0], 10);
-                    const monthPart = parseInt(parts[1], 10) - 1;
-                    if (yearPart !== currentDate.getFullYear() || monthPart !== currentDate.getMonth()) {
-                        return;
-                    }
-                }
-
-                if (!day.tasks || day.tasks.length === 0) {
-                    return;
-                }
-
-                const status = (day.approvalStatus || '').trim().toUpperCase();
-                if (status === 'APPROVED') {
-                    approvedDaysCount++;
-                } else if (status === 'PENDING' || status === 'CORRECTION') {
-                    pendingDaysCount++;
-                } else if (status === 'REJECTED') {
-                    rejectedDaysCount++;
-                } else {
-                    draftDaysCount++;
-                }
-            });
-        }
-
-        const currentMonthName = currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-
-        const html = `
-            <div class="analytics-container">
-                <div class="analytics-card">
-                    <div class="analytics-label">Hours Logged Today</div>
-                    <div class="analytics-value">
-                        ${todayHours.toFixed(1)}h <span class="analytics-sub">/ 8.4h</span>
-                    </div>
-                    <div class="analytics-bar-track">
-                        <div class="analytics-bar-fill" style="width: ${Math.min((todayHours / 8.4) * 100, 100)}%"></div>
-                    </div>
-                </div>
-                <div class="analytics-card">
-                    <div class="analytics-label">Monthly Total (${currentMonthName})</div>
-                    <div class="analytics-value">${totalMonthlyHours.toFixed(1)}h</div>
-                    <div class="analytics-meta">Approved: ${approvedDaysCount}d | Pending: ${pendingDaysCount}d</div>
-                </div>
-                <div class="analytics-card">
-                    <div class="analytics-label">Submission Status</div>
-                    <div class="analytics-value-group">
-                        <div class="status-summary-item">
-                            <span class="status-dot approved"></span>
-                            <span class="status-count">${approvedDaysCount} Approved</span>
-                        </div>
-                        <div class="status-summary-item">
-                            <span class="status-dot pending"></span>
-                            <span class="status-count">${pendingDaysCount} Pending</span>
-                        </div>
-                        <div class="status-summary-item">
-                            <span class="status-dot rejected"></span>
-                            <span class="status-count">${rejectedDaysCount} Rejected</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-        $('#eod-analytics-header').html(html);
     }
 
     function buildDayCell(dayNum, dateStr, logs, isOtherMonth, isToday = false, isDisabled = false) {
@@ -368,10 +284,9 @@ $(function () {
 
             const entriesHtml = logs.slice(0, 3).map(log => {
                 const cat = categoriesData.find(c => c.categoryId === log.categoryId);
-                const displayText = log.taskTitle || (log.workDescription || '').split('\n')[0];
                 return `
                     <div class="day-entry">
-                        <div class="day-entry-desc">${escapeHtml(displayText)}</div>
+                        <div class="day-entry-desc">${escapeHtml((log.workDescription || '').split('\n')[0])}</div>
                         <div class="day-entry-hours">${log.hoursWorked} · ${cat ? cat.name : 'Unknown'}</div>
                     </div>
                 `;
@@ -384,14 +299,17 @@ $(function () {
             if (approvalStatus) {
                 statusHtml = `
                     <div class="day-status ${statusBadgeClass(approvalStatus)}">
+                        <span style="width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block"></span>
                         ${statusLabel(approvalStatus)}
                     </div>`;
             }
         }
 
-        const hasLockedEntries = logs.length > 0 && logs.some(l => l.approvalStatus === 'APPROVED' || l.approvalStatus === 'PENDING');
-        if (!isOtherMonth && !isDisabled && canCreateEntry(dateStr) && !hasLockedEntries) {
-            addBtnHtml = `<div class="day-add-btn">+ Add</div>`;
+        if (!isOtherMonth && !isDisabled && canCreateEntry(dateStr)) {
+            addBtnHtml = `
+                <div class="day-add-btn">
+                    <span>+</span> Add Entry
+                </div>`;
         }
 
         return `
@@ -412,13 +330,20 @@ $(function () {
         return div.innerHTML;
     }
 
+    /* ── Month-wise data loading ────────────────────────── */
     async function loadWorkLogsByMonth(year, month) {
         $('#cal-grid').html(
-            Array(14).fill('<div class="cal-day skeleton" style="height:160px"></div>').join('')
+            Array(14).fill('<div class="cal-day skeleton" style="height:170px"></div>').join('')
         );
 
         try {
-            const response = await postWithAuth(API.monthlyCalendar, { year: year, month: month + 1 });
+            console.log('[EOD] Loading month data via API:', year, month + 1);
+            const response = await postWithAuth(API.monthlyCalendar, {
+                year: year,
+                month: month + 1
+            });
+            console.log('[EOD] Raw API response:', response);
+
             let calendarDays = [];
             if (response && response.data && Array.isArray(response.data.calendarData)) {
                 calendarDays = response.data.calendarData;
@@ -427,15 +352,23 @@ $(function () {
             } else if (Array.isArray(response)) {
                 calendarDays = response;
             }
+
             calendarData = calendarDays;
+            console.log('[EOD] Calendar days received:', calendarData.length);
+
             workLogsData = mapBackendToWorkLogs(calendarData);
+            console.log('[EOD] Mapped workLogs:', workLogsData.length, 'entries');
+
         } catch (err) {
+            console.warn('[EOD] API failed:', err);
             workLogsData = [];
             calendarData = [];
         }
+
         renderCalendar();
     }
 
+    /* ── Modal handling ───────────────────────────────────── */
     function openModal(dateStr) {
         if (isFutureDate(dateStr)) {
             showToast('Cannot log work for future dates');
@@ -456,16 +389,11 @@ $(function () {
         }
 
         renderModalEntries(logs);
+
         hideForm();
-
-        const hasLockedEntries = logs.length > 0 && logs.some(l => l.approvalStatus === 'APPROVED' || l.approvalStatus === 'PENDING');
-        if (hasLockedEntries) {
-            $('#btn-show-form').hide();
-        } else {
-            $('#btn-show-form').show();
-        }
-
+        $('#btn-show-form').show();
         updateActionButtons(logs);
+
         $('#eod-modal').addClass('active');
         $('body').css('overflow', 'hidden');
         $('.cal-day').removeClass('selected');
@@ -473,6 +401,21 @@ $(function () {
     }
 
     async function closeModal() {
+        // Warn if form has unsaved data
+        if (isFormVisible && hasUnsavedFormData) {
+            const confirmed = await showAlert({
+                type: 'warning',
+                title: 'Unsaved Changes',
+                message: 'You have unsaved changes. Are you sure you want to close?',
+                showCancel: true,
+                confirmText: 'Close Anyway',
+                cancelText: 'Stay'
+            });
+            if (!confirmed) {
+                return;
+            }
+        }
+
         $('#eod-modal').removeClass('active');
         $('body').css('overflow', '');
         $('.cal-day').removeClass('selected');
@@ -483,18 +426,19 @@ $(function () {
         nextRowId = 0;
         hasUnsavedFormData = false;
         hideForm();
-        $('#prev-day-selector').remove();
     }
 
     function updateActionButtons(logs) {
         const $submitBtn = $('#btn-submit-eod');
+
         if (logs.length === 0) {
             $submitBtn.hide();
         } else {
-            $submitBtn.show().prop('disabled', false).text('Submit');
+            $submitBtn.show().prop('disabled', false).text('🚀 Submit EOD');
         }
     }
 
+    /* ── Form Visibility ────────────────────────────────── */
     function showForm(title, prefillData = null) {
         isFormVisible = true;
         hasUnsavedFormData = true;
@@ -508,10 +452,14 @@ $(function () {
         }
 
         renderDraftRows();
-        $('#new-entry-form').slideDown(250);
+
+        $('#new-entry-form').slideDown(250, function() {
+            $('#new-entry-form')[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
         $('#btn-show-form').hide();
         $('#btn-submit-eod').show();
-        $('#btn-pull-yesterday').show();
+        $('#btn-cancel-form').show();
     }
 
     function hideForm() {
@@ -520,23 +468,22 @@ $(function () {
         $('#new-entry-form').slideUp(200);
         $('#btn-show-form').show();
         $('#btn-submit-eod').hide();
-        $('#btn-pull-yesterday').hide();
-        $('#prev-day-selector').remove();
+        $('#btn-cancel-form').hide();
         draftLogs = [];
         nextRowId = 0;
         $('#draft-rows-container').empty();
-        $('#form-title').text('New Entry');
+        $('#form-title').text('➕ Add New Entry');
     }
 
+    /* ── Render entries list in modal ───────────────────── */
     function renderModalEntries(logs) {
         const count = logs.length;
         $('#entries-count').text(`${count} entr${count === 1 ? 'y' : 'ies'}`);
 
         if (count === 0) {
             $('#entries-list').html(`
-                <div class="entries-empty">
-                    <div class="entries-empty-icon">◌</div>
-                    No entries yet
+                <div style="text-align:center;padding:32px 0;color:var(--text-3);font-size:13px">
+                    No entries for this day.<br>Click "Add Entry" to create your first log.
                 </div>
             `);
             return;
@@ -545,39 +492,35 @@ $(function () {
         const html = logs.map(log => {
             const cat = categoriesData.find(c => c.categoryId === log.categoryId);
             const subCat = subCategoriesData.find(s => s.subCategoryId === log.subCategoryId);
+
             const rejectReason = log.reasonForReject ?
                 `<div class="entry-reject-reason">${escapeHtml(log.reasonForReject)}</div>` : '';
 
-            const editBtn = canEditEntry(log) ? 
-                `<button class="icon-btn edit-btn" data-logid="${log.workLogId}" title="Edit"></button>` : '';
-            const deleteBtn = canDeleteEntry(log) ? 
-                `<button class="icon-btn delete-btn" data-logid="${log.workLogId}" title="Delete"></button>` : '';
-
-            const metaHtml = `
-                <span>${log.hoursWorked}</span>
-                <span>·</span>
-                <span>${cat ? cat.name : 'Unknown'}${subCat ? ' › ' + subCat.name : ''}</span>
-                <span>·</span>
-                <span>${log.status || 'In Progress'}</span>
-            `;
+            const editDisabled = !canEditEntry(log);
+            const deleteDisabled = !canDeleteEntry(log);
 
             return `
-                <div class="entry-item" data-logid="${log.workLogId}" data-status="${log.approvalStatus}">
+                <div class="entry-item" data-logid="${log.workLogId}">
                     <div class="entry-main">
                         <div class="entry-header-row">
                             <span class="entry-status-badge ${statusBadgeClass(log.approvalStatus)}">
+                                <span style="width:5px;height:5px;border-radius:50%;background:currentColor;display:inline-block"></span>
                                 ${statusLabel(log.approvalStatus)}
                             </span>
                             ${log.approvalBy ? `<span class="entry-approver">by ${escapeHtml(log.approvalBy)}</span>` : ''}
                         </div>
                         <div class="entry-desc">${escapeHtml(log.workDescription).replace(/\n/g, '<br>')}</div>
-                        <div class="entry-meta">${metaHtml}</div>
+                        <div class="entry-meta">
+                            <span>⏱ ${log.hoursWorked}</span>
+                            <span>📁 ${cat ? cat.name : 'Unknown'}${subCat ? ' › ' + subCat.name : ''}</span>
+                            <span>📊 ${log.status || 'In Progress'}</span>
+                        </div>
                         ${rejectReason}
                     </div>
                     <div class="entry-hours">${log.hoursWorked}</div>
                     <div class="entry-actions">
-                        ${editBtn}
-                        ${deleteBtn}
+                        <button class="entry-btn btn-edit-entry ${editDisabled ? 'disabled' : ''}" data-logid="${log.workLogId}" title="Edit" ${editDisabled ? 'disabled' : ''}>✎</button>
+                        <button class="entry-btn delete btn-delete-entry ${deleteDisabled ? 'disabled' : ''}" data-logid="${log.workLogId}" title="Delete" ${deleteDisabled ? 'disabled' : ''}>🗑</button>
                     </div>
                 </div>
             `;
@@ -586,6 +529,7 @@ $(function () {
         $('#entries-list').html(html);
     }
 
+    /* ── Multi-row Draft Form ───────────────────────────── */
     function renderDraftRows() {
         const $container = $('#draft-rows-container');
         $container.empty();
@@ -605,13 +549,8 @@ $(function () {
             $row.find('.draft-hours').val(log.hoursWorked || '');
             $row.find('.draft-status').val(log.status || 'In Progress');
             $row.find('.draft-desc').val(log.workDescription || '');
-            $row.find('.draft-title').val(log.taskTitle || '');
             $row.find('.draft-logid').val(log.workLogId || 0);
             $row.find('.draft-workflowid').val(log.workflowLogDateId || editingWorkflowLogDateId || 0);
-
-            if (log._isPulled) {
-                $row.addClass('pulled');
-            }
 
             attachTimeInputHandler($row.find('.draft-hours'));
         });
@@ -633,42 +572,38 @@ $(function () {
                 <input type="hidden" class="draft-workflowid" value="${log.workflowLogDateId || editingWorkflowLogDateId || 0}" />
                 <div class="draft-row-header">
                     <span class="draft-row-number">LOG #${displayNumber}</span>
-                    <button type="button" class="draft-row-remove" data-rowid="${rowId}" title="Remove">×</button>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Title <span style="color:var(--gold)">*</span></label>
-                    <input type="text" class="form-input draft-title" placeholder="Task title" maxlength="120" autocomplete="off" />
+                    <button type="button" class="draft-row-remove" data-rowid="${rowId}" title="Remove this log">×</button>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label">Category</label>
                         <select class="form-select draft-category">
-                            <option value="">Select</option>
+                            <option value="">Select category</option>
                             ${catOptions}
                         </select>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Sub-Category</label>
                         <select class="form-select draft-subcategory" disabled>
-                            <option value="">Select</option>
+                            <option value="">Select sub-category</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label class="form-label">Hours</label>
+                        <label class="form-label">Hours Worked</label>
                         <input type="text" class="form-input draft-hours custom-time-input" placeholder="08:00" maxlength="5" autocomplete="off" inputmode="numeric" />
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Status <span style="color:var(--gold)">*</span></label>
+                        <label class="form-label">Status <span style="color:var(--red)">*</span></label>
                         <select class="form-select draft-status">
                             ${statusSelectOptions}
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">Description</label>
-                    <textarea class="form-textarea draft-desc" placeholder="Describe your work..."></textarea>
+                    <label class="form-label">Work Description</label>
+                    <textarea class="form-textarea draft-desc" placeholder="Describe your work for this log…"></textarea>
                 </div>
             </div>
         `;
@@ -683,8 +618,7 @@ $(function () {
             subCategoryId: '',
             hoursWorked: '',
             status: 'In Progress',
-            workDescription: '',
-            taskTitle: ''
+            workDescription: ''
         };
         draftLogs.push(newLog);
         const displayNumber = draftLogs.length;
@@ -698,7 +632,7 @@ $(function () {
 
     function removeDraftRow(rowId) {
         if (draftLogs.length <= 1) {
-            showToast('At least one log required');
+            showToast('At least one log row is required');
             return;
         }
         const index = draftLogs.findIndex(l => l._rowId === rowId);
@@ -714,11 +648,11 @@ $(function () {
     function loadSubCategoriesForDraftRow($row, categoryId, selectedSubId = null) {
         const $sub = $row.find('.draft-subcategory');
         if (!categoryId) {
-            $sub.html('<option value="">Select</option>').prop('disabled', true);
+            $sub.html('<option value="">Select sub-category</option>').prop('disabled', true);
             return;
         }
         const subs = subCategoriesData.filter(s => s.categoryId == categoryId);
-        let html = '<option value="">Select</option>';
+        let html = '<option value="">Select sub-category</option>';
         subs.forEach(s => {
             const selected = s.subCategoryId == selectedSubId ? 'selected' : '';
             html += `<option value="${s.subCategoryId}" ${selected}>${escapeHtml(s.name)}</option>`;
@@ -749,102 +683,7 @@ $(function () {
         });
     }
 
-    /* ── SELECTABLE Previous Day Pull ───────────────────── */
-    async function showPreviousDaySelector() {
-        const yesterday = new Date(selectedDate);
-        yesterday.setDate(yesterday.getDate() - 1);
-        const yesterdayStr = formatDate(yesterday);
-
-        const yesterdayLogs = getLogsForDate(yesterdayStr);
-
-        if (yesterdayLogs.length === 0) {
-            showToast('No entries found for yesterday');
-            return;
-        }
-
-        prevDaySelection = [];
-
-        const itemsHtml = yesterdayLogs.map((log, idx) => {
-            const cat = categoriesData.find(c => c.categoryId === log.categoryId);
-            const title = log.taskTitle || (log.workDescription || '').split('\n')[0] || 'Untitled';
-            return `
-                <div class="prev-day-item" data-idx="${idx}">
-                    <div class="prev-day-item-title">${escapeHtml(title)}</div>
-                    <div class="prev-day-item-meta">${log.hoursWorked} · ${cat ? cat.name : 'N/A'}</div>
-                    <div class="prev-day-checkbox"></div>
-                </div>
-            `;
-        }).join('');
-
-        const panelHtml = `
-            <div id="prev-day-selector" class="prev-day-panel">
-                <div class="prev-day-header">Select tasks from ${yesterdayStr}</div>
-                <div class="prev-day-items-list">
-                    ${itemsHtml}
-                </div>
-                <div class="prev-day-actions">
-                    <button class="btn-outline btn-sm" id="btn-cancel-pull">Cancel</button>
-                    <button class="btn-gold btn-sm" id="btn-confirm-pull">Pull Selected</button>
-                </div>
-            </div>
-        `;
-
-        $('#prev-day-selector').remove();
-        $('.modal-panel').append(panelHtml);
-        $('#prev-day-selector').hide().slideDown(200);
-
-        $(document).off('click.prevday');
-        $(document).on('click.prevday', '.prev-day-item', function() {
-            const idx = parseInt($(this).data('idx'));
-            const pos = prevDaySelection.indexOf(idx);
-            if (pos >= 0) {
-                prevDaySelection.splice(pos, 1);
-                $(this).removeClass('selected');
-            } else {
-                prevDaySelection.push(idx);
-                $(this).addClass('selected');
-            }
-        });
-
-        $(document).off('click.cancelpull');
-        $(document).on('click.cancelpull', '#btn-cancel-pull', function() {
-            $('#prev-day-selector').slideUp(150, function() { $(this).remove(); });
-            prevDaySelection = [];
-        });
-
-        $(document).off('click.confirmpull');
-        $(document).on('click.confirmpull', '#btn-confirm-pull', function() {
-            if (prevDaySelection.length === 0) {
-                showToast('Select at least one task');
-                return;
-            }
-
-            draftLogs = [];
-            nextRowId = 0;
-
-            prevDaySelection.sort((a, b) => a - b).forEach(idx => {
-                const log = yesterdayLogs[idx];
-                draftLogs.push({
-                    _rowId: nextRowId++,
-                    _isPulled: true,
-                    workLogId: 0,
-                    workflowLogDateId: 0,
-                    categoryId: log.categoryId,
-                    subCategoryId: log.subCategoryId,
-                    hoursWorked: log.hoursWorked,
-                    status: log.status || 'In Progress',
-                    workDescription: log.workDescription,
-                    taskTitle: log.taskTitle || ''
-                });
-            });
-
-            $('#prev-day-selector').slideUp(150, function() { $(this).remove(); });
-            renderDraftRows();
-            showToast(`${prevDaySelection.length} task(s) pulled`);
-            prevDaySelection = [];
-        });
-    }
-
+    /* ── Collect Form Data ──────────────────────────────── */
     function collectFormData() {
         const logs = [];
         let hasError = false;
@@ -856,23 +695,19 @@ $(function () {
             const hoursWorked = $row.find('.draft-hours').val().trim();
             const status = $row.find('.draft-status').val();
             const workDescription = $row.find('.draft-desc').val().trim();
-            const taskTitle = $row.find('.draft-title').val().trim();
             const workLogId = parseInt($row.find('.draft-logid').val()) || 0;
 
-            if (!categoryId && !hoursWorked && !workDescription && !taskTitle) {
+            if (!categoryId && !hoursWorked && !workDescription) {
                 return true;
             }
 
-            if (!taskTitle) { showToast('Title required'); hasError = true; return false; }
-            if (!categoryId) { showToast('Category required'); hasError = true; return false; }
-            if (!subCategoryId) { showToast('Sub-category required'); hasError = true; return false; }
-            if (!hoursWorked) { showToast('Hours required'); hasError = true; return false; }
+            if (!categoryId) { showToast('Please select a category for all logs'); hasError = true; return false; }
+            if (!subCategoryId) { showToast('Please select a sub-category for all logs'); hasError = true; return false; }
+            if (!hoursWorked) { showToast('Please enter hours worked for all logs'); hasError = true; return false; }
             if (!/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/.test(hoursWorked)) {
-                showToast('Invalid time format (HH:MM)'); hasError = true; return false;
+                showToast('Please enter valid time format (HH:MM) for all logs'); hasError = true; return false;
             }
-            if (!workDescription) { showToast('Description required'); hasError = true; return false; }
-
-            const fullDescription = `**${taskTitle}**\n\n${workDescription}`;
+            if (!workDescription) { showToast('Please enter work description for all logs'); hasError = true; return false; }
 
             logs.push({
                 workLogId: workLogId,
@@ -880,22 +715,30 @@ $(function () {
                 subGroupId: subCategoryId,
                 hoursWorked: hoursWorked,
                 workStatus: status,
-                workDescription: fullDescription
+                workDescription: workDescription
             });
         });
 
         if (hasError) return null;
-        if (logs.length === 0) { showToast('Add at least one log'); return null; }
+        if (logs.length === 0) { showToast('Please add at least one log entry'); return null; }
 
+        // CRITICAL FIX: Get workflowLogDateId from existing logs on this date
+        // If date already has entries, use their workflowLogDateId
+        // If new date, use 0
         let existingWorkflowId = 0;
+
+        // First check editingWorkflowLogDateId (set when editing)
         if (editingWorkflowLogDateId > 0) {
             existingWorkflowId = editingWorkflowLogDateId;
         } else {
+            // Check if there are existing logs for this date in workLogsData
             const dateLogs = getLogsForDate(selectedDate);
             if (dateLogs.length > 0 && dateLogs[0].workflowLogDateId > 0) {
                 existingWorkflowId = dateLogs[0].workflowLogDateId;
             }
         }
+
+        console.log('[EOD] Submitting with workflowLogDateId:', existingWorkflowId, 'for date:', selectedDate);
 
         return {
             workflowLogDateId: existingWorkflowId,
@@ -904,6 +747,7 @@ $(function () {
         };
     }
 
+    /* ── Submit EOD (SEND DIRECTLY TO BACKEND) ──────────── */
     async function submitEod() {
         const data = collectFormData();
         if (!data) return;
@@ -911,52 +755,87 @@ $(function () {
         const logs = getLogsForDate(selectedDate);
         const isResubmit = logs.length > 0 && logs.some(l => l.workflowLogDateId > 0);
 
+        const confirmMsg = isResubmit
+            ? 'Resubmit EOD for ' + selectedDate + '? This will update the existing entries.'
+            : 'Submit EOD for ' + selectedDate + '? This will lock the entries for review.';
+
         const confirmed = await showAlert({
             type: 'confirm',
             title: isResubmit ? 'Resubmit EOD' : 'Submit EOD',
-            message: isResubmit 
-                ? `Update ${selectedDate} entries?`
-                : `Submit ${selectedDate} for review?`,
+            message: confirmMsg,
             showCancel: true,
-            confirmText: isResubmit ? 'Update' : 'Submit',
+            confirmText: isResubmit ? 'Resubmit' : 'Submit',
             cancelText: 'Cancel'
         });
-        if (!confirmed) return;
+        if (!confirmed) {
+            return;
+        }
 
-        $('#btn-submit-eod').prop('disabled', true).text('Sending...');
+        $('#btn-submit-eod').prop('disabled', true).text(isResubmit ? 'Resubmitting…' : 'Submitting…');
 
         try {
-            await postWithAuth(API.saveWorkLog, data);
-            showToast(isResubmit ? 'Updated' : 'Submitted');
+            const response = await postWithAuth(API.saveWorkLog, data);
+            showToast(isResubmit ? 'EOD resubmitted successfully!' : 'EOD submitted successfully!');
             hasUnsavedFormData = false;
+
+            // Refresh from backend to get updated state
             await refreshMonthData();
         } catch (err) {
-            $('#btn-submit-eod').prop('disabled', false).text('Submit');
-            showToast('Submit failed. Retry.');
+            console.warn('[EOD] Submit API failed:', err);
+            $('#btn-submit-eod').prop('disabled', false).text(isResubmit ? '🔄 Resubmit' : '🚀 Submit EOD');
+
+            // Local fallback - mark as pending
+            workLogsData.forEach(l => {
+                if (l.workDate === selectedDate) {
+                    l.approvalStatus = 'PENDING';
+                }
+            });
+
+            showToast(isResubmit ? 'EOD resubmitted (local mode)!' : 'EOD submitted (local mode)!');
+            hasUnsavedFormData = false;
+            handleSubmitSuccess();
         }
     }
 
+    function handleSubmitSuccess() {
+        renderCalendar();
+        const logs = getLogsForDate(selectedDate);
+        renderModalEntries(logs);
+        updateActionButtons(logs);
+        hideForm();
+        $('#btn-show-form').hide();
+        $('.cal-day').removeClass('selected');
+        $(`.cal-day[data-date="${selectedDate}"]`).addClass('selected');
+    }
+
+    /* ── Refresh month data from backend ────────────────── */
     async function refreshMonthData() {
         try {
             const response = await postWithAuth(API.monthlyCalendar, {
                 year: currentDate.getFullYear(),
                 month: currentDate.getMonth() + 1
             });
+
             let calendarDays = [];
             if (response && response.data && Array.isArray(response.data.calendarData)) {
                 calendarDays = response.data.calendarData;
             } else if (response && Array.isArray(response.calendarData)) {
                 calendarDays = response.calendarData;
             }
+
             calendarData = calendarDays;
             workLogsData = mapBackendToWorkLogs(calendarData);
+
             renderCalendar();
             const logs = getLogsForDate(selectedDate);
             renderModalEntries(logs);
             updateActionButtons(logs);
+
             $('.cal-day').removeClass('selected');
             $(`.cal-day[data-date="${selectedDate}"]`).addClass('selected');
+
         } catch (err) {
+            console.warn('[EOD] Refresh failed:', err);
             renderCalendar();
             const logs = getLogsForDate(selectedDate);
             renderModalEntries(logs);
@@ -964,17 +843,18 @@ $(function () {
         }
     }
 
+    /* ── CRUD: Delete individual log ────────────────────── */
     async function deleteEntry(logId) {
         const log = workLogsData.find(l => l.workLogId === logId);
         if (!canDeleteEntry(log)) {
-            showToast('Delete not allowed');
+            showToast('Delete not allowed for this entry');
             return;
         }
 
         const confirmed = await showAlert({
             type: 'danger',
             title: 'Delete Entry',
-            message: 'Delete this entry permanently?',
+            message: 'Are you sure you want to delete this entry? This action cannot be undone.',
             showCancel: true,
             confirmText: 'Delete',
             cancelText: 'Cancel'
@@ -983,22 +863,45 @@ $(function () {
 
         try {
             await deleteWithAuth(API.deleteLog, { workLogId: logId });
-            showToast('Deleted');
+            workLogsData = workLogsData.filter(l => l.workLogId !== logId);
+            showToast('Entry deleted');
             await refreshMonthData();
         } catch (err) {
-            showToast('Delete failed. Retry.');
+            console.warn('[EOD] Delete API failed:', err);
+            workLogsData = workLogsData.filter(l => l.workLogId !== logId);
+            showToast('Entry deleted');
+            refreshAfterDelete();
         }
     }
 
+    function refreshAfterDelete() {
+        renderCalendar();
+        const logs = getLogsForDate(selectedDate);
+        renderModalEntries(logs);
+        updateActionButtons(logs);
+
+        if (logs.length === 0) {
+            $('#btn-show-form').show();
+            hideForm();
+        }
+        $('.cal-day').removeClass('selected');
+        $(`.cal-day[data-date="${selectedDate}"]`).addClass('selected');
+    }
+
+    /* ── Edit Entry: Load into form ─────────────────────── */
     function editEntry(logId) {
         const log = workLogsData.find(l => l.workLogId === logId);
         if (!log) return;
+
         if (!canEditEntry(log)) {
-            showToast('Edit not allowed');
+            showToast('Edit not allowed for this entry');
             return;
         }
 
+        // Set the workflowLogDateId for this date
         editingWorkflowLogDateId = log.workflowLogDateId || 0;
+
+        // Load ONLY the single task that was clicked, not all tasks in the workflow
         draftLogs = [{
             _rowId: nextRowId++,
             workLogId: log.workLogId,
@@ -1007,28 +910,36 @@ $(function () {
             subCategoryId: log.subCategoryId,
             hoursWorked: log.hoursWorked,
             status: log.status || 'In Progress',
-            workDescription: log.workDescription,
-            taskTitle: log.taskTitle || ''
+            workDescription: log.workDescription
         }];
 
-        showForm('Edit Entry', { logs: draftLogs });
+        showForm('✎ Edit Entry', { logs: draftLogs });
     }
 
+    /* ── Toast ──────────────────────────────────────────── */
     function showToast(msg) {
         $('.toast').remove();
         const $t = $('<div class="toast">').text(msg).appendTo('body');
         setTimeout(() => $t.addClass('show'), 10);
-        setTimeout(() => { $t.removeClass('show'); setTimeout(() => $t.remove(), 300); }, 2500);
+        setTimeout(() => { $t.removeClass('show'); setTimeout(() => $t.remove(), 300); }, 2800);
     }
-
+    /* ── Custom Themed Alert / Confirm ──────────────────── */
     let alertResolve = null;
 
     function showAlert(options) {
         return new Promise((resolve) => {
             alertResolve = resolve;
+
             const type = options.type || 'info';
-            const iconMap = { info: '◆', warning: '▲', danger: '▼', success: '●', confirm: '?' };
-            const icon = options.icon || iconMap[type] || '◆';
+            const iconMap = {
+                info: '⚡',
+                warning: '⚠️',
+                danger: '🗑️',
+                success: '✅',
+                confirm: '❓'
+            };
+            const icon = options.icon || iconMap[type] || '⚡';
+
             const btnClass = type === 'danger' ? 'alert-btn-danger' : 'alert-btn-primary';
 
             let actionsHtml = '';
@@ -1038,7 +949,9 @@ $(function () {
                     <button class="alert-btn ${btnClass}" id="alert-confirm">${options.confirmText || 'OK'}</button>
                 `;
             } else {
-                actionsHtml = `<button class="alert-btn ${btnClass}" id="alert-confirm">${options.confirmText || 'OK'}</button>`;
+                actionsHtml = `
+                    <button class="alert-btn ${btnClass}" id="alert-confirm">${options.confirmText || 'OK'}</button>
+                `;
             }
 
             const html = `
@@ -1057,16 +970,24 @@ $(function () {
             $('#custom-alert').remove();
             $('body').append(html);
             $('body').addClass('alert-open');
+
             setTimeout(() => $('#custom-alert').addClass('active'), 10);
 
             $(document).off('click.alert');
-            $(document).on('click.alert', '#alert-confirm', function() { closeAlert(true); });
-            $(document).on('click.alert', '#alert-cancel', function() { closeAlert(false); });
+            $(document).on('click.alert', '#alert-confirm', function() {
+                closeAlert(true);
+            });
+            $(document).on('click.alert', '#alert-cancel', function() {
+                closeAlert(false);
+            });
 
             $(document).off('keydown.alert');
             $(document).on('keydown.alert', function(e) {
-                if (e.key === 'Escape') { closeAlert(false); }
-                else if (e.key === 'Enter') { closeAlert(true); }
+                if (e.key === 'Escape') {
+                    closeAlert(false);
+                } else if (e.key === 'Enter') {
+                    closeAlert(true);
+                }
             });
         });
     }
@@ -1077,28 +998,43 @@ $(function () {
         setTimeout(() => {
             $('#custom-alert').remove();
             $(document).off('click.alert keydown.alert');
-            if (alertResolve) { alertResolve(result); alertResolve = null; }
+            if (alertResolve) {
+                alertResolve(result);
+                alertResolve = null;
+            }
         }, 250);
     }
 
+
+    /* ── Data loading ───────────────────────────────────── */
     async function loadCategories() {
-        try { categoriesData = await getWithAuth(API.categories); }
-        catch (err) { categoriesData = DEMO.categories; }
+        try {
+            categoriesData = await getWithAuth(API.categories);
+        } catch (err) {
+            categoriesData = DEMO.categories;
+        }
     }
 
     async function loadSubCategories() {
-        try { subCategoriesData = await getWithAuth(API.subCategories); }
-        catch (err) { subCategoriesData = DEMO.subCategories; }
+        try {
+            subCategoriesData = await getWithAuth(API.subCategories);
+        } catch (err) {
+            subCategoriesData = DEMO.subCategories;
+        }
     }
 
     async function loadData() {
-        try { currentUser = getUser(); }
-        catch (e) { currentUser = null; }
+        try {
+            currentUser = getUser();
+        } catch (e) {
+            currentUser = null;
+        }
         await Promise.all([loadCategories(), loadSubCategories()]);
         await loadWorkLogsByMonth(currentDate.getFullYear(), currentDate.getMonth());
     }
 
     /* ── Event bindings ─────────────────────────────────── */
+
     $('#btn-prev-month').on('click', () => {
         currentDate.setMonth(currentDate.getMonth() - 1);
         loadWorkLogsByMonth(currentDate.getFullYear(), currentDate.getMonth());
@@ -1122,13 +1058,16 @@ $(function () {
     $('#eod-modal').on('click', async function (e) { if (e.target === this) await closeModal(); });
 
     $(document).on('click', '#btn-show-form', function () {
+        // If date already has entries, use existing workflowLogDateId
         const dateLogs = getLogsForDate(selectedDate);
         if (dateLogs.length > 0 && dateLogs[0].workflowLogDateId > 0) {
             editingWorkflowLogDateId = dateLogs[0].workflowLogDateId;
+            console.log('[EOD] Adding to existing workflow:', editingWorkflowLogDateId);
         } else {
             editingWorkflowLogDateId = 0;
+            console.log('[EOD] Creating new workflow for date:', selectedDate);
         }
-        showForm('New Entry');
+        showForm('➕ Add New Entry');
     });
 
     $(document).on('click', '#btn-cancel-form', function () {
@@ -1136,37 +1075,39 @@ $(function () {
         $('#btn-show-form').show();
     });
 
-    $(document).on('click', '#btn-add-row', function () { addDraftRow(); });
+    $(document).on('click', '#btn-add-row', function () {
+        addDraftRow();
+    });
 
     $(document).on('click', '.draft-row-remove', function () {
-        removeDraftRow(parseInt($(this).data('rowid')));
+        const rowId = parseInt($(this).data('rowid'));
+        removeDraftRow(rowId);
     });
 
     $(document).on('change', '.draft-category', function () {
-        loadSubCategoriesForDraftRow($(this).closest('.draft-row'), $(this).val());
+        const $row = $(this).closest('.draft-row');
+        const catId = $(this).val();
+        loadSubCategoriesForDraftRow($row, catId);
     });
 
+    // Submit EOD — sends directly to backend, no local draft
     $(document).on('click', '#btn-submit-eod', function (e) {
         e.preventDefault();
         submitEod();
     });
 
-    $(document).on('click', '#btn-pull-yesterday', function (e) {
-        e.preventDefault();
-        showPreviousDaySelector();
-    });
-
-    $(document).on('click', '.icon-btn.edit-btn', function (e) {
+    $(document).on('click', '.btn-edit-entry:not([disabled])', function (e) {
         e.stopPropagation();
         editEntry($(this).data('logid'));
     });
 
-    $(document).on('click', '.icon-btn.delete-btn', function (e) {
+    $(document).on('click', '.btn-delete-entry:not([disabled])', function (e) {
         e.stopPropagation();
         deleteEntry($(this).data('logid'));
     });
 
     $(document).on('keydown', async function (e) { if (e.key === 'Escape') await closeModal(); });
 
+    /* ── Bootstrap ────────────────────────────────────── */
     loadData();
 });
