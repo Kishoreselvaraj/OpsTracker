@@ -1,0 +1,143 @@
+@{
+    ViewData["Title"] = "My Team";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="/css/TL/tl-team.css" asp-append-version="true" />
+}
+
+<div class="tl-page">
+
+    <!-- Top Navigation -->
+    <nav class="tl-nav">
+        <div class="tl-nav-brand">
+            <span class="tl-nav-logo">◆</span>
+            <span class="tl-nav-title">OpsTracker</span>
+        </div>
+        <div class="tl-nav-links">
+            <a href="/tl/dashboard" class="tl-nav-link">Dashboard</a>
+            <a href="/tl/approvals" class="tl-nav-link">Approvals</a>
+            <a href="/tl/team" class="tl-nav-link active">Team Members</a>
+            <a href="/tl/groups" class="tl-nav-link">Sub-Groups</a>
+        </div>
+        <div class="tl-nav-user">
+            <span class="tl-nav-role">Team Lead</span>
+            <span class="tl-nav-name" id="nav-user-name">Loading...</span>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="tl-header">
+        <div class="tl-header-left">
+            <div class="tl-greeting">Team Directory</div>
+            <h1 class="tl-title">My Team</h1>
+            <div class="tl-subtitle">View member profiles and performance metrics</div>
+        </div>
+        <div class="tl-header-right">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input" id="search-input" placeholder="Search member or code..." autocomplete="off" />
+            </div>
+        </div>
+    </header>
+
+    <!-- Filters Bar -->
+    <div class="filters-bar">
+        <div class="filter-group">
+            <select class="filter-select" id="subgroup-filter">
+                <option value="">All Sub-Groups</option>
+            </select>
+            <select class="filter-select" id="sort-filter">
+                <option value="name">Sort by Name</option>
+                <option value="hours">Sort by Hours</option>
+                <option value="approval">Sort by Approval Rate</option>
+                <option value="recent">Sort by Recent Activity</option>
+            </select>
+        </div>
+        <div class="team-count" id="team-count">0 members</div>
+    </div>
+
+    <!-- Team Grid -->
+    <div class="team-grid" id="team-grid">
+        <!-- Populated by JS -->
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" id="empty-state" style="display:none;">
+        <div class="empty-icon-large">👥</div>
+        <div class="empty-title">No team members found</div>
+        <div class="empty-text">Try adjusting your search or filters</div>
+        <button class="btn-outline" id="btn-reset-filters">Reset Filters</button>
+    </div>
+
+</div>
+
+<!-- Member Profile Modal -->
+<div class="modal-overlay" id="profile-modal">
+    <div class="modal-panel">
+        <button class="modal-close" id="modal-close">×</button>
+
+        <div class="profile-header">
+            <div class="profile-avatar" id="profile-avatar">RK</div>
+            <div class="profile-info">
+                <div class="profile-name" id="profile-name">Rahul Kumar</div>
+                <div class="profile-meta" id="profile-meta">EMP-00412 · Backend · Joined Jan 2024</div>
+                <div class="profile-badges" id="profile-badges">
+                    <span class="profile-badge">Developer</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance Stats -->
+        <div class="profile-stats-row">
+            <div class="profile-stat">
+                <span class="profile-stat-value" id="profile-total-eods">45</span>
+                <span class="profile-stat-label">Total EODs</span>
+            </div>
+            <div class="profile-stat">
+                <span class="profile-stat-value" id="profile-total-hours">342.5h</span>
+                <span class="profile-stat-label">Total Hours</span>
+            </div>
+            <div class="profile-stat">
+                <span class="profile-stat-value" id="profile-avg-hours">7.6h</span>
+                <span class="profile-stat-label">Avg / Day</span>
+            </div>
+            <div class="profile-stat">
+                <span class="profile-stat-value" id="profile-approval-rate">94%</span>
+                <span class="profile-stat-label">Approval Rate</span>
+            </div>
+        </div>
+
+        <!-- Recent Submissions -->
+        <div class="profile-section">
+            <div class="profile-section-header">
+                <span class="profile-section-title">Recent Submissions</span>
+                <a href="/tl/approvals?member=" class="profile-section-link" id="profile-view-all">View All →</a>
+            </div>
+            <div class="profile-submissions" id="profile-submissions">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- Monthly Hours Chart -->
+        <div class="profile-section">
+            <div class="profile-section-header">
+                <span class="profile-section-title">Monthly Hours</span>
+                <span class="profile-section-subtitle">Last 6 months</span>
+            </div>
+            <div class="profile-chart" id="profile-chart">
+                <!-- CSS bars populated by JS -->
+            </div>
+        </div>
+
+        <div class="modal-footer-bar">
+            <button class="btn-outline" id="btn-close-profile">Close</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="module" src="/js/TL/tl-team.js" asp-append-version="true"></script>
+}

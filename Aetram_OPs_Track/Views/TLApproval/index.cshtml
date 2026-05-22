@@ -1,0 +1,287 @@
+@{
+    ViewData["Title"] = "EOD Approvals";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="/css/TL/tl-approvals.css" asp-append-version="true" />
+}
+
+<div class="tl-page">
+
+    <!-- Top Navigation -->
+    <nav class="tl-nav">
+        <div class="tl-nav-brand">
+            <span class="tl-nav-logo">◆</span>
+            <span class="tl-nav-title">OpsTracker</span>
+        </div>
+        <div class="tl-nav-links">
+            <a href="/tl/dashboard" class="tl-nav-link">Dashboard</a>
+            <a href="/tl/approvals" class="tl-nav-link active">Approvals</a>
+            <a href="/tl/team" class="tl-nav-link">Team Members</a>
+            <a href="/tl/groups" class="tl-nav-link">Sub-Groups</a>
+        </div>
+        <div class="tl-nav-user">
+            <span class="tl-nav-role">Team Lead</span>
+            <span class="tl-nav-name" id="nav-user-name">Loading...</span>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="tl-header">
+        <div class="tl-header-left">
+            <div class="tl-greeting">EOD Review Queue</div>
+            <h1 class="tl-title">Approvals</h1>
+            <div class="tl-subtitle">Review, approve, reject, or request corrections</div>
+        </div>
+        <div class="tl-header-right">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input" id="search-input" placeholder="Search member, code, or task..." autocomplete="off" />
+            </div>
+        </div>
+    </header>
+
+    <!-- Filters Bar -->
+    <div class="filters-bar">
+        <!-- Date Filter Section -->
+        <div class="filter-section">
+            <div class="filter-section-title">Date Range</div>
+            <div class="filter-group">
+                <button class="filter-pill active" data-date-filter="today">Today</button>
+                <button class="filter-pill" data-date-filter="week">This Week</button>
+                <button class="filter-pill" data-date-filter="month">This Month</button>
+                <button class="filter-pill" data-date-filter="custom">Custom</button>
+            </div>
+        </div>
+
+        <!-- Status Filter Section -->
+        <div class="filter-section">
+            <div class="filter-section-title">Status</div>
+            <div class="filter-group">
+                <select class="filter-select" id="status-filter">
+                    <option value="all">All Status</option>
+                    <option value="PENDING">Pending</option>
+                    <option value="APPROVED">Approved</option>
+                    <option value="REJECTED">Rejected</option>
+                    <option value="CORRECTION">Correction</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Group & Sub-Group Filter Section -->
+        <div class="filter-section">
+            <div class="filter-section-title">Groups</div>
+            <div class="filter-group">
+                <select class="filter-select" id="group-filter">
+                    <option value="">All Groups</option>
+                </select>
+                <select class="filter-select" id="subgroup-filter">
+                    <option value="">All Sub-Groups</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Teams & Members Filter Section -->
+        <div class="filter-section">
+            <div class="filter-section-title">Teams & Members</div>
+            <div class="filter-group">
+                <select class="filter-select" id="team-filter">
+                    <option value="">All Teams</option>
+                </select>
+                <select class="filter-select" id="member-filter">
+                    <option value="">All Members</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Date Range (hidden by default) -->
+    <div class="date-range-panel" id="date-range-panel" style="display:none;">
+        <div class="date-range-row">
+            <div class="date-field">
+                <label>From</label>
+                <input type="date" class="date-input" id="date-from" />
+            </div>
+            <div class="date-field">
+                <label>To</label>
+                <input type="date" class="date-input" id="date-to" />
+            </div>
+            <button class="btn-gold btn-sm" id="btn-apply-date">Apply</button>
+        </div>
+    </div>
+
+    <!-- Bulk Action Bar (appears on selection) -->
+    <div class="bulk-bar" id="bulk-bar" style="display:none;">
+        <div class="bulk-info">
+            <span class="bulk-count" id="bulk-count">0</span> selected
+        </div>
+        <div class="bulk-actions">
+            <button class="bulk-btn bulk-approve" id="bulk-approve">
+                <span>✓</span> Approve
+            </button>
+            <button class="bulk-btn bulk-reject" id="bulk-reject">
+                <span>✕</span> Reject
+            </button>
+            <button class="bulk-btn bulk-correction" id="bulk-correction">
+                <span>↻</span> Correction
+            </button>
+            <button class="bulk-btn bulk-cancel" id="bulk-cancel">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Queue Table -->
+    <div class="table-panel">
+        <div class="table-container">
+            <table class="queue-table" id="queue-table">
+                <thead>
+                    <tr>
+                        <th class="col-check">
+                            <div class="checkbox-wrap">
+                                <input type="checkbox" class="master-checkbox" id="master-checkbox" />
+                                <span class="check-custom"></span>
+                            </div>
+                        </th>
+                        <th class="col-member">Member</th>
+                        <th class="col-date">Date</th>
+                        <th class="col-subgroup">Group</th>
+                        <th class="col-hours">Hours</th>
+                        <th class="col-tasks">Tasks</th>
+                        <th class="col-status">Status</th>
+                        <th class="col-submitted">Submitted</th>
+                        <th class="col-action">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="queue-body">
+                    <!-- Populated by JS -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="empty-state" style="display:none;">
+            <div class="empty-icon-large">◌</div>
+            <div class="empty-title">No approvals found</div>
+            <div class="empty-text">Try adjusting your filters or search criteria</div>
+            <button class="btn-outline" id="btn-reset-filters">Reset Filters</button>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-bar" id="pagination-bar">
+        <div class="pagination-info">
+            Showing <span id="page-start">1</span>–<span id="page-end">10</span> of <span id="page-total">50</span>
+        </div>
+        <div class="pagination-controls">
+            <button class="page-btn" id="btn-prev" disabled>‹ Prev</button>
+            <div class="page-numbers" id="page-numbers"></div>
+            <button class="page-btn" id="btn-next">Next ›</button>
+        </div>
+        <div class="page-size">
+            <select class="filter-select" id="page-size">
+                <option value="10">10 / page</option>
+                <option value="25">25 / page</option>
+                <option value="50">50 / page</option>
+            </select>
+        </div>
+    </div>
+
+</div>
+
+<!-- Review Modal -->
+<div class="modal-overlay" id="review-modal">
+    <div class="modal-panel modal-lg">
+        <button class="modal-close" id="modal-close">×</button>
+
+        <div class="review-header">
+            <div class="review-avatar" id="review-avatar">RK</div>
+            <div class="review-info">
+                <div class="review-name" id="review-name">Rahul Kumar</div>
+                <div class="review-meta" id="review-meta">EMP-00412 · Backend · EOD for May 14, 2026</div>
+            </div>
+            <div class="review-status-badge" id="review-status-badge">
+                <span class="status-badge pending">Pending</span>
+            </div>
+        </div>
+
+        <div class="review-stats-row">
+            <div class="review-stat">
+                <span class="review-stat-label">Total Hours</span>
+                <span class="review-stat-value" id="review-hours">8.5h</span>
+            </div>
+            <div class="review-stat">
+                <span class="review-stat-label">Tasks</span>
+                <span class="review-stat-value" id="review-tasks">2 entries</span>
+            </div>
+            <div class="review-stat">
+                <span class="review-stat-label">Category</span>
+                <span class="review-stat-value" id="review-category">Development</span>
+            </div>
+            <div class="review-stat">
+                <span class="review-stat-label">Submitted</span>
+                <span class="review-stat-value" id="review-submitted">May 14, 6:30 PM</span>
+            </div>
+        </div>
+
+        <div class="entries-section">
+            <div class="entries-header">
+                <span class="entries-title">Work Entries</span>
+                <span class="entries-count" id="review-entry-count">2 entries</span>
+            </div>
+            <div class="entries-list" id="review-entries">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- Action Section (for PENDING only) -->
+        <div class="action-section" id="action-section">
+            <div class="form-group">
+                <label class="form-label">Comments / Reason <span class="label-required">(required for Reject / Correction)</span></label>
+                <textarea class="form-textarea" id="approval-comment" placeholder="Enter your feedback..."></textarea>
+            </div>
+            <div class="action-buttons">
+                <button class="btn-danger" id="btn-reject">
+                    <span>✕</span> Reject
+                </button>
+                <button class="btn-warning" id="btn-correction">
+                    <span>↻</span> Need Correction
+                </button>
+                <button class="btn-success" id="btn-approve">
+                    <span>✓</span> Approve
+                </button>
+            </div>
+        </div>
+
+        <!-- Read-only Actioned View -->
+        <div class="actioned-view" id="actioned-view" style="display:none;">
+            <div class="actioned-status" id="actioned-status">Approved by Priya Sharma on May 14, 2026 at 6:45 PM</div>
+            <div class="actioned-comment" id="actioned-comment">Great work on the API integration!</div>
+        </div>
+
+        <div class="modal-footer-bar">
+            <button class="btn-outline" id="btn-close-review">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- Bulk Action Modal -->
+<div class="modal-overlay" id="bulk-modal">
+    <div class="modal-panel">
+        <button class="modal-close" id="bulk-modal-close">×</button>
+        <div class="modal-title" id="bulk-modal-title">Bulk Approve</div>
+        <div class="modal-subtitle" id="bulk-modal-subtitle">You are about to approve 3 EOD submissions</div>
+        <div class="form-group">
+            <label class="form-label">Comment <span class="label-required">(optional)</span></label>
+            <textarea class="form-textarea" id="bulk-comment" placeholder="Add a comment..."></textarea>
+        </div>
+        <div class="modal-actions">
+            <button class="btn-outline" id="bulk-modal-cancel">Cancel</button>
+            <button class="btn-gold" id="bulk-modal-confirm">Confirm</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="module" src="/js/TL/tl-approvals.js" asp-append-version="true"></script>
+}

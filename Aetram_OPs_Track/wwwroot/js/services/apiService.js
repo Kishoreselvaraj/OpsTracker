@@ -1,7 +1,8 @@
 // wwwroot/js/services/apiService.js
 import { getToken } from '/js/auth/authService.js';
 
-const BASE_URL = 'http://localhost:5085';
+// const BASE_URL = 'http://localhost:5085';
+const BASE_URL = 'http://10.107.20.246:5000';
 
 // Generic POST (no auth by default)
 export async function post(url, data, token = null) {

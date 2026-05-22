@@ -5,6 +5,6 @@ namespace Aetram_OpsTrack.DBO.Repository
 {
     public interface ILoginRepository
     {
-        Task<LoginResponse> LoginAsync(LoginRequest request);
+        Task<LoginResponse> LoginAsync(LoginRequest request); 
     }
 }

@@ -1,0 +1,209 @@
+@{
+    ViewData["Title"] = "Sub-Group Management";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="/css/TL/tl-groups.css" asp-append-version="true" />
+}
+
+<div class="tl-page">
+
+    <!-- Top Navigation -->
+    <nav class="tl-nav">
+        <div class="tl-nav-brand">
+            <span class="tl-nav-logo">◆</span>
+            <span class="tl-nav-title">OpsTracker</span>
+        </div>
+        <div class="tl-nav-links">
+            <a href="/tl/dashboard" class="tl-nav-link">Dashboard</a>
+            <a href="/tl/approvals" class="tl-nav-link">Approvals</a>
+            <a href="/tl/team" class="tl-nav-link">Team Members</a>
+            <a href="/tl/groups" class="tl-nav-link active">Sub-Groups</a>
+        </div>
+        <div class="tl-nav-user">
+            <span class="tl-nav-role">Team Lead</span>
+            <span class="tl-nav-name" id="nav-user-name">Loading...</span>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="tl-header">
+        <div class="tl-header-left">
+            <div class="tl-greeting">Task Group: <span id="task-group-name">India</span></div>
+            <h1 class="tl-title">Sub-Groups</h1>
+            <div class="tl-subtitle">Create and manage sub-groups with member assignments</div>
+        </div>
+        <div class="tl-header-right">
+            <button class="btn-gold" id="btn-create-toggle">
+                <span>+</span> Create Sub-Group
+            </button>
+        </div>
+    </header>
+
+    <!-- Create Form (expandable) -->
+    <div class="create-panel" id="create-panel" style="display:none;">
+        <div class="create-panel-header">
+            <span class="create-panel-title">Create New Sub-Group</span>
+            <button class="create-panel-close" id="btn-create-close">×</button>
+        </div>
+        <div class="create-panel-body">
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Sub-Group Name <span style="color:var(--gold)">*</span></label>
+                    <input type="text" class="form-input" id="create-name" placeholder="e.g., Backend Development" maxlength="50" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Icon</label>
+                    <div class="icon-picker" id="icon-picker">
+                        <button class="icon-option active" data-icon="📁">📁</button>
+                        <button class="icon-option" data-icon="⚙️">⚙️</button>
+                        <button class="icon-option" data-icon="🖥️">🖥️</button>
+                        <button class="icon-option" data-icon="🧪">🧪</button>
+                        <button class="icon-option" data-icon="🤖">🤖</button>
+                        <button class="icon-option" data-icon="🚀">🚀</button>
+                        <button class="icon-option" data-icon="📊">📊</button>
+                        <button class="icon-option" data-icon="🔒">🔒</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Description</label>
+                <input type="text" class="form-input" id="create-desc" placeholder="Brief description of this sub-group's responsibilities" maxlength="120" />
+            </div>
+            <div class="create-actions">
+                <button class="btn-outline" id="btn-create-cancel">Cancel</button>
+                <button class="btn-gold" id="btn-create-save">✓ Create Sub-Group</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Groups Grid -->
+    <div class="groups-grid" id="groups-grid">
+        <!-- Populated by JS -->
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" id="empty-state" style="display:none;">
+        <div class="empty-icon-large">📁</div>
+        <div class="empty-title">No sub-groups yet</div>
+        <div class="empty-text">Create your first sub-group to organize team members</div>
+        <button class="btn-gold" id="btn-empty-create">+ Create Sub-Group</button>
+    </div>
+
+</div>
+
+<!-- Member Assignment Modal -->
+<div class="modal-overlay" id="assign-modal">
+    <div class="modal-panel">
+        <button class="modal-close" id="assign-modal-close">×</button>
+
+        <div class="modal-title" id="assign-modal-title">Manage Backend Members</div>
+        <div class="modal-subtitle">Assign or remove members from this sub-group</div>
+
+        <div class="assign-layout">
+            <!-- Available Members -->
+            <div class="assign-section">
+                <div class="assign-section-header">
+                    <span class="assign-section-title">Available Members</span>
+                    <span class="assign-section-count" id="available-count">0</span>
+                </div>
+                <div class="assign-search">
+                    <span class="assign-search-icon">🔍</span>
+                    <input type="text" class="assign-search-input" id="available-search" placeholder="Search..." />
+                </div>
+                <div class="assign-list" id="available-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Transfer Buttons -->
+            <div class="assign-divider">
+                <button class="transfer-btn" id="btn-add-members" title="Add to group">→</button>
+                <button class="transfer-btn transfer-remove" id="btn-remove-members" title="Remove from group">←</button>
+            </div>
+
+            <!-- Assigned Members -->
+            <div class="assign-section">
+                <div class="assign-section-header">
+                    <span class="assign-section-title">Assigned Members</span>
+                    <span class="assign-section-count" id="assigned-count">0</span>
+                </div>
+                <div class="assign-search">
+                    <span class="assign-search-icon">🔍</span>
+                    <input type="text" class="assign-search-input" id="assigned-search" placeholder="Search..." />
+                </div>
+                <div class="assign-list" id="assigned-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-actions">
+            <button class="btn-outline" id="btn-assign-cancel">Cancel</button>
+            <button class="btn-gold" id="btn-assign-save">✓ Save Changes</button>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Group Modal -->
+<div class="modal-overlay" id="edit-modal">
+    <div class="modal-panel modal-sm">
+        <button class="modal-close" id="edit-modal-close">×</button>
+
+        <div class="modal-title">Edit Sub-Group</div>
+        <div class="modal-subtitle">Update name and description</div>
+
+        <div class="form-group">
+            <label class="form-label">Sub-Group Name <span style="color:var(--gold)">*</span></label>
+            <input type="text" class="form-input" id="edit-name" />
+        </div>
+        <div class="form-group">
+            <label class="form-label">Description</label>
+            <input type="text" class="form-input" id="edit-desc" />
+        </div>
+        <div class="form-group">
+            <label class="form-label">Icon</label>
+            <div class="icon-picker" id="edit-icon-picker">
+                <button class="icon-option" data-icon="📁">📁</button>
+                <button class="icon-option" data-icon="⚙️">⚙️</button>
+                <button class="icon-option" data-icon="🖥️">🖥️</button>
+                <button class="icon-option" data-icon="🧪">🧪</button>
+                <button class="icon-option" data-icon="🤖">🤖</button>
+                <button class="icon-option" data-icon="🚀">🚀</button>
+                <button class="icon-option" data-icon="📊">📊</button>
+                <button class="icon-option" data-icon="🔒">🔒</button>
+            </div>
+        </div>
+
+        <div class="modal-actions">
+            <button class="btn-danger" id="btn-edit-delete">Delete</button>
+            <div style="flex:1"></div>
+            <button class="btn-outline" id="btn-edit-cancel">Cancel</button>
+            <button class="btn-gold" id="btn-edit-save">Save</button>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal-overlay" id="delete-modal">
+    <div class="modal-panel modal-sm">
+        <div class="modal-title" style="color:var(--red)">Delete Sub-Group?</div>
+        <div class="modal-subtitle">This action cannot be undone. Members will be unassigned.</div>
+
+        <div class="delete-warning">
+            <span class="delete-warning-icon">⚠️</span>
+            <span class="delete-warning-text">You are about to delete <strong id="delete-group-name">Backend</strong></span>
+        </div>
+
+        <div class="modal-actions">
+            <button class="btn-outline" id="btn-delete-cancel">Cancel</button>
+            <button class="btn-danger" id="btn-delete-confirm">Delete Sub-Group</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="module" src="/js/TL/tl-groups.js" asp-append-version="true"></script>
+}

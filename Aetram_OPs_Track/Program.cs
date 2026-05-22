@@ -21,6 +21,13 @@ app.UseAuthorization();
 app.MapStaticAssets();
 
 app.MapControllerRoute(
+    name: "tl",
+    pattern: "tl/{action=Dashboard}/{id?}",
+    defaults: new { controller = "TL" });
+
+
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Login}/{action=Index}/{id?}");
 

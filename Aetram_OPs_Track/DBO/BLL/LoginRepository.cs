@@ -113,7 +113,7 @@ namespace Aetram_OpsTrack.DBO.BLL
                         dt.Rows[0]["FirstName"].ToString(),
 
                     LastName =
-                        dt.Rows[0]["LastName"].ToString(),
+                        dt.Rows[0]["LastName"].ToString(), 
 
                     Email =
                         dt.Rows[0]["Email"].ToString(),
