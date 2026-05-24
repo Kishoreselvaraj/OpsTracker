@@ -6,7 +6,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
-    --gold: #C9A84C;
+    --gold: #E7C050;
+    --gold-gradient: linear-gradient(90deg, #D4A03C 0%, #E7C050 35%, #C58C30 70%, #BE802B 100%);
     --gold-light: #E8C96A;
     --gold-dim: #7A6120;
     --gold-pale: #A08B4C;

@@ -1,16 +1,50 @@
 @{
     ViewData["Title"] = "Department Head";
 }
-<div class="content-card">
-    <h1 class="h3" style="color:var(--gold)">Department Head</h1>
-    <div class="d-flex flex-wrap gap-2 mt-3">
-        <a class="btn btn-gold-outline" href="/DeptHead/Groups">Task groups</a>
-        <a class="btn btn-gold-outline" href="/DeptHead/Teams">Teams</a>
-        <a class="btn btn-gold-outline" href="/DeptHead/Reports">Reports</a>
-        <a class="btn btn-gold-outline" href="/tl/Dashboard">Team Lead views</a>
+<div class="page-hero">
+    <h1>Department overview</h1>
+    <p class="lead">Manage task groups, teams, and department reporting for your organization unit.</p>
+</div>
+
+<div class="stat-grid-premium">
+    <div class="stat-tile">
+        <div class="stat-tile-label">Task groups</div>
+        <div class="stat-tile-value"><i class="fa-solid fa-folder-tree"></i></div>
+    </div>
+    <div class="stat-tile">
+        <div class="stat-tile-label">Teams</div>
+        <div class="stat-tile-value"><i class="fa-solid fa-people-group"></i></div>
+    </div>
+    <div class="stat-tile">
+        <div class="stat-tile-label">Reports</div>
+        <div class="stat-tile-value"><i class="fa-solid fa-chart-pie"></i></div>
+    </div>
+    <div class="stat-tile">
+        <div class="stat-tile-label">EOD oversight</div>
+        <div class="stat-tile-value"><i class="fa-solid fa-calendar-check"></i></div>
     </div>
 </div>
+
+<div class="ops-card ops-card--accent">
+    <h2 class="h5 mb-2" style="color:var(--gold-2)">Department workspace</h2>
+    <p class="text-secondary" id="dept-context">Loading department scope…</p>
+    <div class="quick-actions">
+        <a class="btn-gold-gradient" href="/DeptHead/Groups"><i class="fa-solid fa-folder-tree"></i> Task groups</a>
+        <a class="btn-gold-outline" href="/DeptHead/Teams"><i class="fa-solid fa-people-group"></i> Teams</a>
+        <a class="btn-gold-outline" href="/DeptHead/Reports"><i class="fa-solid fa-file-chart-column"></i> Reports</a>
+        <a class="btn-gold-outline" href="/tl/Dashboard"><i class="fa-solid fa-chart-line"></i> Team lead view</a>
+        <a class="btn-gold-outline" href="/EodCalander"><i class="fa-solid fa-calendar-days"></i> EOD calendar</a>
+    </div>
+</div>
+
 <script type="module">
     import { requireAuth } from '/js/auth/routeGuard.js';
-    requireAuth({ allowRoles: ['DepartmentHead', 'Admin'] });
+    import { loadHierarchyContext, effectiveDepartmentId } from '/js/hierarchy/hierarchyContext.js';
+    if (!requireAuth({ allowRoles: ['DepartmentHead', 'Admin'] })) throw new Error('auth');
+    loadHierarchyContext().then(ctx => {
+        const el = document.getElementById('dept-context');
+        if (el) el.textContent = effectiveDepartmentId(ctx)
+            ? `Managing department #${effectiveDepartmentId(ctx)}`
+            : 'No department assigned — contact admin';
+    });
 </script>

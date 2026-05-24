@@ -1,0 +1,40 @@
+@{
+    ViewData["Title"] = "My workspace";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/hierarchy.css" asp-append-version="true" />
+}
+
+<nav id="hierarchy-breadcrumbs" class="hierarchy-bc" aria-label="Breadcrumb"></nav>
+
+<div class="page-hero">
+    <h1>Hello, <span id="member-greeting">Member</span></h1>
+    <p class="lead">Your team and sub-group assignment within the organization hierarchy.</p>
+</div>
+
+<div class="stat-grid-premium">
+    <div class="stat-tile">
+        <div class="stat-tile-label">Department</div>
+        <div class="stat-tile-value small" id="ctx-dept" style="font-size:1rem">—</div>
+    </div>
+    <div class="stat-tile">
+        <div class="stat-tile-label">Team</div>
+        <div class="stat-tile-value small" id="ctx-team" style="font-size:1rem">—</div>
+    </div>
+    <div class="stat-tile">
+        <div class="stat-tile-label">Sub-group</div>
+        <div class="stat-tile-value small" id="ctx-subgroup" style="font-size:1rem">—</div>
+    </div>
+</div>
+
+<div class="ops-card">
+    <h2 class="h6" style="color:var(--gold-2)">Sub-group roster</h2>
+    <p class="text-secondary small">Members assigned to your sub-group (visible for forms and tasks).</p>
+    <div id="member-roster" class="member-chip-list mt-2"></div>
+    <div class="quick-actions mt-4">
+        <a class="btn-gold-gradient" href="/Dashboard"><i class="fa-solid fa-gauge-high"></i> Work dashboard</a>
+        <a class="btn-gold-outline" href="/EodCalander"><i class="fa-solid fa-calendar-days"></i> EOD calendar</a>
+    </div>
+</div>
+
+<script type="module" src="~/js/pages/member-workspace.js" asp-append-version="true"></script>

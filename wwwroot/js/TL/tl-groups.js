@@ -1,526 +1,239 @@
-/* ============================================================
-   Aetram OpsTracker — Team Lead Groups Page JS
-   jQuery + AJAX with demo data fallback
-   ============================================================ */
-
-import { postWithAuth } from '/js/services/apiService.js';
-import { unwrap } from '/js/services/apiClient.js';
+/**
+ * Team Lead — Sub-group management (wired to hierarchy API).
+ */
+import { apiPost, unwrap } from '/js/services/apiClient.js';
+import { hierarchyApi } from '/js/hierarchy/hierarchyApi.js';
+import { loadHierarchyContext, effectiveTeamId } from '/js/hierarchy/hierarchyContext.js';
+import { renderBreadcrumbs } from '/js/hierarchy/breadcrumbs.js';
+import { confirmAction } from '/js/hierarchy/confirm.js';
+import { pick, fullName, slugCode } from '/js/hierarchy/caseHelpers.js';
 import { getUser } from '/js/auth/authService.js';
 import { requireAuth } from '/js/auth/routeGuard.js';
 import { showToast } from '/js/utils/toast.js';
 
-$(function () {
+if (!requireAuth({ allowRoles: ['TeamLead', 'Admin', 'DepartmentHead'] })) throw new Error('auth');
 
-    /* ── API Config ───────────────────────────────────────── */
-    const API = {
-        subGroups: '/api/SubGroup/list',
-        createSubGroup: '/api/SubGroup/create',
-        updateSubGroup: '/api/SubGroup/update',
-        assignMember: '/api/SubGroup/assign-member',
-        teamMembers: '/api/Approval/GetTeamLeadMembersWorkLogs'
-    };
+const state = {
+    ctx: null,
+    teamId: null,
+    teamName: '',
+    inheritedGroupName: '',
+    subGroups: [],
+    assignable: [],
+    assigned: [],
+    currentSubGroupId: null,
+    editingId: null
+};
 
-    /* ── Demo Data ────────────────────────────────────────── */
-    const DEMO = {
-        teamLead: { userId: 2, name: "Priya Sharma", employeeCode: "EMP-00101", taskGroupId: 1, taskGroupName: "India" },
-        subGroups: [
-            {
-                subGroupId: 1, name: "Frontend", description: "UI/UX Development", icon: "🖥️",
-                memberCount: 3, members: [4, 8, 9]
-            },
-            {
-                subGroupId: 2, name: "Backend", description: "Server-side Development", icon: "⚙️",
-                memberCount: 2, members: [1, 7]
-            },
-            {
-                subGroupId: 3, name: "Manual Testing", description: "Manual QA Testing", icon: "🧪",
-                memberCount: 2, members: [3, 9]
-            },
-            {
-                subGroupId: 4, name: "Automation", description: "Test Automation", icon: "🤖",
-                memberCount: 1, members: [5]
-            },
-            {
-                subGroupId: 5, name: "CI/CD", description: "DevOps & Deployment", icon: "🚀",
-                memberCount: 1, members: [6]
-            }
-        ],
-        allMembers: [
-            { userId: 1, name: "Rahul Kumar", code: "EMP-00412" },
-            { userId: 3, name: "Amit Verma", code: "EMP-00415" },
-            { userId: 4, name: "Sunita Patel", code: "EMP-00420" },
-            { userId: 5, name: "Vikram Rao", code: "EMP-00425" },
-            { userId: 6, name: "Neha Gupta", code: "EMP-00430" },
-            { userId: 7, name: "Ravi Mehta", code: "EMP-00435" },
-            { userId: 8, name: "Kiran Shah", code: "EMP-00440" },
-            { userId: 9, name: "Deepa Nair", code: "EMP-00445" },
-            { userId: 10, name: "Arun Joshi", code: "EMP-00450" }
-        ]
-    };
+async function bootstrap() {
+    state.ctx = await loadHierarchyContext();
+    state.teamId = effectiveTeamId(state.ctx);
+    const user = getUser();
+    $('#nav-user-name').text(user?.name || user?.email || 'Team Lead');
 
-    /* ── State ────────────────────────────────────────────── */
-    let currentUser = null;
-    let subGroups = [];
-    let allMembers = [];
-    let currentSubGroupId = null;
-    let selectedAvailable = [];
-    let selectedAssigned = [];
-    let selectedIcon = '📁';
-    let editingGroupId = null;
-    let deletingGroupId = null;
-
-    /* ── Helpers ───────────────────────────────────────────── */
-    function escapeHtml(text) {
-        if (!text) return '';
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
+    if (!state.teamId) {
+        $('#groups-grid').html('<p class="hierarchy-empty">No team assigned. Contact your department head.</p>');
+        $('#btn-create-toggle').prop('disabled', true);
+        return;
     }
 
-    function showToast(msg) {
-        $('.toast').remove();
-        const $t = $('<div class="toast">').text(msg).appendTo('body');
-        setTimeout(() => $t.addClass('show'), 10);
-        setTimeout(() => { $t.removeClass('show'); setTimeout(() => $t.remove(), 300); }, 2500);
+    try {
+        const team = await hierarchyApi.getTeam(state.teamId);
+        state.teamName = pick(team, 'teamName', 'TeamName') || 'Team';
+        const groupName = pick(team, 'groupName', 'GroupName') || 'Department task group';
+        $('#task-group-name').text(`${groupName} · ${state.teamName}`);
+        state.inheritedGroupName = groupName;
+    } catch {
+        $('#task-group-name').text('Your team');
     }
 
-    function getInitials(name) {
-        return name.split(' ').map(n => n[0]).join('');
+    renderBreadcrumbs('hierarchy-breadcrumbs', [
+        { label: 'Team Lead', href: '/tl/Dashboard' },
+        { label: state.teamName },
+        { label: 'Sub-groups' }
+    ]);
+
+    await loadSubGroups();
+}
+
+async function loadSubGroups() {
+    $('#groups-grid').html('<div class="group-card skeleton" style="height:180px"></div>'.repeat(2));
+    try {
+        const list = await hierarchyApi.listSubGroups({ teamId: state.teamId });
+        state.subGroups = await Promise.all((list ?? []).map(async sg => {
+            const id = pick(sg, 'subGroupId', 'SubGroupId');
+            let members = [];
+            try { members = await hierarchyApi.listSubGroupMembers(id) ?? []; } catch { /* */ }
+            return {
+                subGroupId: id,
+                name: pick(sg, 'subGroupName', 'SubGroupName'),
+                description: pick(sg, 'description', 'Description'),
+                groupName: pick(sg, 'groupName', 'GroupName') || state.inheritedGroupName,
+                memberCount: members.length,
+                members
+            };
+        }));
+    } catch (err) {
+        showToast(err.message || 'Failed to load sub-groups', 'error');
+        state.subGroups = [];
     }
+    renderGrid();
+}
 
-    /* ── Load User ─────────────────────────────────────────── */
-    function loadUser() {
-        try { currentUser = getUser(); } catch (e) { currentUser = DEMO.teamLead; }
-        if (currentUser) {
-            $('#nav-user-name').text(currentUser.name || 'Team Lead');
-            $('#task-group-name').text(currentUser.taskGroupName || 'India');
-        }
+function renderGrid() {
+    const $grid = $('#groups-grid');
+    const $empty = $('#empty-state');
+    if (!state.subGroups.length) {
+        $grid.hide();
+        $empty.show();
+        return;
     }
+    $grid.show();
+    $empty.hide();
+    $grid.html(state.subGroups.map(sg => `
+        <div class="group-card" data-subgroupid="${sg.subGroupId}">
+            <div class="group-card-header">
+                <div class="group-icon">📁</div>
+                <button class="group-menu btn-edit-group" data-subgroupid="${sg.subGroupId}">⋯</button>
+            </div>
+            <div class="group-name">${escapeHtml(sg.name)}</div>
+                    <div class="group-desc">${escapeHtml(sg.description || '')}</div>
+                    <div class="small text-secondary">Task group: ${escapeHtml(sg.groupName || state.inheritedGroupName || '')}</div>
+            <div class="group-members"><span class="member-count">${sg.memberCount} member(s)</span></div>
+            <div class="group-actions">
+                <button class="group-btn btn-manage" data-subgroupid="${sg.subGroupId}">Manage members</button>
+            </div>
+        </div>`).join(''));
+}
 
-    /* ── Load Sub-Groups ───────────────────────────────────── */
-    async function loadSubGroups() {
-        $('#groups-grid').html(
-            Array(4).fill('<div class="group-card skeleton" style="height:200px"></div>').join('')
-        );
+function escapeHtml(t) {
+    const d = document.createElement('div');
+    d.textContent = t ?? '';
+    return d.innerHTML;
+}
 
-        try {
-            const response = await postWithAuth(API.subGroups, {});
-            subGroups = (unwrap(response).data || []).map(sg => ({
-                subGroupId: sg.subGroupId ?? sg.SubGroupId,
-                name: sg.subGroupName ?? sg.SubGroupName,
-                code: sg.subGroupCode ?? sg.SubGroupCode,
-                teamName: sg.teamName ?? sg.TeamName,
-                memberCount: 0
-            }));
-        } catch (err) {
-            subGroups = [];
-            showToast(err.message || 'Failed to load sub-groups', 'error');
-        }
-        renderSubGroups();
-    }
+$('#btn-create-toggle, #btn-empty-create').on('click', () => {
+    $('#create-panel').slideDown(200);
+    $('#create-name').focus();
+});
 
-    /* ── Load All Members ──────────────────────────────────── */
-    async function loadAllMembers() {
-        try {
-            const response = await getWithAuth(API.teamMembers + '?teamLeadId=' + (currentUser?.userId || 2));
-            allMembers = response.data || response;
-        } catch (err) {
-            allMembers = DEMO.allMembers;
-        }
-    }
+$('#btn-create-close, #btn-create-cancel').on('click', () => {
+    $('#create-panel').slideUp(200);
+    $('#create-name, #create-desc').val('');
+});
 
-    /* ── Render Sub-Groups ─────────────────────────────────── */
-    function renderSubGroups() {
-        const $grid = $('#groups-grid');
-        const $empty = $('#empty-state');
-
-        if (subGroups.length === 0) {
-            $grid.hide();
-            $empty.show();
-            return;
-        }
-
-        $grid.show();
-        $empty.hide();
-
-        const html = subGroups.map((sg, index) => {
-            const memberAvatars = sg.members.slice(0, 3).map(userId => {
-                const member = allMembers.find(m => m.userId === userId);
-                const initials = member ? getInitials(member.name) : '?';
-                return `<div class="member-avatar" title="${member ? escapeHtml(member.name) : ''}">${escapeHtml(initials)}</div>`;
-            }).join('');
-
-            const extraCount = sg.members.length > 3 ? sg.members.length - 3 : 0;
-
-            return `
-                <div class="group-card" data-subgroupid="${sg.subGroupId}" style="animation-delay:${index * 0.05}s">
-                    <div class="group-card-header">
-                        <div class="group-icon">${sg.icon || '📁'}</div>
-                        <button class="group-menu btn-edit-group" data-subgroupid="${sg.subGroupId}" title="Edit">⋯</button>
-                    </div>
-                    <div class="group-name">${escapeHtml(sg.name)}</div>
-                    <div class="group-desc">${escapeHtml(sg.description || 'No description')}</div>
-                    <div class="group-members">
-                        <div class="member-avatars">
-                            ${memberAvatars}
-                            ${extraCount > 0 ? `<div class="member-avatar" style="background:var(--surface-3);color:var(--text-2)">+${extraCount}</div>` : ''}
-                        </div>
-                        <span class="member-count">${sg.memberCount} member${sg.memberCount === 1 ? '' : 's'}</span>
-                    </div>
-                    <div class="group-actions">
-                        <button class="group-btn btn-manage" data-subgroupid="${sg.subGroupId}">Manage Members</button>
-                        <button class="group-btn primary btn-view" data-subgroupid="${sg.subGroupId}">View Details</button>
-                    </div>
-                </div>
-            `;
-        }).join('');
-
-        $grid.html(html);
-    }
-
-    /* ── Create Panel Toggle ───────────────────────────────── */
-    $('#btn-create-toggle, #btn-empty-create').on('click', function () {
-        $('#create-panel').slideDown(300);
-        $('#create-name').focus();
-    });
-
-    $('#btn-create-close, #btn-create-cancel').on('click', function () {
-        $('#create-panel').slideUp(300);
-        resetCreateForm();
-    });
-
-    function resetCreateForm() {
-        $('#create-name').val('');
-        $('#create-desc').val('');
-        selectedIcon = '📁';
-        $('.icon-option').removeClass('active').first().addClass('active');
-    }
-
-    /* ── Icon Picker ───────────────────────────────────────── */
-    $(document).on('click', '.icon-option', function () {
-        $(this).closest('.icon-picker').find('.icon-option').removeClass('active');
-        $(this).addClass('active');
-        selectedIcon = $(this).data('icon');
-    });
-
-    /* ── Create Sub-Group ──────────────────────────────────── */
-    $('#btn-create-save').on('click', async function () {
-        const name = $('#create-name').val().trim();
-        const desc = $('#create-desc').val().trim();
-
-        if (!name) {
-            showToast('Please enter a sub-group name');
-            return;
-        }
-
-        const data = {
-            taskGroupId: currentUser?.taskGroupId || 1,
+$('#btn-create-save').on('click', async () => {
+    const name = $('#create-name').val().trim();
+    if (!name) { showToast('Enter a sub-group name', 'error'); return; }
+    try {
+        await hierarchyApi.createSubGroup({
+            teamId: state.teamId,
+            subGroupCode: slugCode(name, 'SG'),
             subGroupName: name,
-            description: desc,
-            icon: selectedIcon,
-            createdBy: currentUser?.userId || 2
-        };
-
-        try {
-            await postWithAuth(API.createSubGroup, data);
-            showToast('Sub-group created successfully!');
-        } catch (err) {
-            const newId = Math.max(...subGroups.map(s => s.subGroupId), 0) + 1;
-            subGroups.push({
-                subGroupId: newId, name: name, description: desc,
-                icon: selectedIcon, memberCount: 0, members: []
-            });
-            showToast('Sub-group created!');
-            renderSubGroups();
-        }
-
-        $('#create-panel').slideUp(300);
-        resetCreateForm();
+            description: $('#create-desc').val().trim() || null
+        });
+        showToast('Sub-group created', 'success');
+        $('#create-panel').slideUp(200);
         loadSubGroups();
-    });
+    } catch (err) { showToast(err.message, 'error'); }
+});
 
-    /* ── Edit Group Modal ──────────────────────────────────── */
-    $(document).on('click', '.btn-edit-group', function (e) {
-        e.stopPropagation();
-        const sgId = $(this).data('subgroupid');
-        const group = subGroups.find(s => s.subGroupId === sgId);
-        if (!group) return;
+$(document).on('click', '.btn-edit-group', function () {
+    const id = Number($(this).data('subgroupid'));
+    const sg = state.subGroups.find(s => s.subGroupId === id);
+    if (!sg) return;
+    state.editingId = id;
+    $('#edit-name').val(sg.name);
+    $('#edit-desc').val(sg.description || '');
+    $('#edit-modal').addClass('active');
+});
 
-        editingGroupId = sgId;
-        $('#edit-name').val(group.name);
-        $('#edit-desc').val(group.description || '');
-
-        // Set icon
-        $('#edit-icon-picker .icon-option').removeClass('active');
-        $(`#edit-icon-picker .icon-option[data-icon="${group.icon}"]`).addClass('active');
-
-        $('#edit-modal').addClass('active');
-        $('body').css('overflow', 'hidden');
-    });
-
-    function closeEditModal() {
+$('#btn-edit-save').on('click', async () => {
+    if (!state.editingId) return;
+    try {
+        await hierarchyApi.updateSubGroup({
+            subGroupId: state.editingId,
+            subGroupName: $('#edit-name').val().trim(),
+            description: $('#edit-desc').val().trim() || null
+        });
+        showToast('Updated', 'success');
         $('#edit-modal').removeClass('active');
-        $('body').css('overflow', '');
-        editingGroupId = null;
-    }
-
-    $('#edit-modal-close, #btn-edit-cancel').on('click', closeEditModal);
-    $('#edit-modal').on('click', function (e) { if (e.target === this) closeEditModal(); });
-
-    $('#btn-edit-save').on('click', async function () {
-        if (!editingGroupId) return;
-        const name = $('#edit-name').val().trim();
-        const desc = $('#edit-desc').val().trim();
-        const icon = $('#edit-icon-picker .icon-option.active').data('icon') || '📁';
-
-        if (!name) {
-            showToast('Please enter a sub-group name');
-            return;
-        }
-
-        try {
-            await postWithAuth(API.updateSubGroup, {
-                subGroupId: editingGroupId,
-                subGroupName: name,
-                description: desc,
-                icon: icon,
-                updatedBy: currentUser?.userId || 2
-            });
-            showToast('Sub-group updated!');
-        } catch (err) {
-            const idx = subGroups.findIndex(s => s.subGroupId === editingGroupId);
-            if (idx >= 0) {
-                subGroups[idx].name = name;
-                subGroups[idx].description = desc;
-                subGroups[idx].icon = icon;
-            }
-            showToast('Sub-group updated!');
-            renderSubGroups();
-        }
-
-        closeEditModal();
         loadSubGroups();
-    });
+    } catch (err) { showToast(err.message, 'error'); }
+});
 
-    /* ── Delete Group ──────────────────────────────────────── */
-    $('#btn-edit-delete').on('click', function () {
-        closeEditModal();
-        const group = subGroups.find(s => s.subGroupId === editingGroupId);
-        if (!group) return;
+$('#btn-edit-delete').on('click', async () => {
+    const id = state.editingId;
+    $('#edit-modal').removeClass('active');
+    const sg = state.subGroups.find(s => s.subGroupId === id);
+    $('#delete-group-name').text(sg?.name || '');
+    state.deletingId = id;
+    $('#delete-modal').addClass('active');
+});
 
-        deletingGroupId = editingGroupId;
-        $('#delete-group-name').text(group.name);
-        $('#delete-modal').addClass('active');
-        $('body').css('overflow', 'hidden');
-    });
-
-    function closeDeleteModal() {
+$('#btn-delete-confirm').on('click', async () => {
+    try {
+        await hierarchyApi.deleteSubGroup(state.deletingId);
+        showToast('Sub-group deleted', 'success');
         $('#delete-modal').removeClass('active');
-        $('body').css('overflow', '');
-        deletingGroupId = null;
-    }
-
-    $('#btn-delete-cancel').on('click', closeDeleteModal);
-    $('#delete-modal').on('click', function (e) { if (e.target === this) closeDeleteModal(); });
-
-    $('#btn-delete-confirm').on('click', async function () {
-        if (!deletingGroupId) return;
-
-        try {
-            await deleteWithAuth(API.deleteSubGroup, { subGroupId: deletingGroupId });
-            showToast('Sub-group deleted!');
-        } catch (err) {
-            subGroups = subGroups.filter(s => s.subGroupId !== deletingGroupId);
-            showToast('Sub-group deleted!');
-            renderSubGroups();
-        }
-
-        closeDeleteModal();
         loadSubGroups();
-    });
+    } catch (err) { showToast(err.message, 'error'); }
+});
 
-    /* ── Member Assignment Modal ───────────────────────────── */
-    $(document).on('click', '.btn-manage', function (e) {
-        e.stopPropagation();
-        const sgId = $(this).data('subgroupid');
-        openAssignModal(sgId);
-    });
+$('.modal-close, #btn-edit-cancel, #btn-delete-cancel, #btn-assign-cancel').on('click', () => {
+    $('.modal-overlay').removeClass('active');
+});
 
-    function openAssignModal(sgId) {
-        currentSubGroupId = sgId;
-        const group = subGroups.find(s => s.subGroupId === sgId);
-        if (!group) return;
-
-        $('#assign-modal-title').text(`Manage ${group.name} Members`);
-        selectedAvailable = [];
-        selectedAssigned = [];
-
-        renderAssignLists(group);
-
+$(document).on('click', '.btn-manage', async function () {
+    state.currentSubGroupId = Number($(this).data('subgroupid'));
+    const sg = state.subGroups.find(s => s.subGroupId === state.currentSubGroupId);
+    $('#assign-modal-title').text(`Members — ${sg?.name || ''}`);
+    try {
+        state.assignable = await hierarchyApi.listAssignableMembers(state.teamId, state.currentSubGroupId) ?? [];
+        state.assigned = sg?.members ?? [];
+        renderAssignLists();
         $('#assign-modal').addClass('active');
-        $('body').css('overflow', 'hidden');
-    }
+    } catch (err) { showToast(err.message, 'error'); }
+});
 
-    function renderAssignLists(group) {
-        const assignedIds = group.members || [];
-        const available = allMembers.filter(m => !assignedIds.includes(m.userId));
-        const assigned = allMembers.filter(m => assignedIds.includes(m.userId));
+function renderAssignLists() {
+    const assignedIds = new Set(state.assigned.map(m => pick(m, 'userId', 'UserId')));
+    const available = state.assignable.filter(m => !assignedIds.has(pick(m, 'userId', 'UserId')));
+    $('#available-list').html(listHtml(available, 'avail'));
+    $('#assigned-list').html(listHtml(state.assigned, 'asgn'));
+    $('#available-count').text(available.length);
+    $('#assigned-count').text(state.assigned.length);
+}
 
-        renderList('available-list', available, 'available');
-        renderList('assigned-list', assigned, 'assigned');
+function listHtml(members, type) {
+    if (!members.length) return '<div class="text-secondary p-3">None</div>';
+    return members.map(m => {
+        const id = pick(m, 'userId', 'UserId');
+        return `<label class="assign-item d-block p-2"><input type="checkbox" data-type="${type}" data-id="${id}" />
+            ${escapeHtml(fullName(m))} <span class="text-secondary small">${pick(m, 'employeeCode', 'EmployeeCode') || ''}</span></label>`;
+    }).join('');
+}
 
-        $('#available-count').text(available.length);
-        $('#assigned-count').text(assigned.length);
-    }
-
-    function renderList(containerId, members, type) {
-        const $container = $(`#${containerId}`);
-        if (members.length === 0) {
-            $container.html(`<div style="text-align:center;padding:20px;color:var(--text-3);font-size:var(--text-sm)">No members</div>`);
-            return;
-        }
-
-        const selectedArray = type === 'available' ? selectedAvailable : selectedAssigned;
-
-        const html = members.map(m => {
-            const isSelected = selectedArray.includes(m.userId);
-            return `
-                <div class="assign-item ${isSelected ? 'selected' : ''}" data-userid="${m.userId}" data-type="${type}">
-                    <input type="checkbox" ${isSelected ? 'checked' : ''} />
-                    <label>${escapeHtml(m.name)}</label>
-                    <span class="assign-item-code">${escapeHtml(m.code)}</span>
-                </div>
-            `;
-        }).join('');
-
-        $container.html(html);
-    }
-
-    // Checkbox selection in assign modal
-    $(document).on('click', '.assign-item', function (e) {
-        if (e.target.tagName === 'INPUT') return;
-        $(this).find('input[type="checkbox"]').trigger('click');
-    });
-
-    $(document).on('change', '.assign-item input[type="checkbox"]', function () {
-        const $item = $(this).closest('.assign-item');
-        const userId = parseInt($item.data('userid'));
-        const type = $item.data('type');
-        const selectedArray = type === 'available' ? selectedAvailable : selectedAssigned;
-
-        if ($(this).prop('checked')) {
-            if (!selectedArray.includes(userId)) selectedArray.push(userId);
-            $item.addClass('selected');
-        } else {
-            const idx = selectedArray.indexOf(userId);
-            if (idx >= 0) selectedArray.splice(idx, 1);
-            $item.removeClass('selected');
-        }
-    });
-
-    // Transfer buttons
-    $('#btn-add-members').on('click', function () {
-        if (selectedAvailable.length === 0) {
-            showToast('Select members to add');
-            return;
-        }
-
-        const group = subGroups.find(s => s.subGroupId === currentSubGroupId);
-        if (!group) return;
-
-        group.members = [...new Set([...group.members, ...selectedAvailable])];
-        group.memberCount = group.members.length;
-        selectedAvailable = [];
-
-        renderAssignLists(group);
-        showToast(`${selectedAvailable.length} member(s) added`);
-    });
-
-    $('#btn-remove-members').on('click', function () {
-        if (selectedAssigned.length === 0) {
-            showToast('Select members to remove');
-            return;
-        }
-
-        const group = subGroups.find(s => s.subGroupId === currentSubGroupId);
-        if (!group) return;
-
-        group.members = group.members.filter(id => !selectedAssigned.includes(id));
-        group.memberCount = group.members.length;
-        selectedAssigned = [];
-
-        renderAssignLists(group);
-        showToast(`${selectedAssigned.length} member(s) removed`);
-    });
-
-    // Search in assign lists
-    $('#available-search').on('input', function () {
-        const search = $(this).val().toLowerCase();
-        $('#available-list .assign-item').each(function () {
-            const text = $(this).text().toLowerCase();
-            $(this).toggle(text.includes(search));
-        });
-    });
-
-    $('#assigned-search').on('input', function () {
-        const search = $(this).val().toLowerCase();
-        $('#assigned-list .assign-item').each(function () {
-            const text = $(this).text().toLowerCase();
-            $(this).toggle(text.includes(search));
-        });
-    });
-
-    // Save assignment
-    $('#btn-assign-save').on('click', async function () {
-        const group = subGroups.find(s => s.subGroupId === currentSubGroupId);
-        if (!group) return;
-
+$('#btn-add-members').on('click', async () => {
+    const ids = $('#available-list input:checked').map((_, el) => Number(el.dataset.id)).get();
+    for (const userId of ids) {
         try {
-            await postWithAuth(API.subGroupMembers, {
-                subGroupId: currentSubGroupId,
-                memberIds: group.members,
-                updatedBy: currentUser?.userId || 2
-            });
-            showToast('Members updated successfully!');
-        } catch (err) {
-            showToast('Members updated!');
-            renderSubGroups();
-        }
-
-        closeAssignModal();
-    });
-
-    function closeAssignModal() {
-        $('#assign-modal').removeClass('active');
-        $('body').css('overflow', '');
-        currentSubGroupId = null;
-        selectedAvailable = [];
-        selectedAssigned = [];
+            await hierarchyApi.assignSubGroupMember({ subGroupId: state.currentSubGroupId, userId });
+        } catch (err) { showToast(err.message, 'error'); return; }
     }
+    showToast('Members assigned', 'success');
+    await loadSubGroups();
+    const sg = state.subGroups.find(s => s.subGroupId === state.currentSubGroupId);
+    state.assigned = sg?.members ?? [];
+    state.assignable = await hierarchyApi.listAssignableMembers(state.teamId, state.currentSubGroupId);
+    renderAssignLists();
+});
 
-    $('#assign-modal-close, #btn-assign-cancel').on('click', closeAssignModal);
-    $('#assign-modal').on('click', function (e) { if (e.target === this) closeAssignModal(); });
+$('#btn-remove-members').on('click', () => showToast('Unassign via admin or reassign to another sub-group', 'info'));
 
-    /* ── View Details (placeholder) ────────────────────────── */
-    $(document).on('click', '.btn-view', function (e) {
-        e.stopPropagation();
-        const sgId = $(this).data('subgroupid');
-        const group = subGroups.find(s => s.subGroupId === sgId);
-        showToast(`${group.name} details coming soon`);
-    });
-
-    /* ── Keyboard ──────────────────────────────────────────── */
-    $(document).on('keydown', function (e) {
-        if (e.key === 'Escape') {
-            closeEditModal();
-            closeDeleteModal();
-            closeAssignModal();
-        }
-    });
-
-    /* ── Bootstrap ─────────────────────────────────────────── */
-    if (!requireAuth({ minRole: 'TeamLead' })) return;
-    loadUser();
-    loadAllMembers();
+$('#btn-assign-save').on('click', () => {
+    $('#assign-modal').removeClass('active');
     loadSubGroups();
 });
+
+$(function () { bootstrap(); });

@@ -8,5 +8,7 @@ namespace OpsTracker_v1.Controllers
         public IActionResult Organizations() => View("~/Views/Admin/Organizations.cshtml");
         public IActionResult Users() => View("~/Views/Admin/Users.cshtml");
         public IActionResult Settings() => View("~/Views/Admin/Settings.cshtml");
+        public IActionResult Departments() => View("~/Views/Admin/Departments.cshtml");
+        public IActionResult AuditLog() => View("~/Views/Admin/AuditLog.cshtml");
     }
 }

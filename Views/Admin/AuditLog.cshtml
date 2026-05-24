@@ -1,0 +1,53 @@
+@{
+    ViewData["Title"] = "Audit log";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/hierarchy.css" asp-append-version="true" />
+}
+
+<nav id="hierarchy-breadcrumbs" class="hierarchy-bc" aria-label="Breadcrumb"></nav>
+
+<div class="page-hero">
+    <h1>Audit log</h1>
+    <p class="lead">Critical actions: creates, updates, deletes, and assignments.</p>
+</div>
+
+<form id="audit-filter-form" class="ops-card mb-3">
+    <div class="row g-2 align-items-end">
+        <div class="col-md-3">
+            <label class="form-label" for="audit-table">Table</label>
+            <input class="form-control" id="audit-table" placeholder="e.g. Departments" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label" for="audit-action">Action</label>
+            <input class="form-control" id="audit-action" placeholder="e.g. CREATE" />
+        </div>
+        <div class="col-md-3">
+            <button type="submit" class="btn-gold-gradient w-100">Filter</button>
+        </div>
+        <div class="col-md-3 text-secondary small" id="audit-total">—</div>
+    </div>
+</form>
+
+<div class="ops-card hierarchy-table-wrap">
+    <table class="hierarchy-table">
+        <thead>
+            <tr>
+                <th>When</th>
+                <th>User</th>
+                <th>Action</th>
+                <th>Table</th>
+                <th>Record</th>
+            </tr>
+        </thead>
+        <tbody id="audit-table-body">
+            <tr><td colspan="5" class="text-secondary">Loading…</td></tr>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-between mt-3">
+        <button type="button" class="btn-gold-outline btn-sm" id="audit-prev">Previous</button>
+        <button type="button" class="btn-gold-outline btn-sm" id="audit-next">Next</button>
+    </div>
+</div>
+
+<script type="module" src="~/js/pages/admin-audit.js" asp-append-version="true"></script>

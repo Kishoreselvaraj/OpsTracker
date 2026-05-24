@@ -1,28 +1,77 @@
 @{
     ViewData["Title"] = "Organizations";
 }
-<div class="content-card">
-    <h2 style="color:var(--gold)">Organizations</h2>
-    <p>API: <code>GET /api/Organization/list</code>, <code>POST /api/Organization/create</code></p>
-    <div id="org-list" class="mt-3">Loading…</div>
+@section Styles {
+    <link rel="stylesheet" href="~/css/hierarchy.css" asp-append-version="true" />
+}
+
+<nav id="hierarchy-breadcrumbs" class="hierarchy-bc" aria-label="Breadcrumb"></nav>
+
+<div class="page-hero">
+    <h1>Organizations</h1>
+    <p class="lead">Manage top-level organizations. Departments require an organization.</p>
 </div>
-<script type="module">
-    import { requireAuth } from '/js/auth/routeGuard.js';
-    import { apiGet, unwrap } from '/js/services/apiClient.js';
-    import { showToast } from '/js/utils/toast.js';
-    if (!requireAuth({ allowRoles: ['Admin'] })) throw new Error('auth');
-    async function load() {
-        try {
-            const json = await apiGet('/api/Organization/list');
-            const { data } = unwrap(json);
-            const rows = (data || []).map(o =>
-                `<div class="border-bottom py-2">${o.organizationName ?? o.OrganizationName} <span class="text-muted">(${o.organizationCode ?? o.OrganizationCode})</span></div>`
-            ).join('');
-            document.getElementById('org-list').innerHTML = rows || '<p>No organizations</p>';
-        } catch (e) {
-            document.getElementById('org-list').textContent = e.message || 'Failed to load';
-            showToast('Failed to load organizations', 'error');
-        }
-    }
-    load();
-</script>
+
+<div class="hierarchy-toolbar">
+    <span class="text-secondary small">Create at least one organization before adding departments.</span>
+    <button type="button" class="btn-gold-gradient" id="btn-org-create"><i class="fa-solid fa-plus"></i> New organization</button>
+</div>
+
+<div class="ops-card hierarchy-table-wrap">
+    <table class="hierarchy-table">
+        <thead>
+            <tr>
+                <th>Organization</th>
+                <th>Code</th>
+                <th>Contact</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="org-table-body">
+            <tr><td colspan="4" class="text-secondary">Loading…</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="org-modal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ops-modal">
+            <form id="org-form" novalidate>
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="org-modal-title">Organization</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label" for="org-code">Code</label>
+                            <input class="form-control" id="org-code" required maxlength="50" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="org-name">Name</label>
+                            <input class="form-control" id="org-name" required maxlength="200" />
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="org-desc">Description</label>
+                            <textarea class="form-control" id="org-desc" rows="2"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="org-email">Contact email</label>
+                            <input type="email" class="form-control" id="org-email" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="org-phone">Contact phone</label>
+                            <input class="form-control" id="org-phone" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn-gold-outline" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn-gold-gradient">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="~/js/pages/admin-organizations.js" asp-append-version="true"></script>

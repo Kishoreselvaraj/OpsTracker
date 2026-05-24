@@ -1,27 +1,37 @@
 @{
     ViewData["Title"] = "Reports";
 }
-<div class="content-card">
-    <h2 style="color:var(--gold)">Department reports</h2>
-    <button class="btn btn-gold-outline" id="btn-dept-summary">Load department summary</button>
-    <pre id="report-out" class="mt-3 text-light" style="background:#111;padding:1rem;border-radius:8px;max-height:400px;overflow:auto"></pre>
+<div class="page-hero">
+    <h1>Department reports</h1>
+    <p class="lead">Summary metrics for your department.</p>
+</div>
+<div class="ops-card">
+    <button type="button" class="btn-gold-gradient mb-3" id="btn-load-report">Load department summary</button>
+    <div id="report-out"><p class="text-secondary mb-0">Click load to fetch report data.</p></div>
 </div>
 <script type="module">
     import { requireAuth } from '/js/auth/routeGuard.js';
     import { apiPost, unwrap } from '/js/services/apiClient.js';
-    import { showToast } from '/js/utils/toast.js';
     if (!requireAuth({ allowRoles: ['DepartmentHead', 'Admin'] })) throw new Error('auth');
-    document.getElementById('btn-dept-summary').onclick = async () => {
+
+    document.getElementById('btn-load-report').addEventListener('click', async () => {
+        const out = document.getElementById('report-out');
+        out.innerHTML = '<p class="text-secondary">Loading…</p>';
         try {
-            const from = new Date();
-            from.setMonth(from.getMonth() - 1);
             const json = await apiPost('/api/Report/department-summary', {
-                fromDate: from.toISOString().split('T')[0],
-                toDate: new Date().toISOString().split('T')[0]
+                fromDate: null,
+                toDate: null
             });
-            document.getElementById('report-out').textContent = JSON.stringify(unwrap(json).data, null, 2);
+            const { data } = unwrap(json);
+            const rows = Array.isArray(data) ? data : [];
+            out.innerHTML = rows.length
+                ? rows.map(r => `<div class="py-3 border-bottom" style="border-color:var(--border-subtle)!important">
+                    <strong style="color:var(--gold-2)">${r.departmentName ?? r.DepartmentName}</strong>
+                    <div class="text-secondary small mt-1">Teams: ${r.totalTeams ?? 0} · Members: ${r.totalMembers ?? 0} · EODs submitted: ${r.submittedEods ?? 0}</div>
+                </div>`).join('')
+                : '<p class="text-secondary mb-0">No report rows.</p>';
         } catch (e) {
-            showToast(e.message || 'Report failed', 'error');
+            out.innerHTML = `<p class="text-danger">${e.message || 'Failed'}</p>`;
         }
-    };
+    });
 </script>

@@ -4,32 +4,16 @@
 
 @section Styles {
     <link rel="stylesheet" href="/css/TL/tl-groups.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/hierarchy.css" asp-append-version="true" />
 }
+
+<nav id="hierarchy-breadcrumbs" class="hierarchy-bc" aria-label="Breadcrumb"></nav>
 
 <div class="tl-page">
 
-    <!-- Top Navigation -->
-    <nav class="tl-nav">
-        <div class="tl-nav-brand">
-            <span class="tl-nav-logo">◆</span>
-            <span class="tl-nav-title">OpsTracker</span>
-        </div>
-        <div class="tl-nav-links">
-            <a href="/tl/dashboard" class="tl-nav-link">Dashboard</a>
-            <a href="/tl/approvals" class="tl-nav-link">Approvals</a>
-            <a href="/tl/team" class="tl-nav-link">Team Members</a>
-            <a href="/tl/groups" class="tl-nav-link active">Sub-Groups</a>
-        </div>
-        <div class="tl-nav-user">
-            <span class="tl-nav-role">Team Lead</span>
-            <span class="tl-nav-name" id="nav-user-name">Loading...</span>
-        </div>
-    </nav>
-
-    <!-- Page Header -->
     <header class="tl-header">
         <div class="tl-header-left">
-            <div class="tl-greeting">Task Group: <span id="task-group-name">India</span></div>
+            <div class="tl-greeting">Task Group: <span id="task-group-name">—</span> · <span id="nav-user-name" class="text-secondary"></span></div>
             <h1 class="tl-title">Sub-Groups</h1>
             <div class="tl-subtitle">Create and manage sub-groups with member assignments</div>
         </div>

@@ -1,0 +1,89 @@
+@{
+    ViewData["Title"] = "Departments";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/hierarchy.css" asp-append-version="true" />
+}
+
+<nav id="hierarchy-breadcrumbs" class="hierarchy-bc" aria-label="Breadcrumb"></nav>
+
+<div class="page-hero">
+    <h1>Departments</h1>
+    <p class="lead">Organization-level departments (admin UI). Create departments and assign department heads.</p>
+</div>
+
+<div class="hierarchy-toolbar">
+    <p class="text-secondary mb-0 small">Scoped to your admin access. Department heads only see their assigned department.</p>
+    <button type="button" class="btn-gold-gradient" id="btn-dept-create"><i class="fa-solid fa-plus"></i> New department</button>
+</div>
+
+<div class="ops-card hierarchy-table-wrap">
+    <table class="hierarchy-table">
+        <thead>
+            <tr>
+                <th>Department</th>
+                <th>Department head</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="dept-table-body">
+            <tr><td colspan="4" class="text-secondary">Loading…</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="dept-modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content ops-modal">
+            <form id="dept-form" novalidate>
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="dept-modal-title">Department</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="dept-form-create">
+                        <div class="mb-3">
+                            <label class="form-label" for="dept-org-id">Organization</label>
+                            <select class="form-select" id="dept-org-id" required></select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="dept-code">Code</label>
+                            <input class="form-control" id="dept-code" required maxlength="30" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="dept-name">Name</label>
+                            <input class="form-control" id="dept-name" required maxlength="150" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="dept-desc">Description</label>
+                            <textarea class="form-control" id="dept-desc" rows="2"></textarea>
+                        </div>
+                    </div>
+                    <div id="dept-form-edit" class="d-none">
+                        <div class="mb-3">
+                            <label class="form-label" for="dept-edit-name">Name</label>
+                            <input class="form-control" id="dept-edit-name" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="dept-edit-desc">Description</label>
+                            <textarea class="form-control" id="dept-edit-desc" rows="2"></textarea>
+                        </div>
+                    </div>
+                    <div id="dept-form-assign" class="d-none">
+                        <div class="mb-3">
+                            <label class="form-label" for="dept-head-id">Department head</label>
+                            <select class="form-select" id="dept-head-id" required></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn-gold-outline" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn-gold-gradient">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="~/js/pages/admin-departments.js" asp-append-version="true"></script>

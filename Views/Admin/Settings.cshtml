@@ -1,17 +1,31 @@
 @{
     ViewData["Title"] = "Settings";
 }
-<div class="content-card">
-    <h2 style="color:var(--gold)">System settings</h2>
-    <div id="settings-list">Loading…</div>
+<div class="page-hero">
+    <h1>System settings</h1>
+    <p class="lead">Global configuration keys (admin only).</p>
+</div>
+<div class="ops-card" id="settings-list">
+    <p class="text-secondary">Loading…</p>
 </div>
 <script type="module">
     import { requireAuth } from '/js/auth/routeGuard.js';
     import { apiGet, unwrap } from '/js/services/apiClient.js';
+
     if (!requireAuth({ allowRoles: ['Admin'] })) throw new Error('auth');
-    const json = await apiGet('/api/Settings/list');
-    const { data } = unwrap(json);
-    document.getElementById('settings-list').innerHTML = (data || []).map(s =>
-        `<div class="py-2"><strong>${s.settingKey ?? s.SettingKey}</strong>: ${s.settingValue ?? s.SettingValue}</div>`
-    ).join('') || '<p>No settings</p>';
+
+    const el = document.getElementById('settings-list');
+    try {
+        const json = await apiGet('/api/Settings/list');
+        const { data } = unwrap(json);
+        const list = Array.isArray(data) ? data : [];
+        el.innerHTML = list.length
+            ? list.map(s => `<div class="py-3 border-bottom" style="border-color:var(--border-subtle)!important">
+                <code style="color:var(--gold-2)">${s.settingKey ?? s.SettingKey}</code>
+                <div class="mt-1 text-secondary small">${s.settingValue ?? s.SettingValue}</div>
+            </div>`).join('')
+            : '<p class="text-secondary mb-0">No settings configured.</p>';
+    } catch (e) {
+        el.innerHTML = `<p class="text-danger">${e.message || 'Failed to load'}</p>`;
+    }
 </script>

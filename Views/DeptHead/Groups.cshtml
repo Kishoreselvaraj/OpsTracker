@@ -1,17 +1,71 @@
 @{
     ViewData["Title"] = "Task Groups";
 }
-<div class="content-card">
-    <h2 style="color:var(--gold)">Task groups</h2>
-    <div id="group-list">Loading…</div>
+@section Styles {
+    <link rel="stylesheet" href="~/css/hierarchy.css" asp-append-version="true" />
+}
+
+<nav id="hierarchy-breadcrumbs" class="hierarchy-bc" aria-label="Breadcrumb"></nav>
+
+<div class="page-hero">
+    <h1>Task groups</h1>
+    <p class="lead">Groups within your department — create teams under each group.</p>
 </div>
+
+<div id="ctx-banner" class="hierarchy-context-banner"></div>
+
+<div class="hierarchy-toolbar">
+    <span class="text-secondary small" data-require-role="DepartmentHead,Admin">Only your assigned department is shown.</span>
+    <button type="button" class="btn-gold-gradient" id="btn-group-create" data-require-role="DepartmentHead,Admin">
+        <i class="fa-solid fa-plus"></i> New task group
+    </button>
+</div>
+
+<div class="ops-card hierarchy-table-wrap">
+    <table class="hierarchy-table">
+        <thead>
+            <tr>
+                <th>Group</th>
+                <th>Department</th>
+                <th>Lead</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="group-table-body">
+            <tr><td colspan="4" class="text-secondary">Loading…</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="group-modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content ops-modal">
+            <form id="group-form">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="group-modal-title">Task group</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label" for="group-name">Name</label>
+                        <input class="form-control" id="group-name" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="group-desc">Description</label>
+                        <textarea class="form-control" id="group-desc" rows="2"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn-gold-outline" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn-gold-gradient">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script type="module">
-    import { requireAuth } from '/js/auth/routeGuard.js';
-    import { apiPost, unwrap } from '/js/services/apiClient.js';
-    if (!requireAuth({ allowRoles: ['DepartmentHead', 'Admin'] })) throw new Error('auth');
-    const json = await apiPost('/api/TaskGroup/list', {});
-    const { data } = unwrap(json);
-    document.getElementById('group-list').innerHTML = (data || []).map(g =>
-        `<div class="py-2 border-bottom">${g.groupName ?? g.GroupName} — ${g.departmentName ?? g.DepartmentName ?? ''}</div>`
-    ).join('') || '<p>No groups</p>';
+    import { applyPermissionAttributes } from '/js/hierarchy/uiPermissions.js';
+    applyPermissionAttributes();
 </script>
+<script type="module" src="~/js/pages/depthead-groups.js" asp-append-version="true"></script>

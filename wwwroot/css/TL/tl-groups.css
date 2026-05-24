@@ -6,7 +6,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
-    --gold: #C9A84C;
+    --gold: #E7C050;
+    --gold-gradient: linear-gradient(90deg, #D4A03C 0%, #E7C050 35%, #C58C30 70%, #BE802B 100%);
     --gold-light: #E8C96A;
     --gold-dim: #7A6120;
     --gold-pale: #A08B4C;
@@ -147,11 +148,12 @@
 .tl-header-right { display: flex; align-items: center; }
 
 /* ── Buttons ─────────────────────────────────────────────── */
-.btn-gold {
+.btn-gold,
+.btn-gold-gradient {
     display: inline-flex; align-items: center; gap: 6px;
     padding: 10px 22px; border-radius: var(--radius-md);
-    background: linear-gradient(135deg, var(--gold), var(--gold-light));
-    color: var(--black); font-family: var(--font-main); font-size: var(--text-sm);
+    background: var(--gold-gradient);
+    color: #0a0a0a; font-family: var(--font-main); font-size: var(--text-sm);
     font-weight: 700; cursor: pointer; transition: all var(--transition);
     border: none; letter-spacing: 0.02em;
 }

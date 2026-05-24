@@ -7,12 +7,13 @@
 
 /* ── Variables ─────────────────────────────────────────────── */
 :root {
-    --gold:        #C9A84C;
-    --gold-light:  #E8C96A;
-    --gold-dim:    #7A6120;
-    --gold-bg:     #FAF6EC;
-    --gold-border: rgba(201,168,76,0.25);
-    --black:       #111111;
+    --gold:        var(--gold-2, #E7C050);
+    --gold-light:  var(--gold-1, #D4A03C);
+    --gold-dim:    var(--gold-4, #BE802B);
+    --gold-bg:     rgba(212, 160, 60, 0.08);
+    --gold-border: var(--border-gold, rgba(212,160,60,0.28));
+    --gold-gradient: linear-gradient(90deg, #D4A03C 0%, #E7C050 35%, #C58C30 70%, #BE802B 100%);
+    --black:       var(--bg-dark, #0a0a0a);
     --surface:     #1A1A1A;
     --surface-2:   #242424;
     --surface-3:   #2E2E2E;
@@ -44,10 +45,10 @@
 /* ── Dashboard root ────────────────────────────────────────── */
 .ops-dashboard {
     font-family: var(--font-main);
-    background: var(--black);
+    background: transparent;
     color: var(--text-1);
-    min-height: 100vh;
-    padding: 32px 36px 48px;
+    min-height: auto;
+    padding: 0;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -301,19 +302,20 @@
     color: var(--gold);
 }
 
-.btn-gold {
+.btn-gold,
+.btn-gold-gradient {
     display: inline-flex; align-items: center; gap: 6px;
     padding: 9px 20px;
-    background: var(--gold);
-    color: var(--black);
+    background: var(--gold-gradient);
+    color: #0a0a0a;
     font-family: var(--font-main);
     font-size: 13px; font-weight: 600;
     border: none; border-radius: var(--radius-md);
     cursor: pointer;
-    transition: background var(--transition), transform var(--transition);
+    transition: transform var(--transition), box-shadow var(--transition);
 }
 
-.btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-gold:hover { transform: translateY(-1px); box-shadow: var(--shadow-gold); }
 .btn-gold:active { transform: scale(0.98); }
 
 .btn-outline {

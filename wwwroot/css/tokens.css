@@ -1,13 +1,45 @@
 :root {
-    --gold: #d4af37;
-    --gold-light: #e8c84a;
-    --gold-dark: #b8860b;
-    --bg-dark: #0f0f0f;
-    --bg-card: #1a1a1a;
-    --bg-elevated: #222;
-    --text-1: #f0f0f0;
-    --text-2: rgba(255, 255, 255, 0.7);
-    --text-3: rgba(255, 255, 255, 0.45);
-    --border-gold: rgba(212, 175, 55, 0.2);
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    /* Gold gradient (left → right) — use for accents, buttons, highlights */
+    --gold-gradient: linear-gradient(90deg, #D4A03C 0%, #E7C050 35%, #C58C30 70%, #BE802B 100%);
+    --gold-gradient-135: linear-gradient(135deg, #D4A03C 0%, #E7C050 40%, #C58C30 75%, #BE802B 100%);
+    --gold-gradient-soft: linear-gradient(90deg, rgba(212, 160, 60, 0.18) 0%, rgba(231, 192, 80, 0.12) 50%, rgba(190, 128, 43, 0.18) 100%);
+
+    --gold-1: #D4A03C;
+    --gold-2: #E7C050;
+    --gold-3: #C58C30;
+    --gold-4: #BE802B;
+    --gold: #E7C050;
+    --gold-light: #F0D078;
+    --gold-dark: #BE802B;
+
+    --bg-black: #050505;
+    --bg-dark: #0a0a0a;
+    --bg-card: #111111;
+    --bg-elevated: #181818;
+    --bg-sidebar: #0c0c0c;
+
+    --text-1: #f5f2eb;
+    --text-2: rgba(245, 242, 235, 0.72);
+    --text-3: rgba(245, 242, 235, 0.45);
+
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-gold: rgba(212, 160, 60, 0.28);
+    --border-gold-strong: rgba(231, 192, 80, 0.45);
+
+    --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.45);
+    --shadow-gold: 0 8px 32px rgba(212, 160, 60, 0.15);
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+
+    --font-display: 'Sora', 'Segoe UI', system-ui, sans-serif;
+    --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    --sidebar-width: 260px;
+    --topbar-height: 64px;
+    --transition: 0.2s ease;
 }

@@ -11,7 +11,8 @@
 
 :root {
     /* ── Strict Black & Gold Palette ───────────────────────── */
-    --gold: #C9A84C;
+    --gold: #E7C050;
+    --gold-gradient: linear-gradient(90deg, #D4A03C 0%, #E7C050 35%, #C58C30 70%, #BE802B 100%);
     --gold-light: #E8C96A;
     --gold-dim: #7A6120;
     --gold-pale: #A08B4C;
@@ -1567,8 +1568,8 @@
     gap: 6px;
     padding: 10px 22px;
     min-height: 44px;
-    background: linear-gradient(135deg, var(--gold), var(--gold-light));
-    color: #000000;
+    background: var(--gold-gradient);
+    color: #0a0a0a;
     font-family: var(--font-main);
     font-size: var(--text-sm);
     font-weight: 700;
@@ -1584,7 +1585,7 @@
 .btn-gold:hover {
     transform: scale(1.05);
     box-shadow: 0 18px 45px rgba(201, 168, 76, 0.3);
-    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    filter: brightness(1.06);
 }
 
 .btn-gold:active {

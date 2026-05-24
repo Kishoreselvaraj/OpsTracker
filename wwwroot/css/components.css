@@ -4,8 +4,8 @@
     right: 24px;
     z-index: 10000;
     background: var(--bg-card, #1a1a1a);
-    color: var(--gold, #d4af37);
-    border: 1px solid var(--border-gold, rgba(212, 175, 55, 0.3));
+    color: var(--gold-2, #E7C050);
+    border: 1px solid var(--border-gold);
     padding: 12px 20px;
     border-radius: 10px;
     font-size: 14px;
@@ -39,7 +39,7 @@
 .nav-notif-btn {
     background: transparent;
     border: 1px solid var(--border-gold);
-    color: var(--gold);
+    color: var(--gold-2);
     border-radius: 8px;
     padding: 6px 12px;
     cursor: pointer;
@@ -93,7 +93,7 @@
 }
 
 .nav-notif-item.unread {
-    background: rgba(212, 175, 55, 0.08);
+    background: var(--gold-gradient-soft, rgba(212, 160, 60, 0.08));
 }
 
 .nav-notif-item:hover {

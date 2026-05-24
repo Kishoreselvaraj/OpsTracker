@@ -1,18 +1,103 @@
 @{
     ViewData["Title"] = "Users";
 }
-<div class="content-card">
-    <h2 style="color:var(--gold)">User management</h2>
-    <p class="text-secondary">List users via <code>POST /api/User/list</code> (Department Head / Admin).</p>
-    <div id="user-list" class="mt-3">Loading…</div>
+@section Styles {
+    <link rel="stylesheet" href="~/css/hierarchy.css" asp-append-version="true" />
+}
+
+<nav id="hierarchy-breadcrumbs" class="hierarchy-bc" aria-label="Breadcrumb"></nav>
+
+<div class="page-hero">
+    <h1>Users</h1>
+    <p class="lead">Create, update, and deactivate users. Assign roles and hierarchy placement.</p>
 </div>
-<script type="module">
-    import { requireAuth } from '/js/auth/routeGuard.js';
-    import { apiPost, unwrap } from '/js/services/apiClient.js';
-    if (!requireAuth({ allowRoles: ['Admin', 'DepartmentHead'] })) throw new Error('auth');
-    const json = await apiPost('/api/User/list', {});
-    const { data } = unwrap(json);
-    document.getElementById('user-list').innerHTML = (data || []).map(u =>
-        `<div class="py-2 border-bottom">${u.firstName ?? ''} ${u.lastName ?? ''} — ${u.role ?? u.Role ?? ''} (${u.email ?? u.Email ?? ''})</div>`
-    ).join('') || '<p>No users</p>';
-</script>
+
+<div class="hierarchy-toolbar">
+    <button type="button" class="btn-gold-gradient" id="btn-user-create"><i class="fa-solid fa-user-plus"></i> New user</button>
+</div>
+
+<div class="ops-card hierarchy-table-wrap">
+    <table class="hierarchy-table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Role</th>
+                <th>Department / Team</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="user-table-body">
+            <tr><td colspan="5" class="text-secondary">Loading…</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="user-modal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ops-modal">
+            <form id="user-form" novalidate>
+                <div class="modal-header border-0">
+                    <h5 class="modal-title" id="user-modal-title">User</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label" for="user-first">First name</label>
+                            <input class="form-control" id="user-first" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="user-last">Last name</label>
+                            <input class="form-control" id="user-last" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="user-email">Email (login)</label>
+                            <input type="email" class="form-control" id="user-email" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="user-role">Role</label>
+                            <select class="form-select" id="user-role" required>
+                                <option value="Member">Member</option>
+                                <option value="TeamLead">Team Lead</option>
+                                <option value="DepartmentHead">Department Head</option>
+                                <option value="Admin">Admin</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6" id="user-password-wrap">
+                            <label class="form-label" for="user-password">Password</label>
+                            <input type="password" class="form-control" id="user-password" minlength="6" autocomplete="new-password" />
+                            <div class="form-text">Leave blank when editing to keep current password.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="user-code">Employee code</label>
+                            <input class="form-control" id="user-code" />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label" for="user-dept">Department ID</label>
+                            <input type="number" class="form-control" id="user-dept" />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label" for="user-group">Group ID</label>
+                            <input type="number" class="form-control" id="user-group" />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label" for="user-team">Team ID</label>
+                            <input type="number" class="form-control" id="user-team" />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label" for="user-subgroup">Sub-group ID</label>
+                            <input type="number" class="form-control" id="user-subgroup" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn-gold-outline" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn-gold-gradient">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="~/js/pages/admin-users.js" asp-append-version="true"></script>
