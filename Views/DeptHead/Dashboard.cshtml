@@ -1,0 +1,16 @@
+@{
+    ViewData["Title"] = "Department Head";
+}
+<div class="content-card">
+    <h1 class="h3" style="color:var(--gold)">Department Head</h1>
+    <div class="d-flex flex-wrap gap-2 mt-3">
+        <a class="btn btn-gold-outline" href="/DeptHead/Groups">Task groups</a>
+        <a class="btn btn-gold-outline" href="/DeptHead/Teams">Teams</a>
+        <a class="btn btn-gold-outline" href="/DeptHead/Reports">Reports</a>
+        <a class="btn btn-gold-outline" href="/tl/Dashboard">Team Lead views</a>
+    </div>
+</div>
+<script type="module">
+    import { requireAuth } from '/js/auth/routeGuard.js';
+    requireAuth({ allowRoles: ['DepartmentHead', 'Admin'] });
+</script>

@@ -1,0 +1,177 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Dashboard.css" asp-append-version="true" />
+}
+
+<div class="ops-dashboard">
+
+    <!-- Header -->
+    <header class="dash-header">
+        <div class="dash-header-left">
+            <div class="dash-greeting">Member Overview</div>
+            <h1 class="dash-title">Good morning, <span id="user-name">Rahul Kumar</span> 👋</h1>
+            <div class="dash-subtitle">Dev QA · India Task Group</div>
+        </div>
+        <div class="dash-date-badge" id="dash-date">Wed, 13 May 2026</div>
+    </header>
+
+    <!-- Stat Cards -->
+    <div class="stat-grid">
+        <div class="stat-card">
+            <div class="stat-icon">⏱</div>
+            <div class="stat-label">This week</div>
+            <div class="stat-value skeleton" id="stat-weeklyHours">—</div>
+            <div id="pill-weeklyHours"></div>
+            <div class="stat-hint" style="font-size:11px;color:var(--text-3);margin-top:4px">hours logged</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">🔥</div>
+            <div class="stat-label">EOD streak</div>
+            <div class="stat-value skeleton" id="stat-streak">—</div>
+            <div id="pill-streak"></div>
+            <div class="stat-hint" style="font-size:11px;color:var(--text-3);margin-top:4px">consecutive days</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">⏳</div>
+            <div class="stat-label">Pending review</div>
+            <div class="stat-value skeleton" id="stat-pendingReview">—</div>
+            <div id="pill-pendingReview"></div>
+            <div class="stat-hint" style="font-size:11px;color:var(--text-3);margin-top:4px">awaiting TL action</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">📝</div>
+            <div class="stat-label">Today's EOD</div>
+            <div class="stat-value skeleton" id="stat-todayStatus">—</div>
+            <div id="pill-todayStatus"></div>
+            <div class="stat-hint" style="font-size:11px;color:var(--text-3);margin-top:4px">submission status</div>
+        </div>
+    </div>
+
+    <!-- EOD Hero -->
+    <div class="eod-hero">
+        <div class="eod-top">
+            <div>
+                <div class="eod-meta-title" id="eod-date">Today's EOD — Wednesday, 13 May 2026</div>
+                <div class="eod-meta-sub">Dev QA · India Task Group</div>
+            </div>
+            <div id="eod-status">
+                <span class="status-badge s-draft"><span class="status-dot"></span>Not submitted</span>
+            </div>
+        </div>
+
+        <div class="task-list" id="task-list">
+            <!-- Populated by JS -->
+            <div class="task-row skeleton" style="height:40px"></div>
+            <div class="task-row skeleton" style="height:40px"></div>
+        </div>
+
+        <div class="eod-total">
+            <span class="eod-total-label">Total hours today</span>
+            <span class="eod-total-value" id="eod-total-hours">0.0 h</span>
+        </div>
+
+        <div style="display:flex;gap:10px">
+            <button class="btn-gold" id="btn-submit-eod">
+                <span>✓</span> Submit EOD
+            </button>
+            <button class="btn-outline" id="btn-save-draft">
+                <span>💾</span> Save draft
+            </button>
+        </div>
+    </div>
+
+    <!-- Two Column Row -->
+    <div class="dash-row col-2">
+        <!-- Recent Submissions -->
+        <div class="panel">
+            <div class="panel-header">
+                <span class="panel-title">Recent submissions</span>
+                <button class="panel-action">View all →</button>
+            </div>
+            <div id="submissions-list">
+                <!-- Populated by JS -->
+                <div class="history-row skeleton" style="height:36px"></div>
+                <div class="history-row skeleton" style="height:36px"></div>
+                <div class="history-row skeleton" style="height:36px"></div>
+            </div>
+        </div>
+
+        <!-- Notifications -->
+        <div class="panel">
+            <div class="panel-header">
+                <span class="panel-title">Notifications</span>
+                <button class="panel-action" id="btn-mark-all-read">Mark all read</button>
+            </div>
+            <div id="notif-list">
+                <!-- Populated by JS -->
+                <div class="notif-item skeleton" style="height:50px"></div>
+                <div class="notif-item skeleton" style="height:50px"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Equal Row -->
+    <div class="dash-row col-equal">
+        <!-- Week Chart -->
+        <div class="panel">
+            <div class="panel-header">
+                <span class="panel-title">Week at a glance</span>
+                <span style="font-size:11px;color:var(--text-3)">May 11 – 17</span>
+            </div>
+            <div class="week-bars" id="week-bars">
+                <!-- Populated by JS -->
+            </div>
+            <div class="week-legend">
+                <div class="legend-item"><div class="legend-dot ld-done"></div>Submitted</div>
+                <div class="legend-item"><div class="legend-dot ld-today"></div>Today</div>
+                <div class="legend-item"><div class="legend-dot ld-missing"></div>Upcoming</div>
+            </div>
+        </div>
+
+        <!-- My Details -->
+        <div class="panel">
+            <div class="panel-header">
+                <span class="panel-title">My details</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-key"><span>🏢</span> Department</span>
+                <span class="detail-val" id="user-dept">—</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-key"><span>🌐</span> Task group</span>
+                <span class="detail-val" id="user-taskgroup">—</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-key"><span>👥</span> Sub-group</span>
+                <span class="detail-val" id="user-subgroup">—</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-key"><span>👤</span> Team lead</span>
+                <span class="detail-val" id="user-lead">—</span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-key"><span>🪪</span> Employee code</span>
+                <span class="detail-val mono" id="user-empcode">—</span>
+            </div>
+
+            <div class="progress-wrap">
+                <div class="progress-label">
+                    <span>Monthly submission rate</span>
+                    <span id="submission-rate-pct">0%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="submission-rate-bar" style="width:0%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="module" src="~/js/pages/memberDashboard.js" asp-append-version="true"></script>
+}

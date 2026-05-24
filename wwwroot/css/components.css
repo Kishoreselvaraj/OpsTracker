@@ -1,0 +1,107 @@
+.ops-toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 10000;
+    background: var(--bg-card, #1a1a1a);
+    color: var(--gold, #d4af37);
+    border: 1px solid var(--border-gold, rgba(212, 175, 55, 0.3));
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.25s, transform 0.25s;
+    box-shadow: var(--shadow);
+    max-width: 360px;
+}
+
+.ops-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.ops-toast-error {
+    color: #ff6b6b;
+    border-color: rgba(255, 107, 107, 0.4);
+}
+
+.ops-toast-success {
+    color: #6bcb77;
+    border-color: rgba(107, 203, 119, 0.4);
+}
+
+.nav-notif-wrap {
+    position: relative;
+    margin-right: 12px;
+}
+
+.nav-notif-btn {
+    background: transparent;
+    border: 1px solid var(--border-gold);
+    color: var(--gold);
+    border-radius: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.nav-notif-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #c0392b;
+    color: #fff;
+    font-size: 10px;
+    min-width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+}
+
+.nav-notif-badge.visible {
+    display: flex;
+}
+
+.nav-notif-panel {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    width: 320px;
+    max-height: 400px;
+    overflow-y: auto;
+    background: var(--bg-card);
+    border: 1px solid var(--border-gold);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    z-index: 1050;
+}
+
+.nav-notif-panel.open {
+    display: block;
+}
+
+.nav-notif-item {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.nav-notif-item.unread {
+    background: rgba(212, 175, 55, 0.08);
+}
+
+.nav-notif-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.nav-user-name {
+    color: var(--text-2);
+    font-size: 13px;
+    margin-right: 8px;
+}

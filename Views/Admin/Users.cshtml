@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "Users";
+}
+<div class="content-card">
+    <h2 style="color:var(--gold)">User management</h2>
+    <p class="text-secondary">List users via <code>POST /api/User/list</code> (Department Head / Admin).</p>
+    <div id="user-list" class="mt-3">Loading…</div>
+</div>
+<script type="module">
+    import { requireAuth } from '/js/auth/routeGuard.js';
+    import { apiPost, unwrap } from '/js/services/apiClient.js';
+    if (!requireAuth({ allowRoles: ['Admin', 'DepartmentHead'] })) throw new Error('auth');
+    const json = await apiPost('/api/User/list', {});
+    const { data } = unwrap(json);
+    document.getElementById('user-list').innerHTML = (data || []).map(u =>
+        `<div class="py-2 border-bottom">${u.firstName ?? ''} ${u.lastName ?? ''} — ${u.role ?? u.Role ?? ''} (${u.email ?? u.Email ?? ''})</div>`
+    ).join('') || '<p>No users</p>';
+</script>

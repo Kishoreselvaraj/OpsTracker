@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Organizations";
+}
+<div class="content-card">
+    <h2 style="color:var(--gold)">Organizations</h2>
+    <p>API: <code>GET /api/Organization/list</code>, <code>POST /api/Organization/create</code></p>
+    <div id="org-list" class="mt-3">Loading…</div>
+</div>
+<script type="module">
+    import { requireAuth } from '/js/auth/routeGuard.js';
+    import { apiGet, unwrap } from '/js/services/apiClient.js';
+    import { showToast } from '/js/utils/toast.js';
+    if (!requireAuth({ allowRoles: ['Admin'] })) throw new Error('auth');
+    async function load() {
+        try {
+            const json = await apiGet('/api/Organization/list');
+            const { data } = unwrap(json);
+            const rows = (data || []).map(o =>
+                `<div class="border-bottom py-2">${o.organizationName ?? o.OrganizationName} <span class="text-muted">(${o.organizationCode ?? o.OrganizationCode})</span></div>`
+            ).join('');
+            document.getElementById('org-list').innerHTML = rows || '<p>No organizations</p>';
+        } catch (e) {
+            document.getElementById('org-list').textContent = e.message || 'Failed to load';
+            showToast('Failed to load organizations', 'error');
+        }
+    }
+    load();
+</script>

@@ -1,0 +1,17 @@
+@{
+    ViewData["Title"] = "Teams";
+}
+<div class="content-card">
+    <h2 style="color:var(--gold)">Teams</h2>
+    <div id="team-list">Loading…</div>
+</div>
+<script type="module">
+    import { requireAuth } from '/js/auth/routeGuard.js';
+    import { apiPost, unwrap } from '/js/services/apiClient.js';
+    if (!requireAuth({ allowRoles: ['DepartmentHead', 'Admin'] })) throw new Error('auth');
+    const json = await apiPost('/api/Team/list', {});
+    const { data } = unwrap(json);
+    document.getElementById('team-list').innerHTML = (data || []).map(t =>
+        `<div class="py-2 border-bottom">${t.teamName ?? t.TeamName} (${t.teamCode ?? t.TeamCode ?? ''})</div>`
+    ).join('') || '<p>No teams</p>';
+</script>

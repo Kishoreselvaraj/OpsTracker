@@ -1,0 +1,17 @@
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+<div class="content-card">
+    <h1 class="h3" style="color:var(--gold)">Administration</h1>
+    <p class="text-secondary">Manage organization structure, users, and system settings.</p>
+    <div class="d-flex flex-wrap gap-2 mt-4">
+        <a class="btn btn-gold-outline" href="/Admin/Organizations">Organizations</a>
+        <a class="btn btn-gold-outline" href="/Admin/Users">Users</a>
+        <a class="btn btn-gold-outline" href="/Admin/Settings">Settings</a>
+        <a class="btn btn-gold-outline" href="/DeptHead/Dashboard">Department tools</a>
+    </div>
+</div>
+<script type="module">
+    import { requireAuth } from '/js/auth/routeGuard.js';
+    requireAuth({ allowRoles: ['Admin'] });
+</script>

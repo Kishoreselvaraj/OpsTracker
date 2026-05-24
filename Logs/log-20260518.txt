@@ -1,0 +1,1029 @@
+2026-05-18 10:18:27.116 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 10:18:28.848 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 10:18:28.855 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 10:18:28.869 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 10:18:28.894 +05:30 [INF] Hosting environment: Development
+2026-05-18 10:18:28.899 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 10:18:36.934 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 10:18:38.211 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 1316.903ms
+2026-05-18 10:18:38.352 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 10:18:38.386 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 10:18:38.406 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 54.923ms
+2026-05-18 10:18:39.468 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 1082.2129ms
+2026-05-18 10:18:39.609 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 10:18:40.199 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 591.4715ms
+2026-05-18 10:19:18.887 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/monthly-calendar - application/json 32
+2026-05-18 10:19:19.240 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-05-18 10:19:19.275 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2026-05-18 10:19:19.282 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/monthly-calendar - 401 0 null 395.3955ms
+2026-05-18 10:19:52.062 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 62
+2026-05-18 10:19:52.121 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 10:19:52.297 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 10:19:55.535 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 10:19:55.610 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 3294.6125ms
+2026-05-18 10:19:55.624 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 10:19:55.640 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 3579.1586ms
+2026-05-18 10:20:31.150 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/monthly-calendar - application/json 32
+2026-05-18 10:20:31.379 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.GetMonthlyCalendar (Aetram_OpsTrack)'
+2026-05-18 10:20:31.421 +05:30 [INF] Route matched with {action = "GetMonthlyCalendar", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMonthlyCalendar(Aetram_OpsTrack.Models.Request.GetMonthlyCalendarRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 10:20:31.606 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[Aetram_OpsTrack.Models.Response.MonthlyCalendarResponse, Aetram_OpsTrack, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-18 10:20:31.693 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.GetMonthlyCalendar (Aetram_OpsTrack) in 261.8398ms
+2026-05-18 10:20:31.703 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.GetMonthlyCalendar (Aetram_OpsTrack)'
+2026-05-18 10:20:31.713 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/monthly-calendar - 200 null application/json; charset=utf-8 580.373ms
+2026-05-18 10:30:53.843 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 10:30:55.299 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 10:30:55.307 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 10:30:55.322 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 10:30:55.328 +05:30 [INF] Hosting environment: Development
+2026-05-18 10:30:55.333 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 10:31:01.473 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 10:31:02.672 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 1258.8034ms
+2026-05-18 10:31:02.842 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 10:31:02.899 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 10:31:02.949 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 107.531ms
+2026-05-18 10:31:03.145 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 246.5333ms
+2026-05-18 10:31:03.542 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 10:31:04.115 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 574.0342ms
+2026-05-18 10:31:30.808 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 62
+2026-05-18 10:31:31.131 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 10:31:31.273 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 10:31:33.372 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 10:31:33.448 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 2153.3717ms
+2026-05-18 10:31:33.457 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 10:31:33.466 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 2658.1798ms
+2026-05-18 10:32:11.229 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/monthly-calendar - application/json 32
+2026-05-18 10:32:11.567 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.GetMonthlyCalendar (Aetram_OpsTrack)'
+2026-05-18 10:32:11.596 +05:30 [INF] Route matched with {action = "GetMonthlyCalendar", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMonthlyCalendar(Aetram_OpsTrack.Models.Request.GetMonthlyCalendarRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 10:32:11.747 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[Aetram_OpsTrack.Models.Response.MonthlyCalendarResponse, Aetram_OpsTrack, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-18 10:32:11.845 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.GetMonthlyCalendar (Aetram_OpsTrack) in 239.075ms
+2026-05-18 10:32:11.852 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.GetMonthlyCalendar (Aetram_OpsTrack)'
+2026-05-18 10:32:11.857 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/monthly-calendar - 200 null application/json; charset=utf-8 631.4464ms
+2026-05-18 10:55:48.420 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 10:55:48.638 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 228.3832ms
+2026-05-18 10:55:48.748 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 10:55:48.749 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 10:55:48.770 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 17.0699ms
+2026-05-18 10:55:48.854 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 105.7221ms
+2026-05-18 10:55:49.354 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 10:55:49.503 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 149.3177ms
+2026-05-18 10:56:14.594 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 10:56:14.677 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 10:56:14.702 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 10:56:14.969 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 10:56:14.976 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 269.8142ms
+2026-05-18 10:56:14.981 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 10:56:14.986 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 394.1967ms
+2026-05-18 10:56:52.057 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/monthly-calendar - application/json 32
+2026-05-18 10:56:52.121 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-05-18 10:56:52.150 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2026-05-18 10:56:52.155 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/monthly-calendar - 401 0 null 97.793ms
+2026-05-18 10:57:24.929 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/monthly-calendar - application/json 32
+2026-05-18 10:57:24.993 +05:30 [INF] Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoding.ValidateAndGetOutputSize(ReadOnlySpan`1 strSpan, Int32 offset, Int32 length)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2026-05-18 10:57:25.215 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+2026-05-18 10:57:25.225 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-05-18 10:57:25.233 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2026-05-18 10:57:25.235 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/monthly-calendar - 401 0 null 307.4541ms
+2026-05-18 10:57:27.564 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/monthly-calendar - application/json 32
+2026-05-18 10:57:27.573 +05:30 [INF] Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoding.ValidateAndGetOutputSize(ReadOnlySpan`1 strSpan, Int32 offset, Int32 length)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2026-05-18 10:57:27.581 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+2026-05-18 10:57:27.583 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-05-18 10:57:27.584 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2026-05-18 10:57:27.587 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/monthly-calendar - 401 0 null 22.7905ms
+2026-05-18 10:57:43.279 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/monthly-calendar - application/json 32
+2026-05-18 10:57:43.286 +05:30 [INF] Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoding.ValidateAndGetOutputSize(ReadOnlySpan`1 strSpan, Int32 offset, Int32 length)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2026-05-18 10:57:43.291 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+2026-05-18 10:57:43.297 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-05-18 10:57:43.301 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2026-05-18 10:57:43.304 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/monthly-calendar - 401 0 null 25.6766ms
+2026-05-18 10:58:42.216 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/monthly-calendar - application/json 32
+2026-05-18 10:58:42.244 +05:30 [INF] Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoding.ValidateAndGetOutputSize(ReadOnlySpan`1 strSpan, Int32 offset, Int32 length)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2026-05-18 10:58:42.250 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+2026-05-18 10:58:42.253 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-05-18 10:58:42.255 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2026-05-18 10:58:42.258 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/monthly-calendar - 401 0 null 42.5569ms
+2026-05-18 10:58:46.914 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 10:58:46.983 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 70.0787ms
+2026-05-18 10:58:47.010 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 10:58:47.010 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 10:58:47.023 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 12.7292ms
+2026-05-18 10:58:47.059 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 49.1914ms
+2026-05-18 10:58:47.191 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 10:58:47.245 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 54.757ms
+2026-05-18 10:59:14.793 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 10:59:14.820 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 10:59:14.825 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 10:59:14.893 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 10:59:14.899 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 68.3324ms
+2026-05-18 10:59:14.904 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 10:59:14.909 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 401 null application/json; charset=utf-8 117.0554ms
+2026-05-18 10:59:27.696 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 10:59:27.703 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 10:59:27.706 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 10:59:27.744 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 10:59:27.751 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 41.6724ms
+2026-05-18 10:59:27.755 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 10:59:27.758 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 62.4928ms
+2026-05-18 11:00:13.585 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/monthly-calendar - application/json 32
+2026-05-18 11:00:13.632 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.GetMonthlyCalendar (Aetram_OpsTrack)'
+2026-05-18 11:00:13.637 +05:30 [INF] Route matched with {action = "GetMonthlyCalendar", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMonthlyCalendar(Aetram_OpsTrack.Models.Request.GetMonthlyCalendarRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 11:00:13.743 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[Aetram_OpsTrack.Models.Response.MonthlyCalendarResponse, Aetram_OpsTrack, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-18 11:00:13.777 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.GetMonthlyCalendar (Aetram_OpsTrack) in 134.9348ms
+2026-05-18 11:00:13.781 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.GetMonthlyCalendar (Aetram_OpsTrack)'
+2026-05-18 11:00:13.785 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/monthly-calendar - 200 null application/json; charset=utf-8 200.2707ms
+2026-05-18 11:05:45.127 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/TaskGroup/list - null 0
+2026-05-18 11:05:45.222 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.TaskGroupController.GetTaskGroupList (Aetram_OpsTrack)'
+2026-05-18 11:05:45.303 +05:30 [INF] Route matched with {action = "GetTaskGroupList", controller = "TaskGroup"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetTaskGroupList() on controller Aetram_OpsTrack.Controllers.TaskGroupController (Aetram_OpsTrack).
+2026-05-18 11:05:45.461 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[Aetram_OpsTrack.Models.APIResponse.TaskGroupListResponse, Aetram_OpsTrack, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-18 11:05:45.526 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.TaskGroupController.GetTaskGroupList (Aetram_OpsTrack) in 216.8339ms
+2026-05-18 11:05:45.532 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.TaskGroupController.GetTaskGroupList (Aetram_OpsTrack)'
+2026-05-18 11:05:45.537 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/TaskGroup/list - 200 null application/json; charset=utf-8 428.6916ms
+2026-05-18 11:51:10.077 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 11:51:12.196 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 11:51:12.203 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 11:51:12.229 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 11:51:12.237 +05:30 [INF] Hosting environment: Development
+2026-05-18 11:51:12.242 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 11:51:15.383 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 11:51:19.020 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 3684.8797ms
+2026-05-18 11:51:22.526 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 11:51:22.618 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 91.9682ms
+2026-05-18 11:51:24.184 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 11:51:24.384 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 200.1402ms
+2026-05-18 11:51:24.899 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 11:51:25.503 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 606.4615ms
+2026-05-18 11:52:02.306 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 11:52:02.655 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 11:52:02.818 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 11:52:05.248 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 11:52:05.312 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 2475.491ms
+2026-05-18 11:52:05.318 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 11:52:05.324 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 3019.5802ms
+2026-05-18 11:54:04.094 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 210
+2026-05-18 11:54:04.370 +05:30 [INF] Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoding.ValidateAndGetOutputSize(ReadOnlySpan`1 strSpan, Int32 offset, Int32 length)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2026-05-18 11:54:04.658 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+2026-05-18 11:54:04.724 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-05-18 11:54:04.765 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2026-05-18 11:54:04.774 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 401 0 null 741.2071ms
+2026-05-18 11:54:33.273 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 211
+2026-05-18 11:54:33.336 +05:30 [INF] Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoding.ValidateAndGetOutputSize(ReadOnlySpan`1 strSpan, Int32 offset, Int32 length)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2026-05-18 11:54:33.348 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+2026-05-18 11:54:33.357 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-05-18 11:54:33.365 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2026-05-18 11:54:33.370 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 401 0 null 101.8477ms
+2026-05-18 11:57:17.350 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 211
+2026-05-18 11:57:17.407 +05:30 [INF] Failed to validate the token.
+System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.FormatException: IDX10400: Unable to decode: '[PII of type 'System.String' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64url encoded string.
+   at Microsoft.IdentityModel.Tokens.Base64UrlEncoding.ValidateAndGetOutputSize(ReadOnlySpan`1 strSpan, Int32 offset, Int32 length)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString, TryReadJwtClaim tryReadJwtClaim)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2026-05-18 11:57:17.430 +05:30 [INF] Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+2026-05-18 11:57:17.455 +05:30 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-05-18 11:57:17.462 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2026-05-18 11:57:17.470 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 401 0 null 199.6302ms
+2026-05-18 11:57:54.560 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 211
+2026-05-18 11:57:55.071 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 11:57:55.232 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 11:57:57.563 +05:30 [ERR] Exception Logged. Controller: WorkLog, Action: SaveWorkLog
+Microsoft.Data.SqlClient.SqlException (0x80131904): Procedure or function 'usp_WorkLog_Save' expects parameter '@WorkflowLogDateId', which was not supplied.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.Connection.SqlConnectionInternal.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__283_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Aetram_OpsTrack.DAL.DBClass.ExecuteProcedureForDataTable(String procedureName, SqlParameter[] parameters) in C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack\DAL\DBClass.cs:line 53
+   at Aetram_OpsTrack.DBO.BLL.WorkLogRepository.SaveWorkLogAsync(SaveWorkLogRequest request, Int32 userId) in C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack\DBO\BLL\WorkLogRepository .cs:line 40
+   at Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog(SaveWorkLogRequest request) in C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack\Controllers\WorkLogController .cs:line 57
+ClientConnectionId:600c5911-c5aa-46d9-8659-7b389dddb56f
+Error Number:201,State:4,Class:16
+2026-05-18 11:57:57.644 +05:30 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-18 11:57:57.718 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 2474.5478ms
+2026-05-18 11:57:57.732 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 11:57:57.740 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 3180.6323ms
+2026-05-18 11:58:41.469 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/monthly-calendar - application/json 32
+2026-05-18 11:58:41.522 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.GetMonthlyCalendar (Aetram_OpsTrack)'
+2026-05-18 11:58:41.556 +05:30 [INF] Route matched with {action = "GetMonthlyCalendar", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetMonthlyCalendar(Aetram_OpsTrack.Models.Request.GetMonthlyCalendarRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 11:58:41.886 +05:30 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[Aetram_OpsTrack.Models.Response.MonthlyCalendarResponse, Aetram_OpsTrack, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-18 11:58:41.959 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.GetMonthlyCalendar (Aetram_OpsTrack) in 392.9985ms
+2026-05-18 11:58:41.973 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.GetMonthlyCalendar (Aetram_OpsTrack)'
+2026-05-18 11:58:41.981 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/monthly-calendar - 200 null application/json; charset=utf-8 513.9244ms
+2026-05-18 12:00:44.876 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/by-date - application/json 45
+2026-05-18 12:00:45.005 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.GetByDate (Aetram_OpsTrack)'
+2026-05-18 12:00:45.137 +05:30 [INF] Route matched with {action = "GetByDate", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByDate(Aetram_OpsTrack.Models.Request.GetWorkLogByDateRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 12:00:46.695 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Aetram_OpsTrack.Models.Response.GetWorkLogResponse, Aetram_OpsTrack, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-18 12:00:46.788 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.GetByDate (Aetram_OpsTrack) in 1639.7053ms
+2026-05-18 12:00:46.798 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.GetByDate (Aetram_OpsTrack)'
+2026-05-18 12:00:46.810 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/by-date - 200 null application/json; charset=utf-8 2009.6733ms
+2026-05-18 12:01:04.462 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/by-date - application/json 45
+2026-05-18 12:01:04.517 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.GetByDate (Aetram_OpsTrack)'
+2026-05-18 12:01:04.540 +05:30 [INF] Route matched with {action = "GetByDate", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByDate(Aetram_OpsTrack.Models.Request.GetWorkLogByDateRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 12:01:04.797 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Aetram_OpsTrack.Models.Response.GetWorkLogResponse, Aetram_OpsTrack, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-18 12:01:04.808 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.GetByDate (Aetram_OpsTrack) in 256.85ms
+2026-05-18 12:01:04.820 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.GetByDate (Aetram_OpsTrack)'
+2026-05-18 12:01:04.826 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/by-date - 200 null application/json; charset=utf-8 372.0987ms
+2026-05-18 12:01:42.820 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/by-date - application/json 45
+2026-05-18 12:01:42.887 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.GetByDate (Aetram_OpsTrack)'
+2026-05-18 12:01:42.906 +05:30 [INF] Route matched with {action = "GetByDate", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByDate(Aetram_OpsTrack.Models.Request.GetWorkLogByDateRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 12:01:43.221 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[Aetram_OpsTrack.Models.Response.GetWorkLogResponse, Aetram_OpsTrack, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-05-18 12:01:43.235 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.GetByDate (Aetram_OpsTrack) in 316.8251ms
+2026-05-18 12:01:43.247 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.GetByDate (Aetram_OpsTrack)'
+2026-05-18 12:01:43.256 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/by-date - 200 null application/json; charset=utf-8 484.7417ms
+2026-05-18 12:09:25.561 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/get-by-id - application/json 20
+2026-05-18 12:09:25.841 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.GetWorkLogById (Aetram_OpsTrack)'
+2026-05-18 12:09:26.026 +05:30 [INF] Route matched with {action = "GetWorkLogById", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetWorkLogById(Aetram_OpsTrack.Models.Request.GetWorkLogByIdRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 12:09:27.227 +05:30 [ERR] Exception Logged. Controller: WorkLog, Action: GetWorkLogById
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'UserId'.
+Invalid column name 'UserId'.
+Invalid column name 'WorkDate'.
+Invalid column name 'HoursWorked'.
+Invalid column name 'ReasonForReject'.
+Invalid column name 'SubmittedAt'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.Connection.SqlConnectionInternal.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__283_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Aetram_OpsTrack.DAL.DBClass.ExecuteProcedureForDataTable(String procedureName, SqlParameter[] parameters) in C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack\DAL\DBClass.cs:line 53
+   at Aetram_OpsTrack.DBO.BLL.WorkLogRepository.GetWorkLogByIdAsync(Int32 workLogId, Int32 userId) in C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack\DBO\BLL\WorkLogRepository .cs:line 317
+   at Aetram_OpsTrack.Controllers.WorkLogController.GetWorkLogById(GetWorkLogByIdRequest request) in C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack\Controllers\WorkLogController .cs:line 254
+ClientConnectionId:bdcae47f-e178-444e-895f-ab43e5066c39
+Error Number:207,State:1,Class:16
+2026-05-18 12:09:27.329 +05:30 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-18 12:09:27.481 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.GetWorkLogById (Aetram_OpsTrack) in 1437.7037ms
+2026-05-18 12:09:27.503 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.GetWorkLogById (Aetram_OpsTrack)'
+2026-05-18 12:09:27.544 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/get-by-id - 500 null application/json; charset=utf-8 2087.6703ms
+2026-05-18 12:26:10.070 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 12:26:12.392 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 12:26:12.405 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 12:26:12.425 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 12:26:12.436 +05:30 [INF] Hosting environment: Development
+2026-05-18 12:26:12.443 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 12:26:20.348 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 12:26:22.647 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 2373.4887ms
+2026-05-18 12:26:22.872 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 12:26:22.916 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 12:26:22.956 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 84.9988ms
+2026-05-18 12:26:23.244 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 329.3601ms
+2026-05-18 12:26:23.711 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 12:26:24.767 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 1061.6038ms
+2026-05-18 12:26:56.421 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 12:26:56.984 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 12:26:57.178 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 12:27:00.900 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 12:27:01.027 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 3817.8294ms
+2026-05-18 12:27:01.043 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 12:27:01.060 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 401 null application/json; charset=utf-8 4640.2632ms
+2026-05-18 12:27:51.852 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 12:27:51.992 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 12:27:52.026 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 12:27:52.191 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 12:27:52.205 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 157.7441ms
+2026-05-18 12:27:52.227 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 12:27:52.236 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 450.1564ms
+2026-05-18 12:32:32.341 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 12:32:34.005 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 12:32:34.016 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 12:32:34.030 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 12:32:34.041 +05:30 [INF] Hosting environment: Development
+2026-05-18 12:32:34.052 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 12:32:40.933 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 12:32:42.865 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 2010.6517ms
+2026-05-18 12:32:43.095 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 12:32:43.097 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 12:32:43.242 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 155.1647ms
+2026-05-18 12:32:43.587 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 492.3864ms
+2026-05-18 12:32:43.852 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 12:32:44.563 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 711.6192ms
+2026-05-18 12:33:15.691 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 12:33:16.201 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 12:33:16.491 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 12:33:20.003 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 12:33:20.075 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 3556.198ms
+2026-05-18 12:33:20.088 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 12:33:20.104 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 4414.6007ms
+2026-05-18 12:38:13.977 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 12:38:15.117 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 12:38:15.122 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 12:38:15.132 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 12:38:15.143 +05:30 [INF] Hosting environment: Development
+2026-05-18 12:38:15.145 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 12:38:26.205 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 12:38:29.341 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 3195.0581ms
+2026-05-18 12:38:30.314 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 12:38:30.315 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 12:38:30.527 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 223.049ms
+2026-05-18 12:38:30.701 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 386.8699ms
+2026-05-18 12:38:31.038 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 12:38:32.045 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 1009.3423ms
+2026-05-18 12:38:58.431 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 12:38:58.963 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 12:38:59.205 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 12:39:13.532 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 12:39:13.675 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 14441.7437ms
+2026-05-18 12:39:13.691 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 12:39:13.707 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 15281.2192ms
+2026-05-18 12:40:52.550 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 211
+2026-05-18 12:40:53.276 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 12:40:53.435 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 12:40:55.642 +05:30 [ERR] Exception Logged. Controller: WorkLog, Action: SaveWorkLog
+Microsoft.Data.SqlClient.SqlException (0x80131904): Procedure or function 'usp_WorkLog_Save' expects parameter '@WorkflowLogDateId', which was not supplied.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.Connection.SqlConnectionInternal.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__283_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Aetram_OpsTrack.DAL.DBClass.ExecuteProcedureForDataTable(String procedureName, SqlParameter[] parameters) in C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack\DAL\DBClass.cs:line 53
+   at Aetram_OpsTrack.DBO.BLL.WorkLogRepository.SaveWorkLogAsync(SaveWorkLogRequest request, Int32 userId) in C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack\DBO\BLL\WorkLogRepository .cs:line 40
+   at Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog(SaveWorkLogRequest request) in C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack\Controllers\WorkLogController .cs:line 57
+ClientConnectionId:31c5a9ee-4b16-4a0b-bbde-d48c19a3e6f8
+Error Number:201,State:4,Class:16
+2026-05-18 12:40:55.723 +05:30 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-18 12:40:55.786 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 2336.9287ms
+2026-05-18 12:40:55.795 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 12:40:55.804 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 3349.3154ms
+2026-05-18 12:45:37.384 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 12:45:40.407 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 12:45:40.434 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 12:45:40.454 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 12:45:40.463 +05:30 [INF] Hosting environment: Development
+2026-05-18 12:45:40.476 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 12:45:50.152 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 12:45:52.422 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 2341.6536ms
+2026-05-18 12:45:52.634 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 12:45:52.683 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 12:45:52.715 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 78.5819ms
+2026-05-18 12:45:53.105 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 425.069ms
+2026-05-18 12:45:53.763 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 12:45:54.694 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 933.0365ms
+2026-05-18 12:46:32.180 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 12:46:32.634 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 12:46:32.839 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 12:46:35.640 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 12:46:35.724 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 2859.4258ms
+2026-05-18 12:46:35.732 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 12:46:35.743 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 3564.5148ms
+2026-05-18 12:47:29.948 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 258
+2026-05-18 12:47:30.298 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 12:47:30.360 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 12:47:33.140 +05:30 [ERR] Exception Logged. Controller: WorkLog, Action: SaveWorkLog
+System.ArgumentException: Column 'WorkflowLogDateId' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at Aetram_OpsTrack.DBO.BLL.WorkLogRepository.SaveWorkLogAsync(SaveWorkLogRequest request, Int32 userId) in C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack\DBO\BLL\WorkLogRepository .cs:line 55
+   at Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog(SaveWorkLogRequest request) in C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack\Controllers\WorkLogController .cs:line 57
+2026-05-18 12:47:33.181 +05:30 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-18 12:47:33.247 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 2868.9639ms
+2026-05-18 12:47:33.259 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 12:47:33.268 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 3400.7771ms
+2026-05-18 14:25:14.483 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 14:25:16.253 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 14:25:16.258 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 14:25:16.274 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 14:25:16.282 +05:30 [INF] Hosting environment: Development
+2026-05-18 14:25:16.290 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 14:25:22.909 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 14:25:25.245 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 2371.378ms
+2026-05-18 14:25:25.690 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 14:25:25.690 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 14:25:25.747 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 57.3311ms
+2026-05-18 14:25:26.589 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 900.6017ms
+2026-05-18 14:25:26.708 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 14:25:27.178 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 470.6287ms
+2026-05-18 14:25:55.533 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 14:25:56.040 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 14:25:56.269 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 14:25:58.760 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 14:25:58.835 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 2542.3182ms
+2026-05-18 14:25:58.846 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 14:25:58.857 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 3326.9907ms
+2026-05-18 14:28:23.536 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 261
+2026-05-18 14:28:24.227 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 14:28:24.343 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 14:28:27.331 +05:30 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-18 14:28:27.392 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 3030.2492ms
+2026-05-18 14:28:27.400 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 14:28:27.407 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 3893.7795ms
+2026-05-18 14:40:01.225 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 14:40:03.572 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 14:40:03.604 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 14:40:03.646 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 14:40:03.679 +05:30 [INF] Hosting environment: Development
+2026-05-18 14:40:03.685 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 14:40:09.810 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 14:40:11.002 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 1255.9576ms
+2026-05-18 14:40:11.505 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 14:40:11.505 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 14:40:11.558 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 54.7023ms
+2026-05-18 14:40:11.765 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 262.0543ms
+2026-05-18 14:40:11.901 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 14:40:12.511 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 612.4617ms
+2026-05-18 14:42:04.961 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 14:42:05.817 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 14:42:06.186 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 14:42:09.826 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 14:42:09.940 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 3715.1418ms
+2026-05-18 14:42:09.977 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 14:42:10.017 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 5068.066ms
+2026-05-18 14:44:29.576 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 259
+2026-05-18 14:44:30.389 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 14:44:30.533 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 14:44:33.048 +05:30 [ERR] Exception Logged. Controller: WorkLog, Action: SaveWorkLog
+System.ArgumentException: Column 'WorkflowLogDateId' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at Aetram_OpsTrack.DBO.BLL.WorkLogRepository.SaveWorkLogAsync(SaveWorkLogRequest request, Int32 userId) in C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack\DBO\BLL\WorkLogRepository .cs:line 65
+   at Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog(SaveWorkLogRequest request) in C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack\Controllers\WorkLogController .cs:line 58
+2026-05-18 14:44:33.082 +05:30 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-18 14:44:33.158 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 2610.7228ms
+2026-05-18 14:44:33.172 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 14:44:33.184 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 3706.1455ms
+2026-05-18 14:46:52.590 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 14:46:54.423 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 14:46:54.456 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 14:46:54.620 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 14:46:54.660 +05:30 [INF] Hosting environment: Development
+2026-05-18 14:46:54.668 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 14:47:02.821 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 14:47:04.591 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 1941.7736ms
+2026-05-18 14:47:04.726 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 14:47:04.990 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 263.5007ms
+2026-05-18 14:47:05.018 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 14:47:05.318 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 300.2148ms
+2026-05-18 14:47:05.632 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 14:47:06.364 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 733.4074ms
+2026-05-18 14:47:35.094 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 14:47:36.730 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 14:47:37.038 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 14:47:40.460 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 14:47:40.560 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 3413.0184ms
+2026-05-18 14:47:40.573 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 14:47:40.589 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 5498.0236ms
+2026-05-18 14:48:35.986 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 259
+2026-05-18 14:48:36.450 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 14:48:36.506 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 14:48:37.227 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 14:48:37.246 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 728.1553ms
+2026-05-18 14:48:37.255 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 14:48:37.265 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 1287.32ms
+2026-05-18 15:09:55.453 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 15:09:56.886 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 15:09:56.893 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 15:09:56.903 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 15:09:56.912 +05:30 [INF] Hosting environment: Development
+2026-05-18 15:09:56.915 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 15:10:03.584 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 15:10:05.364 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 1831.6909ms
+2026-05-18 15:10:05.424 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 15:10:05.545 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 120.7738ms
+2026-05-18 15:10:05.732 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 15:10:06.162 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 430.5136ms
+2026-05-18 15:10:06.691 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 15:10:07.207 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 517.3216ms
+2026-05-18 15:10:58.563 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 15:10:58.984 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 15:10:59.140 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 15:11:00.982 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 15:11:01.015 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 1859.6441ms
+2026-05-18 15:11:01.019 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 15:11:01.024 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 2462.884ms
+2026-05-18 15:12:16.567 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 259
+2026-05-18 15:12:17.040 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:12:17.103 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 15:12:18.449 +05:30 [ERR] Exception Logged. Controller: WorkLog, Action: SaveWorkLog
+System.ArgumentException: Column 'WorkflowLogDateId' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at Aetram_OpsTrack.DBO.BLL.WorkLogRepository.SaveWorkLogAsync(SaveWorkLogRequest request, Int32 userId) in C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack\DBO\BLL\WorkLogRepository .cs:line 61
+   at Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog(SaveWorkLogRequest request) in C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack\Controllers\WorkLogController .cs:line 56
+2026-05-18 15:12:18.483 +05:30 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`2[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-05-18 15:12:18.550 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 1440.7502ms
+2026-05-18 15:12:18.559 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:12:18.566 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 2054.7225ms
+2026-05-18 15:13:33.621 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 259
+2026-05-18 15:13:33.775 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:13:33.816 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 15:13:35.151 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 15:13:35.228 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 1400.0901ms
+2026-05-18 15:13:35.251 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:13:35.276 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 1659.5414ms
+2026-05-18 15:13:39.072 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 15:13:39.207 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 135.9321ms
+2026-05-18 15:13:39.299 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 15:13:39.299 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 15:13:39.322 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 23.6648ms
+2026-05-18 15:13:39.380 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 81.9654ms
+2026-05-18 15:13:39.638 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 15:13:39.716 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 81.0544ms
+2026-05-18 15:14:40.018 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 15:14:41.009 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 15:14:41.013 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 15:14:41.021 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 15:14:41.027 +05:30 [INF] Hosting environment: Development
+2026-05-18 15:14:41.029 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 15:14:48.054 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 15:14:49.378 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 1392.406ms
+2026-05-18 15:14:49.684 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 15:14:49.684 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 15:14:49.730 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 47.744ms
+2026-05-18 15:14:49.822 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 139.3705ms
+2026-05-18 15:14:49.971 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 15:14:50.398 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 429.6091ms
+2026-05-18 15:15:14.485 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 15:15:14.707 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 15:15:14.809 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 15:15:16.525 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 15:15:16.573 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 1751.9078ms
+2026-05-18 15:15:16.581 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 15:15:16.588 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 2104.2952ms
+2026-05-18 15:16:19.420 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 259
+2026-05-18 15:16:19.737 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:16:19.779 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 15:16:20.362 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 15:16:20.386 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 599.3123ms
+2026-05-18 15:16:20.394 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:16:20.400 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 1024.243ms
+2026-05-18 15:18:21.993 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 258
+2026-05-18 15:18:22.168 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:18:22.194 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 15:18:22.516 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 15:18:22.539 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 337.0634ms
+2026-05-18 15:18:22.552 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:18:22.563 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 610.7706ms
+2026-05-18 15:18:34.445 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 258
+2026-05-18 15:18:34.462 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:18:34.468 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 15:18:34.569 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 15:18:34.571 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 94.7701ms
+2026-05-18 15:18:34.573 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:18:34.598 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 144.0982ms
+2026-05-18 15:24:35.409 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 258
+2026-05-18 15:24:35.891 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:24:35.931 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 15:24:36.478 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 15:24:36.490 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 547.4374ms
+2026-05-18 15:24:36.497 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:24:36.502 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 1203.8207ms
+2026-05-18 15:25:09.256 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 15:25:11.190 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 15:25:11.198 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 15:25:11.218 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 15:25:11.223 +05:30 [INF] Hosting environment: Development
+2026-05-18 15:25:11.227 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 15:25:17.926 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 15:25:19.163 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 1311.6925ms
+2026-05-18 15:25:19.749 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 15:25:19.749 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 15:25:19.827 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 78.0464ms
+2026-05-18 15:25:19.964 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 215.3889ms
+2026-05-18 15:25:20.194 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 15:25:20.786 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 593.7073ms
+2026-05-18 15:25:53.229 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 15:25:53.532 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 15:25:53.660 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 15:25:55.369 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 15:25:55.404 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 1733.0461ms
+2026-05-18 15:25:55.410 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 15:25:55.415 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 2186.0682ms
+2026-05-18 15:27:34.470 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 256
+2026-05-18 15:27:34.936 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:27:35.031 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 15:27:35.879 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 15:27:35.901 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 850.4572ms
+2026-05-18 15:27:35.905 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:27:35.909 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 1496.743ms
+2026-05-18 15:29:32.126 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 257
+2026-05-18 15:29:32.283 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:29:32.307 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 15:29:32.752 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 15:29:32.760 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 446.6575ms
+2026-05-18 15:29:32.764 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:29:32.768 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 688.778ms
+2026-05-18 15:29:47.641 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 257
+2026-05-18 15:29:47.653 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:29:47.658 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 15:29:47.751 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 15:29:47.759 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 93.9769ms
+2026-05-18 15:29:47.764 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:29:47.767 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 126.2858ms
+2026-05-18 15:30:09.232 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 260
+2026-05-18 15:30:09.259 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:30:09.267 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 15:30:09.350 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 15:30:09.356 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 84.0713ms
+2026-05-18 15:30:09.363 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:30:09.367 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 135.5707ms
+2026-05-18 15:32:42.813 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 15:32:43.930 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 15:32:43.937 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 15:32:43.948 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 15:32:43.952 +05:30 [INF] Hosting environment: Development
+2026-05-18 15:32:43.956 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 15:32:50.538 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 15:32:52.015 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 1504.5811ms
+2026-05-18 15:32:52.118 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 15:32:52.231 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 115.4628ms
+2026-05-18 15:32:52.304 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 15:32:52.703 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 399.6875ms
+2026-05-18 15:32:53.110 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 15:32:53.654 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 546.0044ms
+2026-05-18 15:33:27.874 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 15:33:28.183 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 15:33:28.333 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 15:33:30.439 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 15:33:30.540 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 2182.7844ms
+2026-05-18 15:33:30.552 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 15:33:30.571 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 2698.5121ms
+2026-05-18 15:34:31.440 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 263
+2026-05-18 15:34:31.709 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:34:31.732 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 15:34:32.534 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 15:34:32.545 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 807.7159ms
+2026-05-18 15:34:32.548 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 15:34:32.550 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 200 null application/json; charset=utf-8 1116.8448ms
+2026-05-18 16:09:27.262 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 436
+2026-05-18 16:09:27.498 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 16:09:27.528 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 16:09:27.707 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2026-05-18 16:09:27.884 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 349.3893ms
+2026-05-18 16:09:27.888 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 16:09:27.893 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 400 null application/problem+json; charset=utf-8 744.4219ms
+2026-05-18 16:10:13.961 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 265
+2026-05-18 16:10:14.002 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 16:10:14.006 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 16:10:14.779 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 16:10:14.786 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 777.181ms
+2026-05-18 16:10:14.812 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 16:10:14.820 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 858.9071ms
+2026-05-18 16:10:25.070 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 437
+2026-05-18 16:10:25.081 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 16:10:25.089 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 16:10:25.239 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 16:10:25.252 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 154.8305ms
+2026-05-18 16:10:25.260 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 16:10:25.265 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 195.7621ms
+2026-05-18 16:13:43.976 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 265
+2026-05-18 16:13:44.011 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 16:13:44.022 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 16:13:44.115 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 16:13:44.122 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 87.1246ms
+2026-05-18 16:13:44.130 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 16:13:44.136 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 200 null application/json; charset=utf-8 215.045ms
+2026-05-18 16:33:25.681 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 16:33:27.200 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 16:33:27.231 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 16:33:27.258 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 16:33:27.265 +05:30 [INF] Hosting environment: Development
+2026-05-18 16:33:27.269 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 16:33:34.568 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 16:33:35.831 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 1328.5715ms
+2026-05-18 16:33:36.024 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 16:33:36.051 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 16:33:36.105 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 84.7616ms
+2026-05-18 16:33:36.329 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 278.3456ms
+2026-05-18 16:33:37.036 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 16:33:38.346 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 1320.8296ms
+2026-05-18 16:43:41.061 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 16:43:41.724 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 16:43:42.102 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 16:43:45.091 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 16:43:45.141 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 2913.2715ms
+2026-05-18 16:43:45.146 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 16:43:45.152 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 4104.9963ms
+2026-05-18 16:45:03.060 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 263
+2026-05-18 16:45:03.365 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 16:45:03.398 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 16:45:04.362 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 16:45:04.371 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 966.6478ms
+2026-05-18 16:45:04.374 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 16:45:04.379 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 1331.6927ms
+2026-05-18 16:49:30.765 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 263
+2026-05-18 16:49:30.958 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 16:49:30.994 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 16:49:31.518 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 16:49:31.535 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 531.321ms
+2026-05-18 16:49:31.545 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 16:49:31.555 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 862.8937ms
+2026-05-18 16:53:56.311 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 16:53:57.830 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 16:53:57.842 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 16:53:57.866 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 16:53:57.871 +05:30 [INF] Hosting environment: Development
+2026-05-18 16:53:57.876 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 16:54:07.127 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 16:54:08.675 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 1561.1542ms
+2026-05-18 16:54:08.927 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 16:54:09.004 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 76.6275ms
+2026-05-18 16:54:09.130 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 16:54:09.365 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 235.3067ms
+2026-05-18 16:54:09.812 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 16:54:11.821 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 2011.6046ms
+2026-05-18 16:54:33.759 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 16:54:34.197 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 16:54:34.423 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 16:54:37.235 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 16:54:37.328 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 2878.9344ms
+2026-05-18 16:54:37.337 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 16:54:37.351 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 3592.3455ms
+2026-05-18 16:55:39.782 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 262
+2026-05-18 16:55:40.249 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 16:55:40.316 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 16:55:41.619 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 16:55:41.633 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 1306.3388ms
+2026-05-18 16:55:41.641 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 16:55:41.647 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 1922.8907ms
+2026-05-18 17:18:37.057 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 17:18:37.277 +05:30 [INF] Now listening on: http://0.0.0.0:5000
+2026-05-18 17:18:37.282 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 17:18:37.284 +05:30 [INF] Hosting environment: Development
+2026-05-18 17:18:37.285 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 17:21:41.169 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 17:21:42.563 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 17:21:42.570 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 17:21:42.623 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 17:21:42.646 +05:30 [INF] Hosting environment: Development
+2026-05-18 17:21:42.659 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 17:21:49.797 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 17:21:51.047 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 1289.1884ms
+2026-05-18 17:21:51.549 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 17:21:51.549 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 17:21:51.613 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 65.3701ms
+2026-05-18 17:21:51.759 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 211.405ms
+2026-05-18 17:21:52.066 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 17:21:52.761 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 695.1903ms
+2026-05-18 17:24:38.363 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 17:24:38.999 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 17:24:39.312 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 17:24:41.936 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 17:24:42.034 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 2696.9408ms
+2026-05-18 17:24:42.043 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 17:24:42.054 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 3703.6986ms
+2026-05-18 17:28:24.323 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 17:28:25.669 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 17:28:25.674 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 17:28:25.687 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 17:28:25.693 +05:30 [INF] Hosting environment: Development
+2026-05-18 17:28:25.700 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 17:28:32.970 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 17:28:34.907 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 2021.5541ms
+2026-05-18 17:28:35.265 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 17:28:35.310 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 17:28:35.390 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 125.4209ms
+2026-05-18 17:28:35.706 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 395.4162ms
+2026-05-18 17:28:35.970 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 17:28:36.598 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 631.8652ms
+2026-05-18 17:37:57.319 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 17:37:58.252 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 17:37:58.660 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 17:38:02.003 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 17:38:02.112 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 3426.6048ms
+2026-05-18 17:38:02.123 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 17:38:02.138 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 4838.5468ms
+2026-05-18 17:39:49.338 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 262
+2026-05-18 17:39:49.738 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 17:39:49.777 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 17:39:50.850 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 17:39:50.868 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 1078.192ms
+2026-05-18 17:39:50.877 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 17:39:50.884 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 1548.2416ms
+2026-05-18 17:42:29.958 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 262
+2026-05-18 17:42:30.171 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 17:42:30.207 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 17:42:30.586 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 17:42:30.598 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 376.6981ms
+2026-05-18 17:42:30.606 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 17:42:30.614 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 712.3559ms
+2026-05-18 17:48:30.324 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 17:48:32.716 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 17:48:32.723 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 17:48:32.754 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 17:48:32.773 +05:30 [INF] Hosting environment: Development
+2026-05-18 17:48:32.781 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 17:48:39.049 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 17:48:41.019 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 2090.2958ms
+2026-05-18 17:48:41.138 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 17:48:41.343 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 208.47ms
+2026-05-18 17:48:41.428 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 17:48:42.049 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 620.8796ms
+2026-05-18 17:48:42.411 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 17:48:43.120 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 711.4357ms
+2026-05-18 17:49:11.689 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 17:49:13.284 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 17:49:13.826 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 17:49:17.460 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 17:49:17.577 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 3712.8702ms
+2026-05-18 17:49:17.590 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 17:49:17.610 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 5937.7986ms
+2026-05-18 17:50:40.076 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 262
+2026-05-18 17:50:41.172 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 17:50:41.446 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 17:50:43.185 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 17:50:43.217 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 1745.9393ms
+2026-05-18 17:50:43.232 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 17:50:43.244 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 3268.6075ms
+2026-05-18 17:50:58.315 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 262
+2026-05-18 17:50:58.409 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 17:50:58.425 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 17:51:03.976 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 17:51:03.989 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 5545.1095ms
+2026-05-18 17:51:04.000 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 17:51:04.006 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 5693.6996ms
+2026-05-18 17:51:17.270 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 262
+2026-05-18 17:51:17.297 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 17:51:17.306 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 17:51:22.527 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 17:51:22.537 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 5222.497ms
+2026-05-18 17:51:22.546 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 17:51:22.553 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 5284.6526ms
+2026-05-18 17:51:52.274 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/WorkLog/save - application/json 262
+2026-05-18 17:51:52.554 +05:30 [INF] Executing endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 17:51:52.582 +05:30 [INF] Route matched with {action = "SaveWorkLog", controller = "WorkLog"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SaveWorkLog(Aetram_OpsTrack.Models.Request.SaveWorkLogRequest) on controller Aetram_OpsTrack.Controllers.WorkLogController (Aetram_OpsTrack).
+2026-05-18 17:51:57.255 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.Aetram_OpsTrack.Models.Response.SaveWorkLogResponse'.
+2026-05-18 17:51:57.278 +05:30 [INF] Executed action Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack) in 4679.8032ms
+2026-05-18 17:51:57.294 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.WorkLogController.SaveWorkLog (Aetram_OpsTrack)'
+2026-05-18 17:51:57.302 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 5120.6301ms
+2026-05-18 17:55:00.973 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 17:55:01.503 +05:30 [INF] Now listening on: http://0.0.0.0:5000
+2026-05-18 17:55:01.519 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 17:55:01.526 +05:30 [INF] Hosting environment: Development
+2026-05-18 17:55:01.535 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 17:55:03.642 +05:30 [INF] Request starting HTTP/1.1 GET http://10.107.20.246:5000/swagger - null null
+2026-05-18 17:55:03.784 +05:30 [INF] Request finished HTTP/1.1 GET http://10.107.20.246:5000/swagger - 301 0 null 144.1333ms
+2026-05-18 17:55:03.822 +05:30 [INF] Request starting HTTP/1.1 GET http://10.107.20.246:5000/swagger/index.html - null null
+2026-05-18 17:55:04.070 +05:30 [INF] Request finished HTTP/1.1 GET http://10.107.20.246:5000/swagger/index.html - 200 null text/html;charset=utf-8 249.8796ms
+2026-05-18 17:55:04.127 +05:30 [INF] Request starting HTTP/1.1 GET http://10.107.20.246:5000/swagger/swagger-ui.css - null null
+2026-05-18 17:55:04.127 +05:30 [INF] Request starting HTTP/1.1 GET http://10.107.20.246:5000/swagger/swagger-ui-standalone-preset.js - null null
+2026-05-18 17:55:04.127 +05:30 [INF] Request starting HTTP/1.1 GET http://10.107.20.246:5000/swagger/swagger-ui-bundle.js - null null
+2026-05-18 17:55:04.252 +05:30 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2026-05-18 17:55:04.253 +05:30 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2026-05-18 17:55:04.266 +05:30 [INF] Request finished HTTP/1.1 GET http://10.107.20.246:5000/swagger/swagger-ui.css - 200 152034 text/css 138.7469ms
+2026-05-18 17:55:04.268 +05:30 [INF] Request finished HTTP/1.1 GET http://10.107.20.246:5000/swagger/swagger-ui-standalone-preset.js - 200 230280 text/javascript 140.8555ms
+2026-05-18 17:55:04.474 +05:30 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2026-05-18 17:55:04.481 +05:30 [INF] Request finished HTTP/1.1 GET http://10.107.20.246:5000/swagger/swagger-ui-bundle.js - 200 1456926 text/javascript 353.6076ms
+2026-05-18 17:55:04.818 +05:30 [INF] Request starting HTTP/1.1 GET http://10.107.20.246:5000/swagger/v1/swagger.json - null null
+2026-05-18 17:55:04.866 +05:30 [INF] Request starting HTTP/1.1 GET http://10.107.20.246:5000/swagger/favicon-32x32.png - null null
+2026-05-18 17:55:04.879 +05:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2026-05-18 17:55:04.889 +05:30 [INF] Request finished HTTP/1.1 GET http://10.107.20.246:5000/swagger/favicon-32x32.png - 200 628 image/png 23.129ms
+2026-05-18 17:55:05.183 +05:30 [INF] Request finished HTTP/1.1 GET http://10.107.20.246:5000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 365.2491ms
+2026-05-18 17:58:12.228 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 17:58:14.263 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 17:58:14.274 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 17:58:14.292 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 17:58:14.299 +05:30 [INF] Hosting environment: Development
+2026-05-18 17:58:14.305 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 17:58:21.736 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 17:58:23.465 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 1772.9433ms
+2026-05-18 17:58:23.755 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 17:58:23.778 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 18:13:18.003 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 18:13:20.935 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 18:13:20.960 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 18:13:20.965 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 18:13:20.967 +05:30 [INF] Hosting environment: Development
+2026-05-18 18:13:20.969 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 18:13:35.537 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 18:13:36.906 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 1394.5221ms
+2026-05-18 18:13:37.281 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 18:13:37.281 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 18:13:37.335 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 49.6645ms
+2026-05-18 18:13:37.928 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 647.2255ms
+2026-05-18 18:13:38.192 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 18:13:38.834 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 642.8728ms
+2026-05-18 18:19:51.381 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 18:19:54.270 +05:30 [INF] Now listening on: http://0.0.0.0:5000
+2026-05-18 18:19:54.276 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 18:19:54.279 +05:30 [INF] Hosting environment: Development
+2026-05-18 18:19:54.282 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 18:20:12.388 +05:30 [INF] Request starting HTTP/1.1 GET http://10.107.20.246:5000/swagger/index.html - null null
+2026-05-18 18:20:12.511 +05:30 [INF] Request finished HTTP/1.1 GET http://10.107.20.246:5000/swagger/index.html - 200 null text/html;charset=utf-8 124.8239ms
+2026-05-18 18:20:13.286 +05:30 [INF] Request starting HTTP/1.1 GET http://10.107.20.246:5000/swagger/v1/swagger.json - null null
+2026-05-18 18:20:13.388 +05:30 [INF] Request finished HTTP/1.1 GET http://10.107.20.246:5000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 101.9043ms
+2026-05-18 18:20:36.303 +05:30 [INF] Request starting HTTP/1.1 POST http://10.107.20.246:5000/api/Login - application/json 64
+2026-05-18 18:20:36.310 +05:30 [WRN] Failed to determine the https port for redirect.
+2026-05-18 18:20:36.312 +05:30 [INF] CORS policy execution successful.
+2026-05-18 18:20:36.391 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 18:20:36.427 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 18:20:37.614 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 18:20:37.635 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 1200.7693ms
+2026-05-18 18:20:37.638 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 18:20:37.640 +05:30 [INF] Request finished HTTP/1.1 POST http://10.107.20.246:5000/api/Login - 200 null application/json; charset=utf-8 1336.6409ms
+2026-05-18 18:21:43.774 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 18:21:46.078 +05:30 [INF] Now listening on: https://localhost:7181
+2026-05-18 18:21:46.084 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 18:21:46.094 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 18:21:46.098 +05:30 [INF] Hosting environment: Development
+2026-05-18 18:21:46.101 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
+2026-05-18 18:21:53.712 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - null null
+2026-05-18 18:21:55.423 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - 200 null text/html;charset=utf-8 1767.1141ms
+2026-05-18 18:21:56.183 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
+2026-05-18 18:21:56.183 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - null null
+2026-05-18 18:21:56.297 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 103.6368ms
+2026-05-18 18:21:56.640 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/_vs/browserLink - 200 null text/javascript; charset=UTF-8 457.9577ms
+2026-05-18 18:21:56.903 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - null null
+2026-05-18 18:21:57.545 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 643.2489ms
+2026-05-18 18:22:24.327 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
+2026-05-18 18:22:24.356 +05:30 [INF] CORS policy execution successful.
+2026-05-18 18:22:24.751 +05:30 [INF] Executing endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 18:22:25.000 +05:30 [INF] Route matched with {action = "Login", controller = "Login"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(Aetram_OpsTrack.Models.Request.LoginRequest) on controller LoginController (Aetram_OpsTrack).
+2026-05-18 18:22:28.443 +05:30 [INF] Executing ObjectResult, writing value of type 'Aetram_OpsTrack.Models.Response.LoginResponse'.
+2026-05-18 18:22:28.554 +05:30 [INF] Executed action LoginController.Login (Aetram_OpsTrack) in 3529.071ms
+2026-05-18 18:22:28.564 +05:30 [INF] Executed endpoint 'LoginController.Login (Aetram_OpsTrack)'
+2026-05-18 18:22:28.572 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 4245.5629ms
+2026-05-18 18:25:04.532 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-05-18 18:25:05.053 +05:30 [INF] Now listening on: http://0.0.0.0:5000
+2026-05-18 18:25:05.063 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-18 18:25:05.066 +05:30 [INF] Hosting environment: Development
+2026-05-18 18:25:05.069 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack

@@ -1,0 +1,17 @@
+@{
+    ViewData["Title"] = "Task Groups";
+}
+<div class="content-card">
+    <h2 style="color:var(--gold)">Task groups</h2>
+    <div id="group-list">Loading…</div>
+</div>
+<script type="module">
+    import { requireAuth } from '/js/auth/routeGuard.js';
+    import { apiPost, unwrap } from '/js/services/apiClient.js';
+    if (!requireAuth({ allowRoles: ['DepartmentHead', 'Admin'] })) throw new Error('auth');
+    const json = await apiPost('/api/TaskGroup/list', {});
+    const { data } = unwrap(json);
+    document.getElementById('group-list').innerHTML = (data || []).map(g =>
+        `<div class="py-2 border-bottom">${g.groupName ?? g.GroupName} — ${g.departmentName ?? g.DepartmentName ?? ''}</div>`
+    ).join('') || '<p>No groups</p>';
+</script>

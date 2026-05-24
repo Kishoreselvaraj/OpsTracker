@@ -1,0 +1,517 @@
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\appsettings.Development.json
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\appsettings.json
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\OpsTracker_v1.staticwebassets.runtime.json
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\OpsTracker_v1.staticwebassets.endpoints.json
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\OpsTracker_v1.exe
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\OpsTracker_v1.deps.json
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\OpsTracker_v1.runtimeconfig.json
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\OpsTracker_v1.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\OpsTracker_v1.pdb
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Azure.Core.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Azure.Identity.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Dapper.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Microsoft.Data.SqlClient.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Microsoft.Extensions.DependencyModel.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Microsoft.Identity.Client.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Microsoft.IdentityModel.Logging.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Microsoft.OpenApi.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Microsoft.SqlServer.Server.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Newtonsoft.Json.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Serilog.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Serilog.AspNetCore.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Serilog.Extensions.Hosting.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Serilog.Extensions.Logging.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Serilog.Formatting.Compact.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Serilog.Settings.Configuration.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Serilog.Sinks.Console.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Serilog.Sinks.Debug.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Serilog.Sinks.File.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\System.ClientModel.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\System.Configuration.ConfigurationManager.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\System.Memory.Data.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\System.Runtime.Caching.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\System.Security.Cryptography.ProtectedData.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\de\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\es\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\fr\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\it\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\ja\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\ko\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\pt-BR\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\ru\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\OpsTracker_v1.csproj.AssemblyReference.cache
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\rpswa.dswa.cache.json
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\OpsTracker_v1.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\OpsTracker_v1.csproj.CoreCompileInputs.cache
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\OpsTracker_v1.MvcApplicationPartsAssemblyInfo.cs
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\OpsTracker_v1.MvcApplicationPartsAssemblyInfo.cache
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\OpsTracker_v1.RazorAssemblyInfo.cache
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\OpsTracker_v1.RazorAssemblyInfo.cs
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\rjimswa.dswa.cache.json
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\scopedcss\bundle\OpsTracker_v1.styles.css
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\scopedcss\projectbundle\OpsTracker_v1.bundle.scp.css
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\5wfkr4ht1b-{0}-isrdxdlq3t-isrdxdlq3t.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\kjxsy4wt3e-{0}-pgkie779v0-pgkie779v0.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\0grxpq6ip4-{0}-01by6aq54e-01by6aq54e.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\9nyoltgdjf-{0}-b9sayid5wm-b9sayid5wm.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\xrle1u3v3e-{0}-w8tebvqcjl-w8tebvqcjl.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\19hg2pfcg3-{0}-61n19gt1b8-61n19gt1b8.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\suh9uyysd2-{0}-thswgkug72-thswgkug72.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\25as8kzaz3-{0}-yxxpodxljg-yxxpodxljg.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\69c6672ggs-{0}-lts0n3efh0-lts0n3efh0.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\p83beimsra-{0}-ny5z0gjfwa-ny5z0gjfwa.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\4z5ma7m5z8-{0}-lc8qygyeeo-lc8qygyeeo.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\aeqxt8d7s1-{0}-im8cqkdsfj-im8cqkdsfj.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\cixj8gxe6k-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\jy25gexnfe-{0}-pynbgtuvij-pynbgtuvij.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\gtfd7b9gdc-{0}-88q7tgolcg-88q7tgolcg.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\230mu6eo47-{0}-bqjiyaj88i-bqjiyaj88i.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\v75stn4bip-{0}-c2jlpeoesf-c2jlpeoesf.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\yz4ac0e8ml-{0}-erw9l3u2r3-erw9l3u2r3.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\6qfwrfxuux-{0}-aexeepp0ev-aexeepp0ev.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\oc2clgt4d7-{0}-d7shbmvgxk-d7shbmvgxk.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\sy9b3i4opz-{0}-ausgxo2sd3-ausgxo2sd3.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\v9q4bor80i-{0}-k8d9w2qqmf-k8d9w2qqmf.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\qhno7ol057-{0}-cosvhxvwiu-cosvhxvwiu.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\5c2uk2j5i5-{0}-ub07r2b239-ub07r2b239.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\62pnwxkzww-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\lh21vwftbt-{0}-b7pk76d08c-b7pk76d08c.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\iugzqdiee4-{0}-fsbi9cje9m-fsbi9cje9m.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\9l2gafst10-{0}-rzd6atqjts-rzd6atqjts.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\gql8mzdkhd-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\f6mgxkpg72-{0}-dxx9fxp4il-dxx9fxp4il.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\l5eg5g4rm4-{0}-jd9uben2k1-jd9uben2k1.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\b0fp6tmy1s-{0}-khv3u5hwcm-khv3u5hwcm.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\wp6fs27f35-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\s4t1x0bmg4-{0}-lcd1t2u6c8-lcd1t2u6c8.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\ec1518nbo7-{0}-c2oey78nd0-c2oey78nd0.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\qej496eymd-{0}-tdbxkamptv-tdbxkamptv.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\emny88myu6-{0}-j5mq2jizvt-j5mq2jizvt.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\8k5o0hy06w-{0}-06098lyss8-06098lyss8.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\qdc9pajxzk-{0}-nvvlpmu67g-nvvlpmu67g.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\czam7h0p3s-{0}-s35ty4nyc5-s35ty4nyc5.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\psxhlhsjm3-{0}-pj5nd1wqec-pj5nd1wqec.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\vtq7pzggmt-{0}-46ein0sx1k-46ein0sx1k.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\8c8kob02fm-{0}-v0zj4ognzu-v0zj4ognzu.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\11j0vcxq0z-{0}-37tfw0ft22-37tfw0ft22.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\gv12tl2v6i-{0}-hrwsygsryq-hrwsygsryq.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\kf084zbtr6-{0}-pk9g2wxc8p-pk9g2wxc8p.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\5ryh261dor-{0}-ft3s53vfgj-ft3s53vfgj.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\ph998bzhd1-{0}-6cfz1n2cew-6cfz1n2cew.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\yn6s2ob2cg-{0}-6pdc2jztkx-6pdc2jztkx.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\91nmu3zvfa-{0}-493y06b0oq-493y06b0oq.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\cmhh5vfg4v-{0}-iovd86k7lj-iovd86k7lj.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\fnztsg55pr-{0}-vr1egmr9el-vr1egmr9el.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\12xzxlyhxh-{0}-kbrnm935zg-kbrnm935zg.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\vv7jk4infz-{0}-jj8uyg4cgr-jj8uyg4cgr.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\m8sgmn8v3o-{0}-y7v9cxd14o-y7v9cxd14o.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\vlg9cxavmd-{0}-notf2xhcfb-notf2xhcfb.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\qw62cdyst5-{0}-h1s4sie4z3-h1s4sie4z3.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\q5rhrtipz3-{0}-63fj8s7r0e-63fj8s7r0e.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\3vaq6ri051-{0}-0j3bgjxly4-0j3bgjxly4.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\ek02g6actz-{0}-47otxtyo56-47otxtyo56.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\q3alt2nd77-{0}-4v8eqarkd7-4v8eqarkd7.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\b4usfaujlv-{0}-356vix0kms-356vix0kms.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\tj9rdyg771-{0}-83jwlth58m-83jwlth58m.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\vyv1az7ug7-{0}-mrlpezrjn3-mrlpezrjn3.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\djndy2dor6-{0}-lzl9nlhx6b-lzl9nlhx6b.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\sxv8yyuzry-{0}-ag7o75518u-ag7o75518u.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\dbddww7w4e-{0}-x0q3zqp4vz-x0q3zqp4vz.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\let2ane3q8-{0}-0i3buxo5is-0i3buxo5is.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\mcd2myjpag-{0}-o1o13a6vjx-o1o13a6vjx.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\pcgd7ubrw8-{0}-ttgo8qnofa-ttgo8qnofa.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\k0z0r57bxn-{0}-2z0ns9nrw6-2z0ns9nrw6.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\92zd9hx09u-{0}-muycvpuwrr-muycvpuwrr.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\3ydq2p23k2-{0}-87fc7y1x7t-87fc7y1x7t.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\up2dw0ici1-{0}-mlv21k5csn-mlv21k5csn.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\exl449pnwa-{0}-hpdrmastwq-hpdrmastwq.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\compressed\3ja2dfluuy-{0}-hpdrmastwq-hpdrmastwq.gz
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\staticwebassets.build.json
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\staticwebassets.build.json.cache
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\staticwebassets.development.json
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\swae.build.ex.cache
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\OpsTrack.68ABE021.Up2Date
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\OpsTracker_v1.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\refint\OpsTracker_v1.dll
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\OpsTracker_v1.pdb
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\OpsTracker_v1.genruntimeconfig.cache
+D:\Projects\C# ASP dotNET\OpsTracker\OpsTracker_v1\obj\Debug\net10.0\ref\OpsTracker_v1.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\appsettings.Development.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\OpsTracker_v1.staticwebassets.endpoints.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\appsettings.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\OpsTracker_v1.staticwebassets.runtime.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\OpsTracker_v1.exe
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\OpsTracker_v1.deps.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\OpsTracker_v1.runtimeconfig.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\OpsTracker_v1.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\OpsTracker_v1.pdb
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Azure.Core.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Azure.Identity.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Dapper.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Microsoft.Data.SqlClient.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Microsoft.Extensions.DependencyModel.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Microsoft.Identity.Client.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Microsoft.IdentityModel.Logging.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Microsoft.OpenApi.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Microsoft.SqlServer.Server.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Newtonsoft.Json.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Serilog.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Serilog.AspNetCore.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Serilog.Extensions.Hosting.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Serilog.Extensions.Logging.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Serilog.Formatting.Compact.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Serilog.Settings.Configuration.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Serilog.Sinks.Console.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Serilog.Sinks.Debug.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Serilog.Sinks.File.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\System.ClientModel.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\System.Configuration.ConfigurationManager.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\System.Memory.Data.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\System.Runtime.Caching.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\System.Security.Cryptography.ProtectedData.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\de\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\es\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\fr\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\it\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\ja\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\ko\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\pt-BR\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\ru\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\OpsTracker_v1.csproj.AssemblyReference.cache
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\rpswa.dswa.cache.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\OpsTracker_v1.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\OpsTracker_v1.csproj.CoreCompileInputs.cache
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\OpsTracker_v1.MvcApplicationPartsAssemblyInfo.cs
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\OpsTracker_v1.MvcApplicationPartsAssemblyInfo.cache
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\OpsTracker_v1.RazorAssemblyInfo.cache
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\OpsTracker_v1.RazorAssemblyInfo.cs
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\OpsTracker_v1.sourcelink.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\rjimswa.dswa.cache.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\scopedcss\bundle\OpsTracker_v1.styles.css
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\scopedcss\projectbundle\OpsTracker_v1.bundle.scp.css
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\5wfkr4ht1b-{0}-isrdxdlq3t-isrdxdlq3t.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\9nyoltgdjf-{0}-b9sayid5wm-b9sayid5wm.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\19hg2pfcg3-{0}-61n19gt1b8-61n19gt1b8.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\69c6672ggs-{0}-lts0n3efh0-lts0n3efh0.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\4z5ma7m5z8-{0}-lc8qygyeeo-lc8qygyeeo.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\cixj8gxe6k-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\gtfd7b9gdc-{0}-88q7tgolcg-88q7tgolcg.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\230mu6eo47-{0}-bqjiyaj88i-bqjiyaj88i.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\v75stn4bip-{0}-c2jlpeoesf-c2jlpeoesf.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\yz4ac0e8ml-{0}-erw9l3u2r3-erw9l3u2r3.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\6qfwrfxuux-{0}-aexeepp0ev-aexeepp0ev.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\oc2clgt4d7-{0}-d7shbmvgxk-d7shbmvgxk.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\sy9b3i4opz-{0}-ausgxo2sd3-ausgxo2sd3.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\v9q4bor80i-{0}-k8d9w2qqmf-k8d9w2qqmf.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\qhno7ol057-{0}-cosvhxvwiu-cosvhxvwiu.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\5c2uk2j5i5-{0}-ub07r2b239-ub07r2b239.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\62pnwxkzww-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\lh21vwftbt-{0}-b7pk76d08c-b7pk76d08c.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\iugzqdiee4-{0}-fsbi9cje9m-fsbi9cje9m.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\9l2gafst10-{0}-rzd6atqjts-rzd6atqjts.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\gql8mzdkhd-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\f6mgxkpg72-{0}-dxx9fxp4il-dxx9fxp4il.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\l5eg5g4rm4-{0}-jd9uben2k1-jd9uben2k1.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\b0fp6tmy1s-{0}-khv3u5hwcm-khv3u5hwcm.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\wp6fs27f35-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\s4t1x0bmg4-{0}-lcd1t2u6c8-lcd1t2u6c8.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\ec1518nbo7-{0}-c2oey78nd0-c2oey78nd0.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\qej496eymd-{0}-tdbxkamptv-tdbxkamptv.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\emny88myu6-{0}-j5mq2jizvt-j5mq2jizvt.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\8k5o0hy06w-{0}-06098lyss8-06098lyss8.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\qdc9pajxzk-{0}-nvvlpmu67g-nvvlpmu67g.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\czam7h0p3s-{0}-s35ty4nyc5-s35ty4nyc5.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\psxhlhsjm3-{0}-pj5nd1wqec-pj5nd1wqec.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\vtq7pzggmt-{0}-46ein0sx1k-46ein0sx1k.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\8c8kob02fm-{0}-v0zj4ognzu-v0zj4ognzu.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\11j0vcxq0z-{0}-37tfw0ft22-37tfw0ft22.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\gv12tl2v6i-{0}-hrwsygsryq-hrwsygsryq.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\kf084zbtr6-{0}-pk9g2wxc8p-pk9g2wxc8p.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\5ryh261dor-{0}-ft3s53vfgj-ft3s53vfgj.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\ph998bzhd1-{0}-6cfz1n2cew-6cfz1n2cew.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\yn6s2ob2cg-{0}-6pdc2jztkx-6pdc2jztkx.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\91nmu3zvfa-{0}-493y06b0oq-493y06b0oq.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\cmhh5vfg4v-{0}-iovd86k7lj-iovd86k7lj.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\fnztsg55pr-{0}-vr1egmr9el-vr1egmr9el.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\12xzxlyhxh-{0}-kbrnm935zg-kbrnm935zg.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\vv7jk4infz-{0}-jj8uyg4cgr-jj8uyg4cgr.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\m8sgmn8v3o-{0}-y7v9cxd14o-y7v9cxd14o.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\vlg9cxavmd-{0}-notf2xhcfb-notf2xhcfb.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\qw62cdyst5-{0}-h1s4sie4z3-h1s4sie4z3.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\q5rhrtipz3-{0}-63fj8s7r0e-63fj8s7r0e.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\3vaq6ri051-{0}-0j3bgjxly4-0j3bgjxly4.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\ek02g6actz-{0}-47otxtyo56-47otxtyo56.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\q3alt2nd77-{0}-4v8eqarkd7-4v8eqarkd7.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\b4usfaujlv-{0}-356vix0kms-356vix0kms.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\tj9rdyg771-{0}-83jwlth58m-83jwlth58m.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\vyv1az7ug7-{0}-mrlpezrjn3-mrlpezrjn3.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\djndy2dor6-{0}-lzl9nlhx6b-lzl9nlhx6b.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\sxv8yyuzry-{0}-ag7o75518u-ag7o75518u.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\dbddww7w4e-{0}-x0q3zqp4vz-x0q3zqp4vz.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\let2ane3q8-{0}-0i3buxo5is-0i3buxo5is.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\mcd2myjpag-{0}-o1o13a6vjx-o1o13a6vjx.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\pcgd7ubrw8-{0}-ttgo8qnofa-ttgo8qnofa.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\k0z0r57bxn-{0}-2z0ns9nrw6-2z0ns9nrw6.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\92zd9hx09u-{0}-muycvpuwrr-muycvpuwrr.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\3ydq2p23k2-{0}-87fc7y1x7t-87fc7y1x7t.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\up2dw0ici1-{0}-mlv21k5csn-mlv21k5csn.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\exl449pnwa-{0}-hpdrmastwq-hpdrmastwq.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\3ja2dfluuy-{0}-hpdrmastwq-hpdrmastwq.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\staticwebassets.build.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\staticwebassets.build.json.cache
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\staticwebassets.development.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\swae.build.ex.cache
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\OpsTrack.68ABE021.Up2Date
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\OpsTracker_v1.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\refint\OpsTracker_v1.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\OpsTracker_v1.pdb
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\OpsTracker_v1.genruntimeconfig.cache
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\ref\OpsTracker_v1.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\0grxpq6ip4-{0}-lgv0p9zpym-lgv0p9zpym.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\suh9uyysd2-{0}-a8bujq1vvl-a8bujq1vvl.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\25as8kzaz3-{0}-w945cvokaw-w945cvokaw.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\p83beimsra-{0}-hivblzyozp-hivblzyozp.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\z1m3ujxgut-{0}-ts9mdgx2ku-ts9mdgx2ku.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\bcgdj538te-{0}-4hqdui83k7-4hqdui83k7.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\e3f5bf3rn9-{0}-k2hhb7eygn-k2hhb7eygn.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\9yqd58ouwr-{0}-pvs6p67tql-pvs6p67tql.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\kxutnuwb5s-{0}-8pgldp323i-8pgldp323i.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\yd2rei8bbe-{0}-big3sqrggf-big3sqrggf.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\kjxsy4wt3e-{0}-8byfdevzy0-8byfdevzy0.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\t8g46q9zkm-{0}-c5rjwiyw8j-c5rjwiyw8j.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\ihjkkqhfyc-{0}-6sehvw0ffw-6sehvw0ffw.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\Aetram_OPs_Track\obj\Debug\net10.0\compressed\aeqxt8d7s1-{0}-kuae21c33d-kuae21c33d.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\appsettings.Development.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\appsettings.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\OpsTracker_v1.staticwebassets.runtime.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\OpsTracker_v1.staticwebassets.endpoints.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\OpsTracker_v1.exe
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\OpsTracker_v1.deps.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\OpsTracker_v1.runtimeconfig.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\OpsTracker_v1.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\OpsTracker_v1.pdb
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Azure.Core.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Azure.Identity.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Dapper.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Microsoft.Data.SqlClient.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Microsoft.Extensions.DependencyModel.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Microsoft.Identity.Client.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Microsoft.IdentityModel.Logging.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Microsoft.OpenApi.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Microsoft.SqlServer.Server.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Newtonsoft.Json.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Serilog.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Serilog.AspNetCore.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Serilog.Extensions.Hosting.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Serilog.Extensions.Logging.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Serilog.Formatting.Compact.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Serilog.Settings.Configuration.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Serilog.Sinks.Console.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Serilog.Sinks.Debug.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Serilog.Sinks.File.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\System.ClientModel.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\System.Configuration.ConfigurationManager.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\System.Memory.Data.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\System.Runtime.Caching.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\System.Security.Cryptography.ProtectedData.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\de\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\es\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\fr\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\it\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\ja\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\ko\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\pt-BR\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\ru\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\OpsTracker_v1.csproj.AssemblyReference.cache
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\rpswa.dswa.cache.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\OpsTracker_v1.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\OpsTracker_v1.csproj.CoreCompileInputs.cache
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\OpsTracker_v1.MvcApplicationPartsAssemblyInfo.cs
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\OpsTracker_v1.MvcApplicationPartsAssemblyInfo.cache
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\OpsTracker_v1.RazorAssemblyInfo.cache
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\OpsTracker_v1.RazorAssemblyInfo.cs
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\OpsTracker_v1.sourcelink.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\rjimswa.dswa.cache.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\scopedcss\bundle\OpsTracker_v1.styles.css
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\scopedcss\projectbundle\OpsTracker_v1.bundle.scp.css
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\ji1flg0n2z-{0}-rh8djs9a0y-rh8djs9a0y.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\5wfkr4ht1b-{0}-isrdxdlq3t-isrdxdlq3t.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\kjxsy4wt3e-{0}-8byfdevzy0-8byfdevzy0.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\0grxpq6ip4-{0}-lgv0p9zpym-lgv0p9zpym.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\9nyoltgdjf-{0}-b9sayid5wm-b9sayid5wm.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\t8g46q9zkm-{0}-c5rjwiyw8j-c5rjwiyw8j.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\z1m3ujxgut-{0}-ts9mdgx2ku-ts9mdgx2ku.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\kxutnuwb5s-{0}-8pgldp323i-8pgldp323i.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\e3f5bf3rn9-{0}-k2hhb7eygn-k2hhb7eygn.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\erb2e15dk7-{0}-t8r288d3cp-t8r288d3cp.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\19hg2pfcg3-{0}-61n19gt1b8-61n19gt1b8.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\suh9uyysd2-{0}-v358d5iwir-v358d5iwir.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\25as8kzaz3-{0}-cflar0v52y-cflar0v52y.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\79jwduvl18-{0}-h4t3knw6la-h4t3knw6la.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\lz9diukofj-{0}-tm3f4wpbfd-tm3f4wpbfd.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\69c6672ggs-{0}-lts0n3efh0-lts0n3efh0.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\p83beimsra-{0}-mi32xmdf5n-mi32xmdf5n.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\4z5ma7m5z8-{0}-lc8qygyeeo-lc8qygyeeo.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\zerqwvar89-{0}-189febdpki-189febdpki.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\lq828e9i0c-{0}-yl2ge03cq7-yl2ge03cq7.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\aeqxt8d7s1-{0}-ocnfn5hbe7-ocnfn5hbe7.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\rek4245xf9-{0}-q3f6chtnrz-q3f6chtnrz.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\8t5j7jonqd-{0}-fnatki6d9n-fnatki6d9n.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\v6zv9376c7-{0}-zk4lcwjc5h-zk4lcwjc5h.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\v1i0xag806-{0}-vu2pymjpwi-vu2pymjpwi.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\dz8a2bg6ml-{0}-6xahur3eez-6xahur3eez.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\0jne5jsrhg-{0}-quiu0ilrp1-quiu0ilrp1.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\cixj8gxe6k-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\ihjkkqhfyc-{0}-juvxfoyuva-juvxfoyuva.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\bcgdj538te-{0}-i1liyzngrr-i1liyzngrr.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\yd2rei8bbe-{0}-dky0xnn22j-dky0xnn22j.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\9yqd58ouwr-{0}-87snem1e0b-87snem1e0b.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\6lly2gtrw0-{0}-km797jyi77-km797jyi77.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\o58d4vgjiw-{0}-0bx5ybbw2g-0bx5ybbw2g.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\gtfd7b9gdc-{0}-88q7tgolcg-88q7tgolcg.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\230mu6eo47-{0}-bqjiyaj88i-bqjiyaj88i.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\v75stn4bip-{0}-c2jlpeoesf-c2jlpeoesf.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\yz4ac0e8ml-{0}-erw9l3u2r3-erw9l3u2r3.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\6qfwrfxuux-{0}-aexeepp0ev-aexeepp0ev.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\oc2clgt4d7-{0}-d7shbmvgxk-d7shbmvgxk.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\sy9b3i4opz-{0}-ausgxo2sd3-ausgxo2sd3.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\v9q4bor80i-{0}-k8d9w2qqmf-k8d9w2qqmf.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\qhno7ol057-{0}-cosvhxvwiu-cosvhxvwiu.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\5c2uk2j5i5-{0}-ub07r2b239-ub07r2b239.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\62pnwxkzww-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\lh21vwftbt-{0}-b7pk76d08c-b7pk76d08c.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\iugzqdiee4-{0}-fsbi9cje9m-fsbi9cje9m.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\9l2gafst10-{0}-rzd6atqjts-rzd6atqjts.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\gql8mzdkhd-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\f6mgxkpg72-{0}-dxx9fxp4il-dxx9fxp4il.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\l5eg5g4rm4-{0}-jd9uben2k1-jd9uben2k1.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\b0fp6tmy1s-{0}-khv3u5hwcm-khv3u5hwcm.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\wp6fs27f35-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\s4t1x0bmg4-{0}-lcd1t2u6c8-lcd1t2u6c8.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\ec1518nbo7-{0}-c2oey78nd0-c2oey78nd0.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\qej496eymd-{0}-tdbxkamptv-tdbxkamptv.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\emny88myu6-{0}-j5mq2jizvt-j5mq2jizvt.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\8k5o0hy06w-{0}-06098lyss8-06098lyss8.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\qdc9pajxzk-{0}-nvvlpmu67g-nvvlpmu67g.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\czam7h0p3s-{0}-s35ty4nyc5-s35ty4nyc5.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\psxhlhsjm3-{0}-pj5nd1wqec-pj5nd1wqec.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\vtq7pzggmt-{0}-46ein0sx1k-46ein0sx1k.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\8c8kob02fm-{0}-v0zj4ognzu-v0zj4ognzu.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\11j0vcxq0z-{0}-37tfw0ft22-37tfw0ft22.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\gv12tl2v6i-{0}-hrwsygsryq-hrwsygsryq.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\kf084zbtr6-{0}-pk9g2wxc8p-pk9g2wxc8p.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\5ryh261dor-{0}-ft3s53vfgj-ft3s53vfgj.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\ph998bzhd1-{0}-6cfz1n2cew-6cfz1n2cew.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\yn6s2ob2cg-{0}-6pdc2jztkx-6pdc2jztkx.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\91nmu3zvfa-{0}-493y06b0oq-493y06b0oq.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\cmhh5vfg4v-{0}-iovd86k7lj-iovd86k7lj.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\fnztsg55pr-{0}-vr1egmr9el-vr1egmr9el.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\12xzxlyhxh-{0}-kbrnm935zg-kbrnm935zg.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\vv7jk4infz-{0}-jj8uyg4cgr-jj8uyg4cgr.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\m8sgmn8v3o-{0}-y7v9cxd14o-y7v9cxd14o.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\vlg9cxavmd-{0}-notf2xhcfb-notf2xhcfb.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\qw62cdyst5-{0}-h1s4sie4z3-h1s4sie4z3.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\q5rhrtipz3-{0}-63fj8s7r0e-63fj8s7r0e.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\3vaq6ri051-{0}-0j3bgjxly4-0j3bgjxly4.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\ek02g6actz-{0}-47otxtyo56-47otxtyo56.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\q3alt2nd77-{0}-4v8eqarkd7-4v8eqarkd7.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\b4usfaujlv-{0}-356vix0kms-356vix0kms.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\tj9rdyg771-{0}-83jwlth58m-83jwlth58m.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\vyv1az7ug7-{0}-mrlpezrjn3-mrlpezrjn3.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\djndy2dor6-{0}-lzl9nlhx6b-lzl9nlhx6b.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\sxv8yyuzry-{0}-ag7o75518u-ag7o75518u.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\dbddww7w4e-{0}-x0q3zqp4vz-x0q3zqp4vz.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\let2ane3q8-{0}-0i3buxo5is-0i3buxo5is.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\mcd2myjpag-{0}-o1o13a6vjx-o1o13a6vjx.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\pcgd7ubrw8-{0}-ttgo8qnofa-ttgo8qnofa.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\k0z0r57bxn-{0}-2z0ns9nrw6-2z0ns9nrw6.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\92zd9hx09u-{0}-muycvpuwrr-muycvpuwrr.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\3ydq2p23k2-{0}-87fc7y1x7t-87fc7y1x7t.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\up2dw0ici1-{0}-mlv21k5csn-mlv21k5csn.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\exl449pnwa-{0}-hpdrmastwq-hpdrmastwq.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\compressed\3ja2dfluuy-{0}-hpdrmastwq-hpdrmastwq.gz
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\staticwebassets.build.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\staticwebassets.build.json.cache
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\staticwebassets.development.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\swae.build.ex.cache
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\OpsTrack.68ABE021.Up2Date
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\OpsTracker_v1.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\refint\OpsTracker_v1.dll
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\OpsTracker_v1.pdb
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\OpsTracker_v1.genruntimeconfig.cache
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\obj\Debug\net10.0\ref\OpsTracker_v1.dll

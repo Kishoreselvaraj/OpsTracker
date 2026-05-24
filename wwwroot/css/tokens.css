@@ -1,0 +1,13 @@
+:root {
+    --gold: #d4af37;
+    --gold-light: #e8c84a;
+    --gold-dark: #b8860b;
+    --bg-dark: #0f0f0f;
+    --bg-card: #1a1a1a;
+    --bg-elevated: #222;
+    --text-1: #f0f0f0;
+    --text-2: rgba(255, 255, 255, 0.7);
+    --text-3: rgba(255, 255, 255, 0.45);
+    --border-gold: rgba(212, 175, 55, 0.2);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}

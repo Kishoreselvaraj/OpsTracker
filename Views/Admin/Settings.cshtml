@@ -1,0 +1,17 @@
+@{
+    ViewData["Title"] = "Settings";
+}
+<div class="content-card">
+    <h2 style="color:var(--gold)">System settings</h2>
+    <div id="settings-list">Loading…</div>
+</div>
+<script type="module">
+    import { requireAuth } from '/js/auth/routeGuard.js';
+    import { apiGet, unwrap } from '/js/services/apiClient.js';
+    if (!requireAuth({ allowRoles: ['Admin'] })) throw new Error('auth');
+    const json = await apiGet('/api/Settings/list');
+    const { data } = unwrap(json);
+    document.getElementById('settings-list').innerHTML = (data || []).map(s =>
+        `<div class="py-2"><strong>${s.settingKey ?? s.SettingKey}</strong>: ${s.settingValue ?? s.SettingValue}</div>`
+    ).join('') || '<p>No settings</p>';
+</script>

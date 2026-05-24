@@ -1,0 +1,94 @@
+﻿@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - OpsTracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/tokens.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/components.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/OpsTracker_v1.styles.css" asp-append-version="true" />
+    <script>
+        window.__OPSTRACKER_CONFIG = {
+            apiBaseUrl: '@(Configuration["ApiBaseUrl"] ?? "http://localhost:5085")'
+        };
+    </script>
+    <style>
+        body {
+            background: var(--bg-dark);
+            color: var(--text-1);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        .navbar-custom {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%) !important;
+            border-bottom: 1px solid var(--border-gold) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        .navbar-custom .navbar-brand { color: var(--gold) !important; font-weight: 700; }
+        .navbar-custom .nav-link { color: var(--text-2) !important; font-weight: 500; }
+        .navbar-custom .nav-link:hover, .navbar-custom .nav-link.active { color: var(--gold) !important; }
+        main { min-height: calc(100vh - 160px); padding-top: 1.5rem; }
+        .footer-custom {
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            border-top: 1px solid var(--border-gold);
+            color: var(--text-3);
+            padding: 1rem 0;
+        }
+    </style>
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-custom mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-controller="Dashboard" asp-action="Index">OpsTracker</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item nav-member"><a class="nav-link" href="/Dashboard">Dashboard</a></li>
+                        <li class="nav-item nav-member"><a class="nav-link" href="/EodCalander">EOD Calendar</a></li>
+                        <li class="nav-item nav-tl d-none"><a class="nav-link" href="/tl/Dashboard">TL Dashboard</a></li>
+                        <li class="nav-item nav-tl d-none"><a class="nav-link" href="/tl/Approvals">Approvals</a></li>
+                        <li class="nav-item nav-tl d-none"><a class="nav-link" href="/tl/Team">My Team</a></li>
+                        <li class="nav-item nav-tl d-none"><a class="nav-link" href="/tl/Groups">Sub-Groups</a></li>
+                        <li class="nav-item nav-dept d-none"><a class="nav-link" href="/DeptHead/Dashboard">Dept Head</a></li>
+                        <li class="nav-item nav-admin d-none"><a class="nav-link" href="/Admin/Dashboard">Admin</a></li>
+                    </ul>
+                    <ul class="navbar-nav align-items-center">
+                        <li class="nav-item nav-auth d-none">
+                            <div class="nav-notif-wrap">
+                                <button type="button" class="nav-notif-btn" id="nav-notif-btn" title="Notifications">🔔</button>
+                                <span class="nav-notif-badge" id="nav-notif-badge"></span>
+                                <div class="nav-notif-panel" id="nav-notif-panel"></div>
+                            </div>
+                        </li>
+                        <li class="nav-item nav-auth d-none">
+                            <span class="nav-user-name" id="nav-user-display"></span>
+                            <a href="#" class="nav-link d-inline" id="btn-logout">Logout</a>
+                        </li>
+                        <li class="nav-item nav-guest">
+                            <a class="nav-link" asp-controller="Login" asp-action="Index">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid px-3 px-md-4">
+        <main role="main" class="pb-4">@RenderBody()</main>
+    </div>
+    <footer class="footer-custom mt-auto">
+        <div class="container text-center">&copy; 2026 - OpsTracker</div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script type="module" src="~/js/shared/layoutInit.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

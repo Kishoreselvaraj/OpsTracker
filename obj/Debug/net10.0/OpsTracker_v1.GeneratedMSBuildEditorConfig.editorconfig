@@ -1,0 +1,115 @@
+is_global = true
+build_property.TargetFramework = net10.0
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v10.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = OpsTracker_v1
+build_property.RootNamespace = OpsTracker_v1
+build_property.ProjectDir = D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 10.0
+build_property.EnableCodeStyleSeverity = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/Admin/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/Admin/Organizations.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cT3JnYW5pemF0aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/Admin/Settings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2V0dGluZ3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/Admin/Users.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXNlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/Dashboard/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXGluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/DeptHead/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwdEhlYWRcRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/DeptHead/Groups.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwdEhlYWRcR3JvdXBzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/DeptHead/Reports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwdEhlYWRcUmVwb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/DeptHead/Teams.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwdEhlYWRcVGVhbXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/EodCalander/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW9kQ2FsYW5kZXJcaW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/Group/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JvdXBcaW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/Login/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5caW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/Shared/LoginLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXExvZ2luTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/TLApproval/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVExBcHByb3ZhbFxpbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/TLDashboard/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVExEYXNoYm9hcmRcaW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/TLMyTeam/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVExNeVRlYW1caW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/GitHub/Aetram_OpsTracker/OpsTracker/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-nkk248mzls

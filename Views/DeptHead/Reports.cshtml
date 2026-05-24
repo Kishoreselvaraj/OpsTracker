@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Reports";
+}
+<div class="content-card">
+    <h2 style="color:var(--gold)">Department reports</h2>
+    <button class="btn btn-gold-outline" id="btn-dept-summary">Load department summary</button>
+    <pre id="report-out" class="mt-3 text-light" style="background:#111;padding:1rem;border-radius:8px;max-height:400px;overflow:auto"></pre>
+</div>
+<script type="module">
+    import { requireAuth } from '/js/auth/routeGuard.js';
+    import { apiPost, unwrap } from '/js/services/apiClient.js';
+    import { showToast } from '/js/utils/toast.js';
+    if (!requireAuth({ allowRoles: ['DepartmentHead', 'Admin'] })) throw new Error('auth');
+    document.getElementById('btn-dept-summary').onclick = async () => {
+        try {
+            const from = new Date();
+            from.setMonth(from.getMonth() - 1);
+            const json = await apiPost('/api/Report/department-summary', {
+                fromDate: from.toISOString().split('T')[0],
+                toDate: new Date().toISOString().split('T')[0]
+            });
+            document.getElementById('report-out').textContent = JSON.stringify(unwrap(json).data, null, 2);
+        } catch (e) {
+            showToast(e.message || 'Report failed', 'error');
+        }
+    };
+</script>
