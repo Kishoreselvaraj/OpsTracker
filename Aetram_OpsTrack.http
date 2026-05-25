@@ -1,4 +1,4 @@
-@Aetram_OpsTrack_HostAddress = http://localhost:5085
+@Aetram_OpsTrack_HostAddress = https://localhost:7181
 
 GET {{Aetram_OpsTrack_HostAddress}}/weatherforecast/
 Accept: application/json

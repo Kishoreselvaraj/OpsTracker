@@ -1,0 +1,155 @@
+[
+  {
+    "ContainingType": "Aetram_OpsTrack.Controllers.RegisterController",
+    "Method": "Register",
+    "RelativePath": "api/Register/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Aetram_OpsTrack.Models.Request.RegisterUserRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aetram_OpsTrack.Controllers.TaskGroupController",
+    "Method": "AddTaskGroup",
+    "RelativePath": "api/TaskGroup/add-task-group",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Aetram_OpsTrack.Models.APIRequest.AddTaskGroupRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aetram_OpsTrack.Controllers.TaskGroupController",
+    "Method": "GetTaskGroupList",
+    "RelativePath": "api/TaskGroup/list",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aetram_OpsTrack.Controllers.TestController",
+    "Method": "Debug",
+    "RelativePath": "api/Test/debug",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aetram_OpsTrack.Controllers.WorkLogController",
+    "Method": "GetByDate",
+    "RelativePath": "api/WorkLog/by-date",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Aetram_OpsTrack.Models.Request.GetWorkLogByDateRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aetram_OpsTrack.Controllers.WorkLogController",
+    "Method": "GetWorkLogById",
+    "RelativePath": "api/WorkLog/get-by-id",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Aetram_OpsTrack.Models.Request.GetWorkLogByIdRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aetram_OpsTrack.Controllers.WorkLogController",
+    "Method": "GetMonthlyCalendar",
+    "RelativePath": "api/WorkLog/monthly-calendar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Aetram_OpsTrack.Models.Request.GetMonthlyCalendarRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aetram_OpsTrack.Controllers.WorkLogController",
+    "Method": "SaveWorkLog",
+    "RelativePath": "api/WorkLog/save",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Aetram_OpsTrack.Models.Request.SaveWorkLogRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aetram_OpsTrack.Controllers.WorkLogController",
+    "Method": "UpdateWorkLog",
+    "RelativePath": "api/WorkLog/update",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Aetram_OpsTrack.Models.Request.UpdateWorkLogRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Aetram_OpsTrack.Controllers.WeatherForecastController",
+    "Method": "Get",
+    "RelativePath": "WeatherForecast",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Aetram_OpsTrack.WeatherForecast, OpsTracker_v1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetWeatherForecast"
+  }
+]

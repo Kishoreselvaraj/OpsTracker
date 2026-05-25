@@ -1,5 +1,5 @@
 2026-05-13 13:23:12.592 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-13 13:23:12.702 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-13 13:23:12.702 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-13 13:23:12.713 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-13 13:23:12.718 +05:30 [INF] Hosting environment: Development
 2026-05-13 13:23:12.721 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -51,7 +51,7 @@ Error Number:2812,State:62,Class:16
 2026-05-13 13:28:21.680 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.RegisterController.Register (Aetram_OpsTrack)'
 2026-05-13 13:28:21.682 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Register/register - 200 null application/json; charset=utf-8 1045.5393ms
 2026-05-13 14:28:43.858 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-13 14:28:43.954 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-13 14:28:43.954 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-13 14:28:43.962 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-13 14:28:43.964 +05:30 [INF] Hosting environment: Development
 2026-05-13 14:28:43.966 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -72,7 +72,7 @@ Error Number:2812,State:62,Class:16
 2026-05-13 14:30:27.433 +05:30 [INF] Executed endpoint 'Aetram_OpsTrack.Controllers.RegisterController.Register (Aetram_OpsTrack)'
 2026-05-13 14:30:27.444 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Register/register - 200 null application/json; charset=utf-8 4519.9405ms
 2026-05-13 14:45:25.628 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-13 14:45:25.734 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-13 14:45:25.734 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-13 14:45:25.740 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-13 14:45:25.746 +05:30 [INF] Hosting environment: Development
 2026-05-13 14:45:25.749 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -131,7 +131,7 @@ System.InvalidOperationException: Unable to resolve service for type 'Aetram_Ops
    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
 2026-05-13 14:46:41.989 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 500 null text/plain; charset=utf-8 87.9522ms
 2026-05-13 14:50:22.258 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-13 14:50:22.474 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-13 14:50:22.474 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-13 14:50:22.518 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-13 14:50:22.528 +05:30 [INF] Hosting environment: Development
 2026-05-13 14:50:22.541 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -167,7 +167,7 @@ System.InvalidOperationException: Unable to resolve service for type 'Aetram_Ops
    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
 2026-05-13 14:51:10.222 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 500 null text/plain; charset=utf-8 412.9629ms
 2026-05-13 14:52:56.138 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-13 14:52:56.223 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-13 14:52:56.223 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-13 14:52:56.231 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-13 14:52:56.233 +05:30 [INF] Hosting environment: Development
 2026-05-13 14:52:56.236 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -203,7 +203,7 @@ System.InvalidOperationException: Unable to resolve service for type 'Aetram_Ops
    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
 2026-05-13 14:54:03.106 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 500 null text/plain; charset=utf-8 336.7504ms
 2026-05-13 14:55:13.718 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-13 14:55:13.826 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-13 14:55:13.826 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-13 14:55:13.833 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-13 14:55:13.837 +05:30 [INF] Hosting environment: Development
 2026-05-13 14:55:13.840 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -228,7 +228,7 @@ System.InvalidOperationException: Unable to resolve service for type 'Aetram_Ops
 2026-05-13 15:15:59.630 +05:30 [INF] Hosting environment: Development
 2026-05-13 15:15:59.630 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
 2026-05-13 15:42:07.164 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-13 15:42:07.544 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-13 15:42:07.544 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-13 15:42:07.569 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-13 15:42:07.578 +05:30 [INF] Hosting environment: Development
 2026-05-13 15:42:07.584 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -278,7 +278,7 @@ System.InvalidOperationException: Unable to resolve service for type 'Aetram_Ops
 2026-05-13 15:57:52.316 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/add - 200 null application/json; charset=utf-8 1158.6223ms
 2026-05-13 18:45:53.757 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-13 18:45:58.648 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-13 18:45:58.657 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-13 18:45:58.657 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-13 18:45:58.671 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-13 18:45:58.679 +05:30 [INF] Hosting environment: Development
 2026-05-13 18:45:58.687 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -293,7 +293,7 @@ System.InvalidOperationException: Unable to resolve service for type 'Aetram_Ops
 2026-05-13 18:48:14.333 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
 2026-05-13 18:51:32.383 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-13 18:51:33.699 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-13 18:51:33.704 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-13 18:51:33.704 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-13 18:51:33.716 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-13 18:51:33.720 +05:30 [INF] Hosting environment: Development
 2026-05-13 18:51:33.726 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -308,7 +308,7 @@ System.InvalidOperationException: Unable to resolve service for type 'Aetram_Ops
 2026-05-13 18:52:16.412 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7181/api/Login - application/json 64
 2026-05-13 19:04:37.105 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-13 19:04:38.157 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-13 19:04:38.162 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-13 19:04:38.162 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-13 19:04:38.170 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-13 19:04:38.174 +05:30 [INF] Hosting environment: Development
 2026-05-13 19:04:38.176 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -327,7 +327,7 @@ DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
 2026-05-13 19:05:26.419 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 401 0 null 286.0111ms
 2026-05-13 19:09:51.483 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-13 19:09:52.209 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-13 19:09:52.218 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-13 19:09:52.218 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-13 19:09:52.224 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-13 19:09:52.226 +05:30 [INF] Hosting environment: Development
 2026-05-13 19:09:52.229 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -349,7 +349,7 @@ DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
 2026-05-13 19:10:33.405 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 3804.7447ms
 2026-05-13 19:16:34.487 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-13 19:16:35.316 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-13 19:16:35.320 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-13 19:16:35.320 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-13 19:16:35.328 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-13 19:16:35.332 +05:30 [INF] Hosting environment: Development
 2026-05-13 19:16:35.334 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -363,7 +363,7 @@ DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
 2026-05-13 19:16:38.940 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 410.7489ms
 2026-05-13 19:19:27.265 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-13 19:19:28.075 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-13 19:19:28.081 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-13 19:19:28.081 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-13 19:19:28.090 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-13 19:19:28.094 +05:30 [INF] Hosting environment: Development
 2026-05-13 19:19:28.097 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -382,7 +382,7 @@ DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
 2026-05-13 19:20:20.434 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 401 0 null 857.3721ms
 2026-05-13 19:25:12.369 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-13 19:25:16.709 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-13 19:25:16.719 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-13 19:25:16.719 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-13 19:25:16.740 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-13 19:25:16.754 +05:30 [INF] Hosting environment: Development
 2026-05-13 19:25:16.763 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -401,7 +401,7 @@ DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
 2026-05-13 19:25:56.512 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 401 0 null 358.06ms
 2026-05-13 19:31:02.007 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-13 19:31:03.398 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-13 19:31:03.460 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-13 19:31:03.460 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-13 19:31:03.471 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-13 19:31:03.476 +05:30 [INF] Hosting environment: Development
 2026-05-13 19:31:03.480 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -423,7 +423,7 @@ DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
 2026-05-13 19:31:48.070 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7181/.well-known/appspecific/com.chrome.devtools.json, Response status code: 404
 2026-05-13 19:34:32.466 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-13 19:34:33.514 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-13 19:34:33.520 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-13 19:34:33.520 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-13 19:34:33.545 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-13 19:34:33.549 +05:30 [INF] Hosting environment: Development
 2026-05-13 19:34:33.567 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -462,7 +462,7 @@ DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
 2026-05-13 19:37:07.110 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 401 0 null 337.0241ms
 2026-05-13 19:37:38.758 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-13 19:37:39.442 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-13 19:37:39.447 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-13 19:37:39.447 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-13 19:37:39.455 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-13 19:37:39.459 +05:30 [INF] Hosting environment: Development
 2026-05-13 19:37:39.461 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack

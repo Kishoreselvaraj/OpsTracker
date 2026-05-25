@@ -7,6 +7,8 @@ import { pick, slugCode } from '../hierarchy/caseHelpers.js';
 import { showToast } from '../utils/toast.js';
 import { getRole } from '../utils/roleHelpers.js';
 import { applyPermissionAttributes } from '../hierarchy/uiPermissions.js';
+import { getUser } from '/js/auth/authService.js';
+
 
 if (!requireAuth({ allowRoles: ['DepartmentHead', 'Admin'] })) throw new Error('auth');
 applyPermissionAttributes();
@@ -108,13 +110,17 @@ document.getElementById('group-form')?.addEventListener('submit', async e => {
     }
     const name = document.getElementById('group-name').value.trim();
     const desc = document.getElementById('group-desc').value.trim();
+    const user = getUser();
+    const userId = user?.userId;
     try {
         if (state.editId) {
             await hierarchyApi.updateTaskGroup({ groupId: state.editId, groupName: name, description: desc || null });
             showToast('Task group updated', 'success');
         } else {
             await hierarchyApi.createTaskGroup({
+                
                 departmentId: state.departmentId || Number(new URLSearchParams(location.search).get('departmentId')),
+                assignedTeamLeadId: userId ,
                 groupName: name,
                 description: desc || null
             });

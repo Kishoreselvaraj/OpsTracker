@@ -3,5 +3,5 @@
  */
 export function getApiBaseUrl() {
     const fromWindow = typeof window !== 'undefined' && window.__OPSTRACKER_CONFIG?.apiBaseUrl;
-    return (fromWindow || 'http://localhost:5085').replace(/\/$/, '');
+    return (fromWindow || 'https://localhost:7181').replace(/\/$/, '');
 }

@@ -126,11 +126,15 @@ $('#btn-create-save').on('click', async () => {
     const name = $('#create-name').val().trim();
     if (!name) { showToast('Enter a sub-group name', 'error'); return; }
     try {
+        const user = getUser();
+        const userId = user?.userId;
         await hierarchyApi.createSubGroup({
             teamId: state.teamId,
             subGroupCode: slugCode(name, 'SG'),
+          
             subGroupName: name,
-            description: $('#create-desc').val().trim() || null
+            description: $('#create-desc').val().trim() || null,
+            subGroupLeadId:userId,
         });
         showToast('Sub-group created', 'success');
         $('#create-panel').slideUp(200);

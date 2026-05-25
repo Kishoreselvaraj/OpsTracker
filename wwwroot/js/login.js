@@ -24,7 +24,7 @@ $(document).ready(function () {
         const email = $('#emailInput').val();
         const password = $('#passwordInput').val();
         $.ajax({
-            url: 'http://localhost:5085/api/Login', // Change to your actual login API endpoint
+            url: 'https://localhost:7181/api/Login', // Change to your actual login API endpoint
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ email: email, password: password }),

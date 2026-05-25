@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="~/OpsTracker_v1.styles.css" asp-append-version="true" />
     <script>
         window.__OPSTRACKER_CONFIG = {
-            apiBaseUrl: '@(Configuration["ApiBaseUrl"] ?? "http://localhost:5085")'
+            apiBaseUrl: '@(Configuration["ApiBaseUrl"] ?? "https://localhost:7181")'
         };
     </script>
     @await RenderSectionAsync("Styles", required: false)

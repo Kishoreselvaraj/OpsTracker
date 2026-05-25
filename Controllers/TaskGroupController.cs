@@ -83,8 +83,7 @@ namespace Aetram_OpsTrack.Controllers
         }
         [Authorize]
         [HttpPost("list")]
-        public async Task<IActionResult>
-    GetTaskGroupList()
+        public async Task<IActionResult>GetTaskGroupList()
         {
             try
             {

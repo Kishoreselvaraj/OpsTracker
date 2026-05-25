@@ -1,6 +1,6 @@
 2026-05-18 10:18:27.116 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 10:18:28.848 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 10:18:28.855 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 10:18:28.855 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 10:18:28.869 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 10:18:28.894 +05:30 [INF] Hosting environment: Development
 2026-05-18 10:18:28.899 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -33,7 +33,7 @@ DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
 2026-05-18 10:20:31.713 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/monthly-calendar - 200 null application/json; charset=utf-8 580.373ms
 2026-05-18 10:30:53.843 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 10:30:55.299 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 10:30:55.307 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 10:30:55.307 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 10:30:55.322 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 10:30:55.328 +05:30 [INF] Hosting environment: Development
 2026-05-18 10:30:55.333 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -181,7 +181,7 @@ DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
 2026-05-18 11:05:45.537 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/TaskGroup/list - 200 null application/json; charset=utf-8 428.6916ms
 2026-05-18 11:51:10.077 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 11:51:12.196 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 11:51:12.203 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 11:51:12.203 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 11:51:12.229 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 11:51:12.237 +05:30 [INF] Hosting environment: Development
 2026-05-18 11:51:12.242 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -339,7 +339,7 @@ Error Number:207,State:1,Class:16
 2026-05-18 12:09:27.544 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/get-by-id - 500 null application/json; charset=utf-8 2087.6703ms
 2026-05-18 12:26:10.070 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 12:26:12.392 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 12:26:12.405 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 12:26:12.405 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 12:26:12.425 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 12:26:12.436 +05:30 [INF] Hosting environment: Development
 2026-05-18 12:26:12.443 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -367,7 +367,7 @@ Error Number:207,State:1,Class:16
 2026-05-18 12:27:52.236 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 450.1564ms
 2026-05-18 12:32:32.341 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 12:32:34.005 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 12:32:34.016 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 12:32:34.016 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 12:32:34.030 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 12:32:34.041 +05:30 [INF] Hosting environment: Development
 2026-05-18 12:32:34.052 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -388,7 +388,7 @@ Error Number:207,State:1,Class:16
 2026-05-18 12:33:20.104 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 4414.6007ms
 2026-05-18 12:38:13.977 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 12:38:15.117 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 12:38:15.122 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 12:38:15.122 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 12:38:15.132 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 12:38:15.143 +05:30 [INF] Hosting environment: Development
 2026-05-18 12:38:15.145 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -437,7 +437,7 @@ Error Number:201,State:4,Class:16
 2026-05-18 12:40:55.804 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 3349.3154ms
 2026-05-18 12:45:37.384 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 12:45:40.407 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 12:45:40.434 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 12:45:40.434 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 12:45:40.454 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 12:45:40.463 +05:30 [INF] Hosting environment: Development
 2026-05-18 12:45:40.476 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -471,7 +471,7 @@ System.ArgumentException: Column 'WorkflowLogDateId' does not belong to table .
 2026-05-18 12:47:33.268 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 3400.7771ms
 2026-05-18 14:25:14.483 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 14:25:16.253 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 14:25:16.258 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 14:25:16.258 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 14:25:16.274 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 14:25:16.282 +05:30 [INF] Hosting environment: Development
 2026-05-18 14:25:16.290 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -499,7 +499,7 @@ System.ArgumentException: Column 'WorkflowLogDateId' does not belong to table .
 2026-05-18 14:28:27.407 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 3893.7795ms
 2026-05-18 14:40:01.225 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 14:40:03.572 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 14:40:03.604 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 14:40:03.604 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 14:40:03.646 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 14:40:03.679 +05:30 [INF] Hosting environment: Development
 2026-05-18 14:40:03.685 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -533,7 +533,7 @@ System.ArgumentException: Column 'WorkflowLogDateId' does not belong to table .
 2026-05-18 14:44:33.184 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 3706.1455ms
 2026-05-18 14:46:52.590 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 14:46:54.423 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 14:46:54.456 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 14:46:54.456 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 14:46:54.620 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 14:46:54.660 +05:30 [INF] Hosting environment: Development
 2026-05-18 14:46:54.668 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -561,7 +561,7 @@ System.ArgumentException: Column 'WorkflowLogDateId' does not belong to table .
 2026-05-18 14:48:37.265 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 1287.32ms
 2026-05-18 15:09:55.453 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 15:09:56.886 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 15:09:56.893 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 15:09:56.893 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 15:09:56.903 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 15:09:56.912 +05:30 [INF] Hosting environment: Development
 2026-05-18 15:09:56.915 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -610,7 +610,7 @@ System.ArgumentException: Column 'WorkflowLogDateId' does not belong to table .
 2026-05-18 15:13:39.716 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 81.0544ms
 2026-05-18 15:14:40.018 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 15:14:41.009 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 15:14:41.013 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 15:14:41.013 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 15:14:41.021 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 15:14:41.027 +05:30 [INF] Hosting environment: Development
 2026-05-18 15:14:41.029 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -659,7 +659,7 @@ System.ArgumentException: Column 'WorkflowLogDateId' does not belong to table .
 2026-05-18 15:24:36.502 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 1203.8207ms
 2026-05-18 15:25:09.256 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 15:25:11.190 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 15:25:11.198 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 15:25:11.198 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 15:25:11.218 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 15:25:11.223 +05:30 [INF] Hosting environment: Development
 2026-05-18 15:25:11.227 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -708,7 +708,7 @@ System.ArgumentException: Column 'WorkflowLogDateId' does not belong to table .
 2026-05-18 15:30:09.367 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 135.5707ms
 2026-05-18 15:32:42.813 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 15:32:43.930 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 15:32:43.937 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 15:32:43.937 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 15:32:43.948 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 15:32:43.952 +05:30 [INF] Hosting environment: Development
 2026-05-18 15:32:43.956 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -764,7 +764,7 @@ System.ArgumentException: Column 'WorkflowLogDateId' does not belong to table .
 2026-05-18 16:13:44.136 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 200 null application/json; charset=utf-8 215.045ms
 2026-05-18 16:33:25.681 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 16:33:27.200 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 16:33:27.231 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 16:33:27.231 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 16:33:27.258 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 16:33:27.265 +05:30 [INF] Hosting environment: Development
 2026-05-18 16:33:27.269 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -799,7 +799,7 @@ System.ArgumentException: Column 'WorkflowLogDateId' does not belong to table .
 2026-05-18 16:49:31.555 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 862.8937ms
 2026-05-18 16:53:56.311 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 16:53:57.830 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 16:53:57.842 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 16:53:57.842 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 16:53:57.866 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 16:53:57.871 +05:30 [INF] Hosting environment: Development
 2026-05-18 16:53:57.876 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -832,7 +832,7 @@ System.ArgumentException: Column 'WorkflowLogDateId' does not belong to table .
 2026-05-18 17:18:37.285 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
 2026-05-18 17:21:41.169 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 17:21:42.563 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 17:21:42.570 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 17:21:42.570 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 17:21:42.623 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 17:21:42.646 +05:30 [INF] Hosting environment: Development
 2026-05-18 17:21:42.659 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -853,7 +853,7 @@ System.ArgumentException: Column 'WorkflowLogDateId' does not belong to table .
 2026-05-18 17:24:42.054 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/Login - 200 null application/json; charset=utf-8 3703.6986ms
 2026-05-18 17:28:24.323 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 17:28:25.669 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 17:28:25.674 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 17:28:25.674 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 17:28:25.687 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 17:28:25.693 +05:30 [INF] Hosting environment: Development
 2026-05-18 17:28:25.700 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -888,7 +888,7 @@ System.ArgumentException: Column 'WorkflowLogDateId' does not belong to table .
 2026-05-18 17:42:30.614 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7181/api/WorkLog/save - 500 null application/json; charset=utf-8 712.3559ms
 2026-05-18 17:48:30.324 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 17:48:32.716 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 17:48:32.723 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 17:48:32.723 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 17:48:32.754 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 17:48:32.773 +05:30 [INF] Hosting environment: Development
 2026-05-18 17:48:32.781 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -960,7 +960,7 @@ System.ArgumentException: Column 'WorkflowLogDateId' does not belong to table .
 2026-05-18 17:55:05.183 +05:30 [INF] Request finished HTTP/1.1 GET http://10.107.20.246:5000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 365.2491ms
 2026-05-18 17:58:12.228 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 17:58:14.263 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 17:58:14.274 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 17:58:14.274 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 17:58:14.292 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 17:58:14.299 +05:30 [INF] Hosting environment: Development
 2026-05-18 17:58:14.305 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -970,7 +970,7 @@ System.ArgumentException: Column 'WorkflowLogDateId' does not belong to table .
 2026-05-18 17:58:23.778 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7181/_vs/browserLink - null null
 2026-05-18 18:13:18.003 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 18:13:20.935 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 18:13:20.960 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 18:13:20.960 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 18:13:20.965 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 18:13:20.967 +05:30 [INF] Hosting environment: Development
 2026-05-18 18:13:20.969 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack
@@ -1002,7 +1002,7 @@ System.ArgumentException: Column 'WorkflowLogDateId' does not belong to table .
 2026-05-18 18:20:37.640 +05:30 [INF] Request finished HTTP/1.1 POST http://10.107.20.246:5000/api/Login - 200 null application/json; charset=utf-8 1336.6409ms
 2026-05-18 18:21:43.774 +05:30 [INF] User profile is available. Using 'C:\Users\priya\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2026-05-18 18:21:46.078 +05:30 [INF] Now listening on: https://localhost:7181
-2026-05-18 18:21:46.084 +05:30 [INF] Now listening on: http://localhost:5085
+2026-05-18 18:21:46.084 +05:30 [INF] Now listening on: https://localhost:7181
 2026-05-18 18:21:46.094 +05:30 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-18 18:21:46.098 +05:30 [INF] Hosting environment: Development
 2026-05-18 18:21:46.101 +05:30 [INF] Content root path: C:\Users\priya\source\repos\Aetram_OpsTrack\Aetram_OpsTrack

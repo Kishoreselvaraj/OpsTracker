@@ -1,5 +1,6 @@
 import { apiGet, apiPost, unwrap } from './apiClient.js';
 import { isDepartmentHeadOrAbove, isTeamLeadOrAbove } from '../utils/roleHelpers.js';
+import { getUser } from '../auth/authService.js';
 
 const cache = { groups: [], subGroups: [] };
 
@@ -24,57 +25,57 @@ export function setHierarchyCacheFromCalendar(calendarDays) {
 }
 
 export async function loadTaskGroups() {
-    if (isDepartmentHeadOrAbove()) {
-        try {
-            const json = await apiPost('/api/TaskGroup/list', {});
-            const { data } = unwrap(json);
-            const list = (data || []).map(g => ({
-                categoryId: g.groupId ?? g.GroupId,
-                groupId: g.groupId ?? g.GroupId,
-                name: g.groupName ?? g.GroupName
-            }));
-            cache.groups = list;
-            return list;
-        } catch { /* fall through */ }
-    }
+    try {
+        const user = getUser();
 
-    if (isTeamLeadOrAbove()) {
-        try {
-            const json = await apiGet('/api/Approval/GetTaskGroupsByDepartment');
-            const { data } = unwrap(json);
-            const list = (data || []).map(g => ({
-                categoryId: g.groupId ?? g.GroupId,
-                groupId: g.groupId ?? g.GroupId,
-                name: g.groupName ?? g.GroupName
-            }));
-            cache.groups = list;
-            return list;
-        } catch { /* fall through */ }
-    }
+        const json = await apiPost('/api/TaskGroup/list', {
+            departmentId: user?.departmentId || null
+        });
 
-    return cache.groups;
+        const { data } = unwrap(json);
+
+        const list = (data || []).map(g => ({
+            categoryId: g.groupId,
+            groupId: g.groupId,
+            name: g.groupName
+        }));
+
+        cache.groups = list;
+        return list;
+    }
+    catch (err) {
+        console.error('loadTaskGroups', err);
+        return cache.groups || [];
+    }
 }
 
 export async function loadSubGroups(teamId = null) {
-    if (isTeamLeadOrAbove()) {
-        try {
-            const json = await apiPost('/api/SubGroup/list', teamId ? { teamId } : {});
-            const { data } = unwrap(json);
-            const list = (data || []).map(sg => ({
-                subCategoryId: sg.subGroupId ?? sg.SubGroupId,
-                subGroupId: sg.subGroupId ?? sg.SubGroupId,
-                categoryId: sg.teamId ?? sg.TeamId,
-                groupId: sg.teamId ?? sg.TeamId,
-                name: sg.subGroupName ?? sg.SubGroupName
-            }));
-            cache.subGroups = list;
-            return list;
-        } catch { /* fall through */ }
+    try {
+        const user = getUser();
+
+        const json = await apiPost('/api/SubGroup/list', {
+            teamId: teamId || user?.teamId
+        });
+
+        const { data } = unwrap(json);
+
+        const list = (data || []).map(sg => ({
+            subCategoryId: sg.subGroupId,
+            subGroupId: sg.subGroupId,
+            categoryId: sg.groupId, // FIX
+            groupId: sg.groupId,    // FIX
+            teamId: sg.teamId,
+            name: sg.subGroupName
+        }));
+
+        cache.subGroups = list;
+        return list;
     }
-
-    return cache.subGroups;
+    catch (err) {
+        console.error('loadSubGroups', err);
+        return cache.subGroups || [];
+    }
 }
-
 export function getCachedGroups() {
     return cache.groups;
 }
