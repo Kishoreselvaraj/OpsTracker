@@ -44,5 +44,15 @@
     "C:\\Users\\kisho\\.nuget\\packages\\system.runtime.caching\\8.0.0\\system.runtime.caching.8.0.0.nupkg.sha512",
     "C:\\Users\\kisho\\.nuget\\packages\\system.security.cryptography.protecteddata\\8.0.0\\system.security.cryptography.protecteddata.8.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "message": "Error occurred while getting package vulnerability data: The download of 'https://api.nuget.org/v3-vulnerabilities/2026.05.22.23.39.40/vulnerability.base.json' timed out because no data was received for 60000ms.",
+      "projectPath": "D:\\Projects\\GitHub\\Aetram_OpsTracker\\OpsTracker\\OpsTracker_v1.csproj",
+      "warningLevel": 1,
+      "filePath": "D:\\Projects\\GitHub\\Aetram_OpsTracker\\OpsTracker\\OpsTracker_v1.csproj",
+      "targetGraphs": []
+    }
+  ]
 }

@@ -44,6 +44,7 @@ wwwroot\js\shared\navNotifications.js
 wwwroot\js\site.js
 wwwroot\js\TL\tl-approvals.js
 wwwroot\js\TL\tl-dashboard.js
+wwwroot\js\TL\tl-groups.js
 wwwroot\js\TL\tl-team.js
 wwwroot\js\utils\roleHelpers.js
 wwwroot\js\utils\toast.js
@@ -108,7 +109,6 @@ wwwroot\lib\jquery\dist\jquery.slim.js
 wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
-wwwroot\js\TL\tl-groups.js
 D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\wwwroot\css\components.css
 D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\wwwroot\css\Dashboard.css
 D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\wwwroot\css\EodCalander.css
@@ -139,7 +139,6 @@ D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\wwwroot\js\pages\admin-audit.js
 D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\wwwroot\js\pages\admin-departments.js
 D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\wwwroot\js\pages\admin-organizations.js
 D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\wwwroot\js\pages\admin-users.js
-D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\wwwroot\js\pages\depthead-groups.js
 D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\wwwroot\js\pages\depthead-teams.js
 D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\wwwroot\js\pages\member-workspace.js
 D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\wwwroot\js\pages\memberDashboard.js
@@ -218,4 +217,5 @@ D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\wwwroot\lib\jquery\dist\jquery.s
 D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\wwwroot\lib\jquery\dist\jquery.slim.min.js
 D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\wwwroot\lib\jquery\dist\jquery.slim.min.map
 D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\wwwroot\lib\jquery\LICENSE.txt
+D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\wwwroot\js\pages\depthead-groups.js
 D:\Projects\GitHub\Aetram_OpsTracker\OpsTracker\wwwroot\js\TL\tl-groups.js

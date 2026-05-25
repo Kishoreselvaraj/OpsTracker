@@ -16,6 +16,7 @@ if (!requireAuth({ allowRoles: ['TeamLead', 'Admin', 'DepartmentHead'] })) throw
 const state = {
     ctx: null,
     teamId: null,
+    groupId: null, 
     teamName: '',
     inheritedGroupName: '',
     subGroups: [],
@@ -40,6 +41,7 @@ async function bootstrap() {
     try {
         const team = await hierarchyApi.getTeam(state.teamId);
         state.teamName = pick(team, 'teamName', 'TeamName') || 'Team';
+        state.groupId = pick(team, 'groupId', 'GroupId');   // add this
         const groupName = pick(team, 'groupName', 'GroupName') || 'Department task group';
         $('#task-group-name').text(`${groupName} · ${state.teamName}`);
         state.inheritedGroupName = groupName;
@@ -123,15 +125,20 @@ $('#btn-create-close, #btn-create-cancel').on('click', () => {
 });
 
 $('#btn-create-save').on('click', async () => {
+    
     const name = $('#create-name').val().trim();
     if (!name) { showToast('Enter a sub-group name', 'error'); return; }
     try {
+        console.log({
+            teamId: state.teamId,
+            GroupId: state.groupId
+        });
         const user = getUser();
         const userId = user?.userId;
         await hierarchyApi.createSubGroup({
             teamId: state.teamId,
+            GroupId: state.groupId,
             subGroupCode: slugCode(name, 'SG'),
-          
             subGroupName: name,
             description: $('#create-desc').val().trim() || null,
             subGroupLeadId:userId,

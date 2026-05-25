@@ -536,7 +536,7 @@ $(function () {
           l.approvalStatus === "APPROVED" || l.approvalStatus === "PENDING",
       );
     if (hasLockedEntries) {
-      $("#btn-show-form").hide();
+      $("#btn-show-form").show();
     } else {
       $("#btn-show-form").show();
     }
