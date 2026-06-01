@@ -35,8 +35,8 @@ export const NAV_ITEMS = {
     ],
     Admin: [
         { section: 'Administration', href: '/Admin/Dashboard', icon: 'fa-shield-halved', label: 'Admin Home' },
-        { section: 'Administration', href: '/Admin/Departments', icon: 'fa-building', label: 'Departments' },
         { section: 'Administration', href: '/Admin/Organizations', icon: 'fa-sitemap', label: 'Organizations' },
+        { section: 'Administration', href: '/Admin/Departments', icon: 'fa-building', label: 'Departments' },
         { section: 'Administration', href: '/Admin/Users', icon: 'fa-user-gear', label: 'Users' },
         { section: 'Administration', href: '/Admin/AuditLog', icon: 'fa-clipboard-list', label: 'Audit log' },
         { section: 'Administration', href: '/Admin/Settings', icon: 'fa-sliders', label: 'Settings' },

@@ -4,12 +4,16 @@
    ============================================================ */
 
 import { getWithAuth } from '/js/services/apiService.js';
-import { unwrap } from '/js/services/apiClient.js';
 import { getUser } from '/js/auth/authService.js';
 import { requireAuth } from '/js/auth/routeGuard.js';
 import { getApprovalList } from '/js/services/workLogService.js';
-import { listEods } from '/js/services/eodService.js';
 import { showToast } from '/js/utils/toast.js';
+import { hierarchyApi } from '/js/hierarchy/hierarchyApi.js';
+import { loadHierarchyContext, effectiveTeamId } from '/js/hierarchy/hierarchyContext.js';
+import { pick, fullName } from '/js/hierarchy/caseHelpers.js';
+
+// Global holder for the logged-in user (populated by loadUser)
+let currentUser = null;
 
 $(function () {
 
@@ -23,108 +27,9 @@ $(function () {
     };
 
     /* ── Demo Data ────────────────────────────────────────── */
-    const DEMO = {
-        teamLead: {
-            userId: 2,
-            name: "Priya Sharma",
-            employeeCode: "EMP-00101"
-        },
-        stats: {
-            pending: 8,
-            approved: 45,
-            rejected: 3,
-            correction: 2
-        },
-        alerts: [
-            {
-                type: 'urgent',
-                icon: '⏳',
-                title: '8 EODs Pending Review',
-                text: 'Submissions from Rahul K., Amit V., and 6 others awaiting approval',
-                action: 'Review Now',
-                link: '/tl/approvals?status=PENDING'
-            },
-            {
-                type: 'warning',
-                icon: '⚠️',
-                title: '2 Corrections Requested',
-                text: 'Sunita P. and Vikram R. have not resubmitted corrected EODs',
-                action: 'Follow Up',
-                link: '/tl/approvals?status=CORRECTION'
-            },
-            {
-                type: 'info',
-                icon: '👤',
-                title: '3 Members Missing Today\'s Submission',
-                text: 'Neha G., Arun J., and Deepa N. have not logged hours for May 21',
-                action: 'View Team',
-                link: '/tl/team'
-            }
-        ],
-        todaySnapshot: [
-            {
-                workLogId: 101,
-                memberName: "Rahul Kumar",
-                employeeCode: "EMP-00412",
-                hoursWorked: 8.5,
-                approvalStatus: "PENDING",
-                subGroupName: "Backend"
-            },
-            {
-                workLogId: 102,
-                memberName: "Amit Verma",
-                employeeCode: "EMP-00415",
-                hoursWorked: 7.0,
-                approvalStatus: "PENDING",
-                subGroupName: "Manual Testing"
-            },
-            {
-                workLogId: 103,
-                memberName: "Sunita Patel",
-                employeeCode: "EMP-00420",
-                hoursWorked: 9.0,
-                approvalStatus: "APPROVED",
-                subGroupName: "Frontend"
-            },
-            {
-                workLogId: 104,
-                memberName: "Vikram Rao",
-                employeeCode: "EMP-00425",
-                hoursWorked: 6.5,
-                approvalStatus: "CORRECTION",
-                subGroupName: "Automation"
-            },
-            {
-                workLogId: 105,
-                memberName: "Neha Gupta",
-                employeeCode: "EMP-00430",
-                hoursWorked: 8.0,
-                approvalStatus: "APPROVED",
-                subGroupName: "CI/CD"
-            }
-        ],
-        teamPulse: [
-            { userId: 1, name: "Rahul Kumar", code: "EMP-00412", hoursWorked: 8.5, status: "pending", subGroup: "Backend" },
-            { userId: 3, name: "Amit Verma", code: "EMP-00415", hoursWorked: 7.0, status: "pending", subGroup: "Manual Testing" },
-            { userId: 4, name: "Sunita Patel", code: "EMP-00420", hoursWorked: 9.0, status: "submitted", subGroup: "Frontend" },
-            { userId: 5, name: "Vikram Rao", code: "EMP-00425", hoursWorked: 6.5, status: "correction", subGroup: "Automation" },
-            { userId: 6, name: "Neha Gupta", code: "EMP-00430", hoursWorked: 8.0, status: "submitted", subGroup: "CI/CD" },
-            { userId: 7, name: "Ravi Mehta", code: "EMP-00435", hoursWorked: 0, status: "missing", subGroup: "Backend" },
-            { userId: 8, name: "Kiran Shah", code: "EMP-00440", hoursWorked: 0, status: "missing", subGroup: "Frontend" },
-            { userId: 9, name: "Deepa Nair", code: "EMP-00445", hoursWorked: 8.5, status: "submitted", subGroup: "Manual Testing" }
-        ],
-        weeklyTrend: [
-            { day: 'Mon', date: '05-15', submitted: 6, pending: 2 },
-            { day: 'Tue', date: '05-16', submitted: 7, pending: 1 },
-            { day: 'Wed', date: '05-17', submitted: 5, pending: 3 },
-            { day: 'Thu', date: '05-18', submitted: 8, pending: 0 },
-            { day: 'Fri', date: '05-19', submitted: 7, pending: 1 },
-            { day: 'Sat', date: '05-20', submitted: 4, pending: 0 },
-            { day: 'Sun', date: '05-21', submitted: 5, pending: 3 }
-        ]
-    };
 
-    let currentUser = null;
+
+
 
     /* ── Helpers ───────────────────────────────────────────── */
     function formatDate(date) {
@@ -169,19 +74,18 @@ $(function () {
         return div.innerHTML;
     }
 
-    function showToast(msg) {
-        $('.toast').remove();
-        const $t = $('<div class="toast">').text(msg).appendTo('body');
-        setTimeout(() => $t.addClass('show'), 10);
-        setTimeout(() => { $t.removeClass('show'); setTimeout(() => $t.remove(), 300); }, 2500);
-    }
+    // showToast imported from /js/utils/toast.js
 
     /* ── Load User ─────────────────────────────────────────── */
     function loadUser() {
         try {
-            currentUser = getUser();
+
+            const user = getUser();
+            currentUser = user;
+
+
         } catch (e) {
-            currentUser = DEMO.teamLead;
+            currentUser = null;
         }
         if (currentUser) {
             $('#nav-user-name').text(currentUser.name || 'Team Lead');
@@ -205,7 +109,7 @@ $(function () {
             renderStats({ pending, approved, rejected, correction });
         } catch (err) {
             showToast('Dashboard stats unavailable', 'error');
-            renderStats(DEMO.stats);
+            renderStats({ pending: 0, approved: 0, rejected: 0, correction: 0 });
         }
     }
 
@@ -219,9 +123,16 @@ $(function () {
 
     /* ── Load & Render Alerts ──────────────────────────────── */
     async function loadAlerts() {
+        // Existing implementation unchanged
         // In real app: GET /api/tl/alerts
         // For now use demo data
-        renderAlerts(DEMO.alerts);
+        try {
+            const response = await getWithAuth('/api/tl/alerts');
+            const alerts = response.data || response;
+            renderAlerts(alerts);
+        } catch (err) {
+            renderAlerts([]);
+        }
     }
 
     function renderAlerts(alerts) {
@@ -246,15 +157,6 @@ $(function () {
     }
 
     /* ── Load & Render Today's Snapshot ────────────────────── */
-    async function loadTodaySnapshot() {
-        try {
-            const response = await getWithAuth(API.todaySnapshot);
-            const snapshot = response.data || response;
-            renderTodaySnapshot(snapshot);
-        } catch (err) {
-            renderTodaySnapshot(DEMO.todaySnapshot);
-        }
-    }
 
     function renderTodaySnapshot(snapshot) {
         const $tbody = $('#snapshot-body');
@@ -295,14 +197,84 @@ $(function () {
         $tbody.html(html);
     }
 
-    /* ── Load & Render Team Pulse ──────────────────────────── */
-    async function loadTeamPulse() {
+    // Load & render today's snapshot table (user‑specific)
+    async function loadTodaySnapshot() {
         try {
-            const response = await getWithAuth(API.teamPulse);
-            const pulse = response.data || response;
+            // Reuse approvals data to build today's snapshot
+            const rows = await getApprovalList('ALL', null, null);
+            const today = new Date().toDateString();
+            const snapshot = rows.filter(r => {
+                const d = new Date(r.workDate);
+                return d.toDateString() === today && (r.approvalStatus || '').toUpperCase() === 'PENDING';
+            }).map(r => ({
+                memberName: r.employeeName || r.memberName,
+                employeeCode: r.employeeCode || '',
+                hoursWorked: r.hoursWorked || 0,
+                approvalStatus: r.approvalStatus || 'PENDING',
+                workLogId: r.workLogId
+            }));
+            renderTodaySnapshot(snapshot);
+        } catch (err) {
+            renderTodaySnapshot([]);
+        }
+    }
+    /* ── Load & Render Team Pulse ──────────────────────────── */
+    // Calls the same hierarchy API as tl-team.js but without importing that
+    // module (which has top-level side-effects and DOM references for its own page).
+    async function loadTeamPulse() {
+        $('#pulse-list').html(
+            '<div class="pulse-item skeleton" style="height:48px"></div>'.repeat(3)
+        );
+        try {
+            // 1. Resolve teamId the same way tl-team.js init() does
+            const ctx = await loadHierarchyContext();
+            const teamId = effectiveTeamId(ctx);
+
+            if (!teamId) {
+                renderTeamPulse([]);
+                return;
+            }
+
+            // 2. Fetch members via the same endpoint as tl-team.js loadMembers()
+            const rawMembers = await hierarchyApi.listTeamMembers(teamId) ?? [];
+
+            // 3. Optionally resolve sub-group names (mirrors getMemberSubGroupName)
+            let subGroups = [];
+            try {
+                subGroups = await hierarchyApi.listSubGroups({ teamId }) ?? [];
+            } catch { /* sub-group labels are optional */ }
+
+            // 4. Normalise to the shape renderTeamPulse() expects
+            const pulse = rawMembers.map(m => {
+                const name = fullName(m);
+                const code = pick(m, 'employeeCode', 'EmployeeCode') || '';
+                const isLead = pick(m, 'isTeamLead', 'IsTeamLead') || false;
+
+                const sgId = String(
+                    pick(m, 'currentSubGroupId', 'CurrentSubGroupId', 'subGroupId', 'SubGroupId') ?? ''
+                );
+                const directSgName = pick(m, 'subGroupName', 'SubGroupName');
+                let subGroup = (directSgName && directSgName !== 'null') ? directSgName : '';
+                if (!subGroup && sgId) {
+                    const sg = subGroups.find(
+                        s => String(pick(s, 'subGroupId', 'SubGroupId')) === sgId
+                    );
+                    subGroup = sg ? (pick(sg, 'subGroupName', 'SubGroupName') || 'Unassigned') : 'Unassigned';
+                }
+
+                return {
+                    userId: pick(m, 'userId', 'UserId'),
+                    name: name || 'Unknown',
+                    code,
+                    subGroup: subGroup || '—',
+                    isLead
+                };
+            });
+
             renderTeamPulse(pulse);
         } catch (err) {
-            renderTeamPulse(DEMO.teamPulse);
+            showToast('Could not load team pulse', 'error');
+            renderTeamPulse([]);
         }
     }
 
@@ -310,10 +282,14 @@ $(function () {
         const $list = $('#pulse-list');
         $('#team-pulse-count').text(`${members.length} member${members.length === 1 ? '' : 's'}`);
 
+        if (members.length === 0) {
+            $list.html('<div class="pulse-empty" style="padding:16px;color:var(--text-3);text-align:center">No team members found.</div>');
+            return;
+        }
+
         const html = members.map(m => {
-            const statusClass = m.status.toLowerCase();
-            const hoursText = m.hoursWorked > 0 ? `${m.hoursWorked.toFixed(1)}h` : '—';
-            const initials = m.name.split(' ').map(n => n[0]).join('');
+            const roleClass = m.isLead ? 'lead' : 'member';
+            const initials = m.name.split(' ').map(n => n[0]).join('').slice(0, 2);
 
             return `
                 <div class="pulse-item" data-userid="${m.userId}">
@@ -322,8 +298,7 @@ $(function () {
                         <div class="pulse-name">${escapeHtml(m.name)}</div>
                         <div class="pulse-meta">${escapeHtml(m.code)} · ${escapeHtml(m.subGroup)}</div>
                     </div>
-                    <div class="pulse-hours">${hoursText}</div>
-                    <div class="pulse-status ${statusClass}"></div>
+                    <div class="pulse-status ${roleClass}"></div>
                 </div>
             `;
         }).join('');
@@ -334,11 +309,49 @@ $(function () {
     /* ── Load & Render Weekly Trend ────────────────────────── */
     async function loadWeeklyTrend() {
         try {
-            const response = await getWithAuth(API.weeklyTrend);
-            const trend = response.data || response;
+            // Calculate week start (Monday) and week end (Sunday)
+            const today = new Date();
+            const currentDay = today.getDay();
+            const distanceToMonday = currentDay === 0 ? 6 : currentDay - 1;
+            
+            const weekStart = new Date(today);
+            weekStart.setDate(today.getDate() - distanceToMonday);
+            weekStart.setHours(0, 0, 0, 0);
+
+            const weekEnd = new Date(weekStart);
+            weekEnd.setDate(weekStart.getDate() + 6);
+            weekEnd.setHours(23, 59, 59, 999);
+
+            const fromDateStr = weekStart.toISOString().split('T')[0];
+            const toDateStr = weekEnd.toISOString().split('T')[0];
+            
+            // Reuse getApprovalList to fetch team submissions
+            const rows = await getApprovalList('ALL', fromDateStr, toDateStr);
+
+            const trendMap = new Map();
+            const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+            daysOfWeek.forEach(d => trendMap.set(d, { day: d, submitted: 0, pending: 0 }));
+
+            rows.forEach(r => {
+                const workDate = new Date(r.workDate);
+                if (workDate >= weekStart && workDate <= weekEnd) {
+                    const dayName = workDate.toLocaleDateString('en-US', { weekday: 'short' });
+                    if (trendMap.has(dayName)) {
+                        const dayData = trendMap.get(dayName);
+                        dayData.submitted++;
+                        const status = (r.approvalStatus || '').toUpperCase();
+                        if (status === 'PENDING') {
+                            dayData.pending++;
+                        }
+                    }
+                }
+            });
+
+            const trend = Array.from(trendMap.values());
             renderWeeklyTrend(trend);
         } catch (err) {
-            renderWeeklyTrend(DEMO.weeklyTrend);
+            showToast('Could not load weekly trend data', 'error');
+            renderWeeklyTrend([]);
         }
     }
 
@@ -385,9 +398,9 @@ $(function () {
     if (!requireAuth({ minRole: 'TeamLead' })) return;
     loadUser();
     setHeaderInfo();
-    loadStats();
-    loadAlerts();
-    loadTodaySnapshot();
-    loadTeamPulse();
+    loadStats();          // stat cards (pending/approved/rejected/correction)
+    loadAlerts();         // alert banners
+    loadTodaySnapshot();  // Today's Submission — via getApprovalList()
+    loadTeamPulse();      // Team Pulse — via hierarchyApi.listTeamMembers()
     loadWeeklyTrend();
 });

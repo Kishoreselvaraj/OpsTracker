@@ -39,8 +39,8 @@ async function init() {
 
     document.getElementById('ctx-team').textContent =
         team ? `${pick(team, 'teamName', 'TeamName')} (${pick(team, 'groupName', 'GroupName')})` : 'Not assigned to a team';
-    document.getElementById('ctx-subgroup').textContent =
-        subGroup ? pick(subGroup, 'subGroupName', 'SubGroupName') : 'No sub-group';
+    // document.getElementById('ctx-subgroup').textContent =
+    //     subGroup ? pick(subGroup, 'subGroupName', 'SubGroupName') : 'No sub-group';
     document.getElementById('ctx-dept').textContent =
         pick(team, 'departmentName', 'DepartmentName') || (ctx.departmentId ? `Department #${ctx.departmentId}` : '—');
 

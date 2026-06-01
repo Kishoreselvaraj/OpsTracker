@@ -31,11 +31,29 @@
             <button class="create-panel-close" id="btn-create-close">×</button>
         </div>
         <div class="create-panel-body">
+
             <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">
+                        Team <span style="color:var(--gold)">*</span>
+                    </label>
+                    <select class="form-input" id="ddlTeam">
+                        <option value="">Select Team</option>
+                    </select>
+                </div>
+
                 <div class="form-group">
                     <label class="form-label">Sub-Group Name <span style="color:var(--gold)">*</span></label>
                     <input type="text" class="form-input" id="create-name" placeholder="e.g., Backend Development" maxlength="50" />
                 </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <input type="text" class="form-input" id="create-desc" placeholder="Brief description of this sub-group's responsibilities" maxlength="120" />
+                </div>
+
                 <div class="form-group">
                     <label class="form-label">Icon</label>
                     <div class="icon-picker" id="icon-picker">
@@ -50,10 +68,7 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="form-label">Description</label>
-                <input type="text" class="form-input" id="create-desc" placeholder="Brief description of this sub-group's responsibilities" maxlength="120" />
-            </div>
+
             <div class="create-actions">
                 <button class="btn-outline" id="btn-create-cancel">Cancel</button>
                 <button class="btn-gold" id="btn-create-save">✓ Create Sub-Group</button>
@@ -81,7 +96,7 @@
     <div class="modal-panel">
         <button class="modal-close" id="assign-modal-close">×</button>
 
-        <div class="modal-title" id="assign-modal-title">Manage Backend Members</div>
+        <div class="modal-title" id="assign-modal-title">Manage Members</div>
         <div class="modal-subtitle">Assign or remove members from this sub-group</div>
 
         <div class="assign-layout">

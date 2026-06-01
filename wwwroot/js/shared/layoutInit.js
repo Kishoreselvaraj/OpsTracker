@@ -79,11 +79,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!requireAuth()) return;
 
     const user = getUser();
+    const userid = user.userId;
     const role = normalizeRole(user?.role);
 
     renderSidebarNav(role);
     updateRoleBadge(role);
-    setupTopbarUser(user);
+    setupTopbarUser(userid);
     setupSidebarToggle();
     bindLogout('#btn-logout');
     initNavNotifications().catch(() => {});

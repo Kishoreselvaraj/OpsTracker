@@ -1,9 +1,12 @@
 @{
     ViewData["Title"] = "Admin Dashboard";
 }
+
 <div class="page-hero">
     <h1>Administration</h1>
-    <p class="lead">Full system access — organizations, users, settings, and cross-department oversight.</p>
+    <p class="lead">
+        Full system access — organizations, users, settings, and cross-department oversight.
+    </p>
 </div>
 
 <div class="stat-grid-premium">
@@ -11,30 +14,70 @@
         <div class="stat-tile-label">Scope</div>
         <div class="stat-tile-value">Global</div>
     </div>
+
+    <!-- Organizations FIRST -->
     <div class="stat-tile">
         <div class="stat-tile-label">Organizations</div>
         <div class="stat-tile-value" id="admin-stat-orgs">—</div>
     </div>
+
+    <!-- Departments SECOND -->
+    <div class="stat-tile">
+        <div class="stat-tile-label">Departments</div>
+        <div class="stat-tile-value" id="admin-stat-depts">—</div>
+    </div>
+
     <div class="stat-tile">
         <div class="stat-tile-label">Users</div>
         <div class="stat-tile-value" id="admin-stat-users">—</div>
     </div>
+
     <div class="stat-tile">
         <div class="stat-tile-label">Settings</div>
-        <div class="stat-tile-value"><i class="fa-solid fa-sliders" style="font-size:1.2rem"></i></div>
+        <div class="stat-tile-value">
+            <i class="fa-solid fa-sliders" style="font-size:1.2rem"></i>
+        </div>
     </div>
 </div>
 
 <div class="ops-card ops-card--accent">
-    <h2 class="h5 mb-2" style="color:var(--gold-2)">Quick actions</h2>
-    <p class="text-secondary mb-0">Manage the platform structure and configuration.</p>
+    <h2 class="h5 mb-2" style="color:var(--gold-2)">Quick Actions</h2>
+    <p class="text-secondary mb-0">
+        Manage the platform structure and configuration.
+    </p>
+
     <div class="quick-actions">
-        <a class="btn-gold-gradient" href="/Admin/Departments"><i class="fa-solid fa-building"></i> Departments</a>
-        <a class="btn-gold-outline" href="/Admin/Organizations"><i class="fa-solid fa-sitemap"></i> Organizations</a>
-        <a class="btn-gold-outline" href="/Admin/Users"><i class="fa-solid fa-users"></i> Users</a>
-        <a class="btn-gold-outline" href="/Admin/Settings"><i class="fa-solid fa-gear"></i> System settings</a>
-        <a class="btn-gold-outline" href="/DeptHead/Reports"><i class="fa-solid fa-chart-column"></i> Reports</a>
-        <a class="btn-gold-outline" href="/DeptHead/Dashboard"><i class="fa-solid fa-building"></i> Department tools</a>
+        <!-- Organizations FIRST -->
+        <a class="btn-gold-outline" href="/Admin/Organizations">
+            <i class="fa-solid fa-sitemap"></i>
+            Organizations
+        </a>
+
+        <!-- Departments SECOND -->
+        <a class="btn-gold-gradient" href="/Admin/Departments">
+            <i class="fa-solid fa-building"></i>
+            Departments
+        </a>
+
+        <a class="btn-gold-outline" href="/Admin/Users">
+            <i class="fa-solid fa-users"></i>
+            Users
+        </a>
+
+        <a class="btn-gold-outline" href="/Admin/Settings">
+            <i class="fa-solid fa-gear"></i>
+            System Settings
+        </a>
+
+        <a class="btn-gold-outline" href="/DeptHead/Reports">
+            <i class="fa-solid fa-chart-column"></i>
+            Reports
+        </a>
+
+        <a class="btn-gold-outline" href="/DeptHead/Dashboard">
+            <i class="fa-solid fa-building"></i>
+            Department Tools
+        </a>
     </div>
 </div>
 
@@ -42,16 +85,31 @@
     import { requireAuth } from '/js/auth/routeGuard.js';
     import { apiGet, unwrap } from '/js/services/apiClient.js';
 
-    if (!requireAuth({ allowRoles: ['Admin'] })) throw new Error('auth');
+    if (!requireAuth({ allowRoles: ['Admin'] })) {
+        throw new Error('auth');
+    }
 
     async function loadStats() {
         try {
             const orgJson = await apiGet('/api/Organization/list');
             const { data: orgs } = unwrap(orgJson);
-            document.getElementById('admin-stat-orgs').textContent = Array.isArray(orgs) ? orgs.length : '0';
+
+            document.getElementById('admin-stat-orgs').textContent =
+                Array.isArray(orgs) ? orgs.length : '0';
         } catch {
             document.getElementById('admin-stat-orgs').textContent = '—';
         }
+
+        try {
+            const deptJson = await apiGet('/api/Department/list');
+            const { data: depts } = unwrap(deptJson);
+
+            document.getElementById('admin-stat-depts').textContent =
+                Array.isArray(depts) ? depts.length : '0';
+        } catch {
+            document.getElementById('admin-stat-depts').textContent = '—';
+        }
     }
+
     loadStats();
 </script>

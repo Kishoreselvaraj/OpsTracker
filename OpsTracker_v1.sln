@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.5.11723.231 stable
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpsTracker_v1", "OpsTracker_v1.csproj", "{339212A8-6681-8773-BEF7-B11B3C00A460}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{339212A8-6681-8773-BEF7-B11B3C00A460}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{339212A8-6681-8773-BEF7-B11B3C00A460}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{339212A8-6681-8773-BEF7-B11B3C00A460}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{339212A8-6681-8773-BEF7-B11B3C00A460}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD3BD8D5-455F-455F-AE7B-E318B2E2540D}
+	EndGlobalSection
+EndGlobal
